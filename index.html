@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -11,17 +12,16 @@
 
   <meta
     name="description"
-    content="PROZASHITA — профессиональная огнезащитная обработка металлоконструкций."
+    content="PROZASHITA — огнезащитная обработка металлоконструкций."
   >
 
   <style>
     :root {
-      --text: #f5f5f5;
-      --muted: rgba(245,245,245,.76);
-      --line: rgba(255,255,255,.18);
-      --panel: rgba(14,14,14,.34);
-      --panel-strong: rgba(10,10,10,.48);
-      --radius: 22px;
+      --white: #f5f5f5;
+      --muted: rgba(245, 245, 245, 0.76);
+      --border: rgba(255, 255, 255, 0.18);
+      --panel: rgba(0, 0, 0, 0.22);
+      --panel-mobile: rgba(0, 0, 0, 0.30);
     }
 
     * {
@@ -38,46 +38,37 @@
     body {
       min-height: 100%;
       overflow-x: hidden;
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
       background: #111;
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* ===== ОБЩИЙ ФОН ===== */
+    /* =========================================================
+       ТВОЙ ФОН
+       Никакого чёрного градиента поверх фотографии
+    ========================================================== */
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -3;
+      z-index: -5;
 
-      background-image:
-        linear-gradient(
-          rgba(0,0,0,.15),
-          rgba(0,0,0,.22)
-        ),
-        url("img/background.jpg");
-
-      background-position: center;
-      background-size: cover;
+      background-image: url("img/background.jpg");
+      background-position: center center;
       background-repeat: no-repeat;
-
-      transform: scale(1.015);
+      background-size: cover;
     }
 
+    /* Очень лёгкое затемнение только для читаемости текста */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -2;
+      z-index: -4;
       pointer-events: none;
 
-      background:
-        radial-gradient(
-          circle at 20% 20%,
-          rgba(255,255,255,.04),
-          transparent 32%
-        );
+      background: rgba(0, 0, 0, 0.08);
     }
 
     a {
@@ -90,7 +81,9 @@
       color: inherit;
     }
 
-    /* ===== НАВИГАЦИЯ ===== */
+    /* =========================================================
+       HEADER
+    ========================================================== */
 
     .header {
       position: fixed;
@@ -99,89 +92,87 @@
       right: 0;
       z-index: 1000;
 
-      padding: 18px 28px;
+      padding: 16px 22px;
     }
 
     .header-inner {
-      width: min(1380px, 100%);
+      width: min(1280px, 100%);
+      min-height: 68px;
       margin: 0 auto;
-
-      min-height: 74px;
-      padding: 10px 12px 10px 22px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
 
-      background: rgba(8,8,8,.30);
-      border: 1px solid var(--line);
-      border-radius: 18px;
+      padding: 8px 10px 8px 18px;
 
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(0, 0, 0, 0.20);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
 
       box-shadow:
-        0 12px 45px rgba(0,0,0,.20),
-        inset 0 1px 0 rgba(255,255,255,.04);
+        0 12px 35px rgba(0, 0, 0, 0.16);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      min-width: 0;
+      flex-shrink: 0;
     }
 
     .brand img {
       display: block;
-      width: 180px;
-      height: auto;
-      max-height: 62px;
+      width: 155px;
+      max-height: 54px;
       object-fit: contain;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
 
     .nav a {
-      padding: 12px 15px;
-      border-radius: 10px;
+      padding: 10px 14px;
+
+      border-radius: 9px;
+
+      color: rgba(245, 245, 245, 0.78);
 
       font-size: 14px;
       font-weight: 600;
 
-      color: rgba(245,245,245,.78);
-
       transition:
-        background .25s ease,
-        color .25s ease;
+        background 0.25s ease,
+        color 0.25s ease;
     }
 
     .nav a:hover {
-      background: rgba(255,255,255,.08);
-      color: var(--text);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .nav a.active {
-      background: rgba(255,255,255,.10);
-      color: var(--text);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.11);
     }
 
-    /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+    /* MOBILE BUTTON */
 
     .menu-button {
       display: none;
 
-      width: 44px;
-      height: 44px;
+      width: 43px;
+      height: 43px;
 
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 11px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 10px;
 
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,0.07);
 
       align-items: center;
       justify-content: center;
@@ -189,54 +180,56 @@
       cursor: pointer;
     }
 
-    .menu-button span,
-    .menu-button span::before,
-    .menu-button span::after {
+    .menu-icon,
+    .menu-icon::before,
+    .menu-icon::after {
+      display: block;
       width: 18px;
       height: 2px;
-      background: var(--text);
-      border-radius: 4px;
-      display: block;
+
+      border-radius: 5px;
+      background: var(--white);
+
       position: relative;
     }
 
-    .menu-button span::before,
-    .menu-button span::after {
+    .menu-icon::before,
+    .menu-icon::after {
       content: "";
       position: absolute;
       left: 0;
     }
 
-    .menu-button span::before {
+    .menu-icon::before {
       top: -6px;
     }
 
-    .menu-button span::after {
+    .menu-icon::after {
       top: 6px;
     }
 
     .mobile-menu {
       position: fixed;
-      top: 89px;
-      right: 16px;
+      top: 82px;
+      right: 14px;
       z-index: 999;
 
-      width: min(240px, calc(100vw - 32px));
+      width: 220px;
 
-      padding: 10px;
+      padding: 8px;
 
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
 
-      background: rgba(8,8,8,.78);
-      border: 1px solid var(--line);
-      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 15px;
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
 
-      box-shadow: 0 20px 55px rgba(0,0,0,.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
 
       opacity: 0;
       visibility: hidden;
@@ -255,64 +248,78 @@
     }
 
     .mobile-menu a {
-      padding: 13px 14px;
-      border-radius: 10px;
+      padding: 12px 13px;
+
+      border-radius: 9px;
+
       font-size: 15px;
       font-weight: 600;
     }
 
     .mobile-menu a:hover {
-      background: rgba(255,255,255,.08);
+      background: rgba(255,255,255,0.08);
     }
 
-    /* ===== ОСНОВА ===== */
+    /* =========================================================
+       SECTIONS
+    ========================================================== */
 
     main {
-      position: relative;
+      width: 100%;
     }
 
     section {
       min-height: 100svh;
-      padding: 125px 6vw 70px;
 
       display: flex;
       align-items: center;
 
-      scroll-margin-top: 105px;
+      padding:
+        115px 5vw
+        65px;
+
+      scroll-margin-top: 100px;
     }
 
     .container {
-      width: min(1320px, 100%);
+      width: min(1180px, 100%);
       margin: 0 auto;
     }
+
+    /* =========================================================
+       COMMON
+    ========================================================== */
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
 
-      margin-bottom: 22px;
+      margin-bottom: 18px;
 
-      text-transform: uppercase;
-      letter-spacing: .14em;
-
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
 
       color: var(--muted);
     }
 
     .eyebrow::before {
       content: "";
-      width: 28px;
+
+      width: 25px;
       height: 1px;
-      background: rgba(255,255,255,.45);
+
+      background: rgba(255,255,255,0.50);
     }
 
     .title {
-      font-size: clamp(42px, 5.5vw, 82px);
-      line-height: .94;
-      letter-spacing: -.055em;
+      color: var(--white);
+
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 0.97;
+      letter-spacing: -0.05em;
       font-weight: 700;
     }
 
@@ -320,11 +327,14 @@
       color: var(--muted);
     }
 
-    /* ===== ПОЯВЛЕНИЕ ===== */
+    /* =========================================================
+       ANIMATION
+    ========================================================== */
 
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
+      transform: translateY(25px);
+
       transition:
         opacity .8s ease,
         transform .8s cubic-bezier(.2,.7,.2,1);
@@ -335,149 +345,177 @@
       transform: translateY(0);
     }
 
-    /* ===== ПЕРВЫЙ ЭКРАН ===== */
+    /* =========================================================
+       HERO
+    ========================================================== */
 
     .hero-layout {
+      width: min(1060px, 100%);
+      margin: 0 auto;
+
       display: grid;
 
       grid-template-columns:
-        minmax(300px, .82fr)
-        minmax(360px, 1.18fr);
-
-      gap: clamp(35px, 6vw, 90px);
+        minmax(270px, 390px)
+        minmax(340px, 1fr);
 
       align-items: center;
+
+      gap: clamp(38px, 6vw, 75px);
     }
 
     .sergey-photo {
-      width: min(500px, 100%);
+      width: 100%;
+      max-width: 390px;
       margin: 0 auto;
 
       overflow: hidden;
 
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.20);
 
-      background: rgba(0,0,0,.18);
+      background: rgba(0,0,0,0.10);
 
       box-shadow:
-        0 35px 90px rgba(0,0,0,.35);
+        0 25px 60px rgba(0,0,0,0.26);
     }
 
     .sergey-photo img {
       display: block;
+
       width: 100%;
-      aspect-ratio: .82;
+      aspect-ratio: 0.80;
+
       object-fit: cover;
     }
 
     .hero-content {
-      max-width: 760px;
+      max-width: 640px;
     }
 
     .hero-title {
-      margin-bottom: 30px;
+      margin-bottom: 26px;
     }
 
     .hero-description {
-      max-width: 700px;
-      margin-bottom: 22px;
+      max-width: 620px;
+      margin-bottom: 19px;
 
-      font-size: clamp(18px, 1.55vw, 25px);
-      line-height: 1.55;
+      font-size: clamp(18px, 1.45vw, 23px);
+      line-height: 1.52;
     }
 
     .experience {
-      margin-bottom: 30px;
+      margin-bottom: 27px;
 
-      font-size: clamp(18px, 1.6vw, 25px);
+      font-size: clamp(18px, 1.45vw, 22px);
       line-height: 1.4;
+
       font-weight: 700;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .button {
+      min-height: 50px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      min-height: 53px;
-      padding: 0 22px;
+      padding: 0 21px;
 
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.28);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 11px;
 
-      background: rgba(255,255,255,.07);
+      background: rgba(0,0,0,0.18);
 
       font-size: 14px;
       font-weight: 700;
 
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+
       transition:
-        background .25s ease,
-        border-color .25s ease,
-        transform .25s ease;
+        transform .22s ease,
+        background .22s ease,
+        border-color .22s ease;
     }
 
     .button:hover {
-      background: rgba(255,255,255,.13);
-      border-color: rgba(255,255,255,.52);
       transform: translateY(-2px);
+
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.50);
     }
 
-    /* ===== ВТОРОЙ ЭКРАН ===== */
+    /* =========================================================
+       SERVICE
+    ========================================================== */
 
     .service-layout {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+
       display: grid;
 
       grid-template-columns:
-        minmax(280px, .8fr)
-        minmax(400px, 1.2fr);
-
-      gap: clamp(35px, 8vw, 120px);
+        minmax(280px, .85fr)
+        minmax(390px, 1.15fr);
 
       align-items: center;
+
+      gap: clamp(40px, 7vw, 90px);
     }
 
-    .service-text {
-      max-width: 820px;
+    .service-copy {
+      max-width: 680px;
     }
 
     .service-main {
-      font-size: clamp(22px, 2vw, 32px);
+      margin-bottom: 21px;
+
+      color: var(--white);
+
+      font-size: clamp(21px, 1.9vw, 29px);
       line-height: 1.48;
-      margin-bottom: 23px;
     }
 
     .service-secondary {
-      font-size: clamp(17px, 1.4vw, 22px);
-      line-height: 1.65;
       color: var(--muted);
+
+      font-size: clamp(17px, 1.35vw, 21px);
+      line-height: 1.60;
     }
 
     .service-cards {
-      margin-top: 35px;
+      margin-top: 28px;
 
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .service-card {
-      min-height: 155px;
-      padding: 21px;
+      min-height: 145px;
+
+      padding: 18px;
 
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
-      background: rgba(10,10,10,.27);
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 17px;
+      background: rgba(0,0,0,0.18);
+
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 15px;
+
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
 
       transition:
         transform .25s ease,
@@ -485,60 +523,73 @@
     }
 
     .service-card:hover {
-      transform: translateY(-4px);
-      background: rgba(10,10,10,.38);
+      transform: translateY(-3px);
+      background: rgba(0,0,0,0.25);
     }
 
     .service-card strong {
-      font-size: 17px;
-      line-height: 1.3;
+      font-size: 15px;
+      line-height: 1.35;
     }
 
     .service-card span {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.45;
     }
 
-    /* ===== ТРЕТИЙ ЭКРАН ===== */
+    /* =========================================================
+       WORKS
+    ========================================================== */
 
     .works-header {
+      width: min(1000px, 100%);
+      margin: 0 auto 23px;
+
       display: flex;
       align-items: end;
       justify-content: space-between;
-      gap: 30px;
 
-      margin-bottom: 28px;
+      gap: 30px;
     }
 
     .works-description {
-      max-width: 320px;
+      max-width: 280px;
+
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
+
+      font-size: 13px;
+      line-height: 1.50;
+
       text-align: right;
     }
 
     .gallery {
       position: relative;
+
+      width: min(1000px, 100%);
+      margin: 0 auto;
+
       overflow: hidden;
 
-      border-radius: 25px;
-      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.16);
 
-      background: rgba(0,0,0,.20);
+      background: rgba(0,0,0,0.13);
 
       box-shadow:
-        0 35px 95px rgba(0,0,0,.35);
+        0 25px 60px rgba(0,0,0,0.25);
     }
 
     .gallery-track {
       display: flex;
+
       width: 100%;
 
       transform: translateX(0);
+
       transition:
-        transform .55s cubic-bezier(.2,.75,.2,1);
+        transform .48s cubic-bezier(.2,.75,.2,1);
 
       touch-action: pan-y;
     }
@@ -546,13 +597,17 @@
     .slide {
       flex: 0 0 100%;
       width: 100%;
+
       user-select: none;
     }
 
     .slide img {
       display: block;
+
       width: 100%;
-      height: min(68vh, 720px);
+
+      height: min(56vh, 580px);
+
       object-fit: cover;
     }
 
@@ -561,22 +616,22 @@
       top: 50%;
       z-index: 5;
 
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      border: 1px solid rgba(255,255,255,0.28);
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.30);
 
-      background: rgba(0,0,0,.42);
+      background: rgba(0,0,0,0.32);
 
       cursor: pointer;
 
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
 
       transition:
         background .2s ease,
@@ -585,43 +640,46 @@
     }
 
     .gallery-arrow:hover {
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.56);
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.52);
+    }
+
+    .gallery-arrow.left {
+      left: 14px;
+      transform: translateY(-50%);
+    }
+
+    .gallery-arrow.right {
+      right: 14px;
+      transform: translateY(-50%);
     }
 
     .gallery-arrow:active {
       transform: translateY(-50%) scale(.94);
     }
 
-    .gallery-arrow.left {
-      left: 17px;
-      transform: translateY(-50%);
-    }
-
-    .gallery-arrow.right {
-      right: 17px;
-      transform: translateY(-50%);
-    }
-
-    /* ===== ЧЕТВЁРТЫЙ ЭКРАН ===== */
+    /* =========================================================
+       CONTACTS
+    ========================================================== */
 
     .contact-box {
-      width: min(1050px, 100%);
+      width: min(900px, 100%);
       margin: 0 auto;
 
-      padding: clamp(30px, 6vw, 70px);
+      padding: clamp(35px, 5vw, 60px);
 
       text-align: center;
 
-      background: rgba(8,8,8,.33);
-      border: 1px solid rgba(255,255,255,.17);
-      border-radius: 26px;
+      background: rgba(0,0,0,0.22);
 
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 22px;
+
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
 
       box-shadow:
-        0 30px 80px rgba(0,0,0,.30);
+        0 25px 60px rgba(0,0,0,0.22);
     }
 
     .contact-box .eyebrow {
@@ -629,50 +687,45 @@
     }
 
     .contact-title {
-      margin-bottom: 23px;
+      margin-bottom: 22px;
     }
 
     .contact-text {
-      max-width: 650px;
-      margin: 0 auto 25px;
+      max-width: 640px;
+      margin: 0 auto 23px;
 
       color: var(--muted);
-      font-size: clamp(17px, 1.4vw, 22px);
-      line-height: 1.6;
+
+      font-size: clamp(17px, 1.35vw, 21px);
+      line-height: 1.55;
     }
 
     .phone {
       display: inline-block;
-      margin-bottom: 27px;
 
-      font-size: clamp(34px, 5vw, 65px);
+      margin-bottom: 25px;
+
+      color: var(--white);
+
+      font-size: clamp(31px, 4vw, 54px);
+      line-height: 1;
+
       font-weight: 700;
-      letter-spacing: -.04em;
+      letter-spacing: -.035em;
     }
 
-    .contact-buttons {
+    .contact-actions {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
-    /* ===== АДАПТАЦИЯ ===== */
+    /* =========================================================
+       TABLET
+    ========================================================== */
 
     @media (max-width: 980px) {
-
-      .header {
-        padding: 13px;
-      }
-
-      .header-inner {
-        min-height: 65px;
-        padding-left: 15px;
-      }
-
-      .brand img {
-        width: 150px;
-      }
 
       .nav {
         display: none;
@@ -682,61 +735,58 @@
         display: flex;
       }
 
-      section {
-        padding: 105px 5vw 50px;
-      }
-
       .hero-layout {
-        gap: 25px;
+        grid-template-columns:
+          minmax(240px, 340px)
+          minmax(300px, 1fr);
+
+        gap: 30px;
       }
 
       .service-layout {
         grid-template-columns: 1fr;
       }
-
-      .service-cards {
-        grid-template-columns: repeat(3, 1fr);
-      }
     }
+
+    /* =========================================================
+       MOBILE
+    ========================================================== */
 
     @media (max-width: 650px) {
 
+      .header {
+        padding: 10px;
+      }
+
       .header-inner {
-        min-height: 60px;
-        border-radius: 14px;
+        min-height: 57px;
+
+        padding:
+          6px 7px 6px 13px;
+
+        border-radius: 13px;
       }
 
       .brand img {
-        width: 125px;
-        max-height: 50px;
+        width: 120px;
+        max-height: 46px;
+      }
+
+      .mobile-menu {
+        top: 72px;
       }
 
       section {
         min-height: 100svh;
+
         padding:
-          92px 14px 30px;
-      }
-
-      /* МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН */
-
-      .hero-layout {
-        grid-template-columns: 41% 59%;
-        gap: 10px;
-
-        align-items: center;
-      }
-
-      .sergey-photo {
-        border-radius: 15px;
-      }
-
-      .sergey-photo img {
-        aspect-ratio: .73;
+          82px 12px
+          30px;
       }
 
       .eyebrow {
-        margin-bottom: 12px;
-        font-size: 8.5px;
+        margin-bottom: 10px;
+        font-size: 8px;
         letter-spacing: .09em;
         gap: 5px;
       }
@@ -745,26 +795,62 @@
         width: 15px;
       }
 
-      .hero-title {
-        margin-bottom: 12px;
+      /* =====================================================
+         МОБИЛЬНЫЙ HERO
+         ФОТО СЛЕВА
+         ТЕКСТ СПРАВА
+      ====================================================== */
 
-        font-size: clamp(21px, 6.5vw, 31px);
+      .hero-layout {
+        width: 100%;
+
+        grid-template-columns:
+          40%
+          60%;
+
+        gap: 8px;
+
+        align-items: center;
+      }
+
+      .sergey-photo {
+        width: 100%;
+        max-width: none;
+
+        border-radius: 13px;
+      }
+
+      .sergey-photo img {
+        aspect-ratio: .72;
+      }
+
+      .hero-content {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .title {
+        font-size: clamp(22px, 6.5vw, 31px);
         line-height: .98;
         letter-spacing: -.045em;
       }
 
-      .hero-description {
-        margin-bottom: 10px;
+      .hero-title {
+        margin-bottom: 11px;
+      }
 
-        font-size: clamp(12px, 3.55vw, 16px);
-        line-height: 1.38;
+      .hero-description {
+        margin-bottom: 9px;
+
+        font-size: clamp(11.5px, 3.45vw, 15px);
+        line-height: 1.34;
       }
 
       .experience {
-        margin-bottom: 12px;
+        margin-bottom: 11px;
 
-        font-size: clamp(12px, 3.55vw, 16px);
-        line-height: 1.3;
+        font-size: clamp(11.5px, 3.45vw, 15px);
+        line-height: 1.30;
       }
 
       .actions {
@@ -774,147 +860,40 @@
 
       .button {
         width: 100%;
-        min-height: 40px;
-        padding: 0 8px;
+        min-height: 38px;
 
-        font-size: 10.5px;
-        border-radius: 9px;
+        padding: 0 7px;
+
+        border-radius: 8px;
+
+        font-size: 10px;
       }
 
-      /* ВТОРОЙ ЭКРАН */
+      /* SERVICE */
 
       .service-layout {
         gap: 25px;
       }
 
-      .title {
-        font-size: clamp(31px, 9vw, 43px);
-      }
-
       .service-main {
-        font-size: 19px;
+        font-size: 18px;
         line-height: 1.48;
       }
 
       .service-secondary {
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.55;
       }
 
       .service-cards {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 7px;
-        margin-top: 24px;
-      }
-
-      .service-card {
-        min-height: 122px;
-        padding: 12px;
-        border-radius: 12px;
-      }
-
-      .service-card strong {
-        font-size: 12px;
-      }
-
-      .service-card span {
-        font-size: 10px;
-        line-height: 1.35;
-      }
-
-      /* ТРЕТИЙ ЭКРАН */
-
-      .works-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 9px;
-        margin-bottom: 18px;
-      }
-
-      .works-description {
-        max-width: 100%;
-        text-align: left;
-        font-size: 12px;
-      }
-
-      .gallery {
-        border-radius: 15px;
-      }
-
-      .slide img {
-        height: 58svh;
-        min-height: 300px;
-      }
-
-      .gallery-arrow {
-        width: 43px;
-        height: 43px;
-      }
-
-      .gallery-arrow.left {
-        left: 8px;
-      }
-
-      .gallery-arrow.right {
-        right: 8px;
-      }
-
-      /* КОНТАКТЫ */
-
-      .contact-box {
-        padding: 32px 18px;
-        border-radius: 20px;
-      }
-
-      .contact-title {
-        margin-bottom: 16px;
-      }
-
-      .contact-text {
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 21px;
-      }
-
-      .phone {
-        font-size: clamp(27px, 8vw, 39px);
-        margin-bottom: 20px;
-      }
-
-      .contact-buttons {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 380px) {
-
-      section {
-        padding-left: 11px;
-        padding-right: 11px;
-      }
-
-      .hero-layout {
-        grid-template-columns: 38% 62%;
-        gap: 7px;
-      }
-
-      .hero-title {
-        font-size: 20px;
-      }
-
-      .hero-description,
-      .experience {
-        font-size: 11.5px;
-      }
-
-      .button {
-        font-size: 10px;
-        min-height: 38px;
+        gap: 6px;
+        margin-top: 21px;
       }
 
       .service-card {
         min-height: 115px;
-        padding: 10px;
+        padding: 11px;
+        border-radius: 11px;
       }
 
       .service-card strong {
@@ -923,10 +902,94 @@
 
       .service-card span {
         font-size: 9px;
+        line-height: 1.32;
+      }
+
+      /* WORKS */
+
+      .works-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      .works-description {
+        max-width: 100%;
+        text-align: left;
+        font-size: 11px;
+      }
+
+      .gallery {
+        border-radius: 14px;
+      }
+
+      .slide img {
+        height: 55svh;
+        min-height: 280px;
+      }
+
+      .gallery-arrow {
+        width: 41px;
+        height: 41px;
+      }
+
+      .gallery-arrow.left {
+        left: 7px;
+      }
+
+      .gallery-arrow.right {
+        right: 7px;
+      }
+
+      /* CONTACTS */
+
+      .contact-box {
+        padding: 30px 17px;
+        border-radius: 18px;
+      }
+
+      .contact-text {
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .phone {
+        font-size: clamp(27px, 8vw, 38px);
+      }
+
+      .contact-actions {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 380px) {
+
+      .hero-layout {
+        grid-template-columns:
+          38%
+          62%;
+
+        gap: 6px;
+      }
+
+      .title {
+        font-size: 20px;
+      }
+
+      .hero-description,
+      .experience {
+        font-size: 11px;
+      }
+
+      .button {
+        font-size: 9.5px;
+        min-height: 36px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       html {
         scroll-behavior: auto;
       }
@@ -935,7 +998,6 @@
       *::before,
       *::after {
         transition: none !important;
-        animation: none !important;
       }
     }
   </style>
@@ -943,9 +1005,12 @@
 
 <body>
 
-  <!-- ===== ВЕРХНЕЕ МЕНЮ ===== -->
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
 
   <header class="header">
+
     <div class="header-inner">
 
       <a class="brand" href="#home">
@@ -953,10 +1018,35 @@
       </a>
 
       <nav class="nav">
-        <a href="#home" class="nav-link active">Главная</a>
-        <a href="#service" class="nav-link">Обработка</a>
-        <a href="#works" class="nav-link">Работы</a>
-        <a href="#contacts" class="nav-link">Контакты</a>
+
+        <a
+          href="#home"
+          class="nav-link active"
+        >
+          Главная
+        </a>
+
+        <a
+          href="#service"
+          class="nav-link"
+        >
+          Обработка
+        </a>
+
+        <a
+          href="#works"
+          class="nav-link"
+        >
+          Работы
+        </a>
+
+        <a
+          href="#contacts"
+          class="nav-link"
+        >
+          Контакты
+        </a>
+
       </nav>
 
       <button
@@ -966,26 +1056,44 @@
         aria-label="Открыть меню"
         aria-expanded="false"
       >
-        <span></span>
+        <span class="menu-icon"></span>
       </button>
 
     </div>
+
   </header>
 
-  <!-- ===== МОБИЛЬНОЕ МЕНЮ ===== -->
+  <!-- MOBILE MENU -->
 
-  <nav class="mobile-menu" id="mobileMenu">
+  <nav
+    class="mobile-menu"
+    id="mobileMenu"
+  >
 
-    <a href="#home">Главная</a>
-    <a href="#service">Обработка</a>
-    <a href="#works">Работы</a>
-    <a href="#contacts">Контакты</a>
+    <a href="#home">
+      Главная
+    </a>
+
+    <a href="#service">
+      Обработка
+    </a>
+
+    <a href="#works">
+      Работы
+    </a>
+
+    <a href="#contacts">
+      Контакты
+    </a>
 
   </nav>
 
+
   <main>
 
-    <!-- ===== 1. ГЛАВНАЯ ===== -->
+    <!-- =======================================================
+         1. ГЛАВНАЯ
+    ======================================================== -->
 
     <section id="home">
 
@@ -994,10 +1102,12 @@
         <div class="hero-layout">
 
           <div class="sergey-photo reveal">
+
             <img
               src="img/sergey.jpg"
-              alt="Сергей — специалист по огнезащитной обработке"
+              alt="Сергей"
             >
+
           </div>
 
           <div class="hero-content reveal">
@@ -1007,7 +1117,7 @@
             </div>
 
             <h1 class="title hero-title">
-              Огнезащитная<br>
+              Огнезащитная
               обработка металла
             </h1>
 
@@ -1022,7 +1132,10 @@
 
             <div class="actions">
 
-              <a class="button" href="#works">
+              <a
+                class="button"
+                href="#works"
+              >
                 Смотреть работы
               </a>
 
@@ -1045,7 +1158,10 @@
 
     </section>
 
-    <!-- ===== 2. ОБРАБОТКА ===== -->
+
+    <!-- =======================================================
+         2. ОБРАБОТКА
+    ======================================================== -->
 
     <section id="service">
 
@@ -1060,13 +1176,13 @@
             </div>
 
             <h2 class="title">
-              Защита<br>
+              Защита
               металлоконструкций
             </h2>
 
           </div>
 
-          <div class="service-text reveal">
+          <div class="service-copy reveal">
 
             <p class="service-main">
               Огнезащитная обработка металлоконструкций помогает повысить
@@ -1075,31 +1191,46 @@
             </p>
 
             <p class="service-secondary">
-              Работы включают подготовку поверхности и нанесение специальных
-              огнезащитных материалов в соответствии с требованиями конкретного объекта.
+              Работа включает подготовку металлической поверхности
+              и нанесение специальных огнезащитных материалов.
             </p>
 
             <div class="service-cards">
 
               <div class="service-card">
-                <strong>Металлоконструкции</strong>
+
+                <strong>
+                  Металлоконструкции
+                </strong>
+
                 <span>
                   Обработка металлических элементов и конструкций
                 </span>
+
               </div>
 
               <div class="service-card">
-                <strong>Огнестойкость</strong>
+
+                <strong>
+                  Огнестойкость
+                </strong>
+
                 <span>
                   Повышение устойчивости стали к воздействию огня
                 </span>
+
               </div>
 
               <div class="service-card">
-                <strong>Опыт</strong>
+
+                <strong>
+                  Опыт
+                </strong>
+
                 <span>
                   Более 10 лет работы в сфере огнезащиты
                 </span>
+
               </div>
 
             </div>
@@ -1112,7 +1243,10 @@
 
     </section>
 
-    <!-- ===== 3. РАБОТЫ ===== -->
+
+    <!-- =======================================================
+         3. РАБОТЫ
+    ======================================================== -->
 
     <section id="works">
 
@@ -1133,45 +1267,74 @@
           </div>
 
           <p class="works-description">
-            Фотографии объектов. Листайте галерею стрелками
+            Листайте фотографии стрелками
             или свайпом на телефоне.
           </p>
 
         </div>
 
-        <div class="gallery reveal" id="gallery">
 
-          <div class="gallery-track" id="galleryTrack">
+        <div
+          class="gallery reveal"
+          id="gallery"
+        >
+
+          <div
+            class="gallery-track"
+            id="galleryTrack"
+          >
 
             <div class="slide">
-              <img src="img/work1.jpg" alt="Выполненная работа">
+              <img
+                src="img/work1.jpg"
+                alt="Выполненная работа"
+              >
             </div>
 
             <div class="slide">
-              <img src="img/work2.jpg" alt="Выполненная работа">
+              <img
+                src="img/work2.jpg"
+                alt="Выполненная работа"
+              >
             </div>
 
             <div class="slide">
-              <img src="img/work3.jpg" alt="Выполненная работа">
+              <img
+                src="img/work3.jpg"
+                alt="Выполненная работа"
+              >
             </div>
 
             <div class="slide">
-              <img src="img/work4.jpg" alt="Выполненная работа">
+              <img
+                src="img/work4.jpg"
+                alt="Выполненная работа"
+              >
             </div>
 
             <div class="slide">
-              <img src="img/work5.jpg" alt="Выполненная работа">
+              <img
+                src="img/work5.jpg"
+                alt="Выполненная работа"
+              >
             </div>
 
             <div class="slide">
-              <img src="img/work6.jpg" alt="Выполненная работа">
+              <img
+                src="img/work6.jpg"
+                alt="Выполненная работа"
+              >
             </div>
 
             <div class="slide">
-              <img src="img/work7.jpg" alt="Выполненная работа">
+              <img
+                src="img/work7.jpg"
+                alt="Выполненная работа"
+              >
             </div>
 
           </div>
+
 
           <button
             class="gallery-arrow left"
@@ -1197,7 +1360,10 @@
 
     </section>
 
-    <!-- ===== 4. КОНТАКТЫ ===== -->
+
+    <!-- =======================================================
+         4. КОНТАКТЫ
+    ======================================================== -->
 
     <section id="contacts">
 
@@ -1210,19 +1376,22 @@
           </div>
 
           <h2 class="title contact-title">
-            Обсудим задачу
+            Защитим ваш объект от огня
           </h2>
 
           <p class="contact-text">
-            Свяжитесь с Сергеем по вопросам огнезащитной обработки
-            металлоконструкций.
+            Свяжитесь с Сергеем по вопросам
+            огнезащитной обработки металлоконструкций.
           </p>
 
-          <a class="phone" href="tel:89182944223">
+          <a
+            class="phone"
+            href="tel:89182944223"
+          >
             8 918 292-44-23
           </a>
 
-          <div class="contact-buttons">
+          <div class="contact-actions">
 
             <a
               class="button"
@@ -1250,8 +1419,12 @@
 
   </main>
 
+
   <script>
-    /* ===== ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ ===== */
+
+    /* =========================================================
+       ПОЯВЛЕНИЕ БЛОКОВ
+    ========================================================== */
 
     const revealElements =
       document.querySelectorAll(".reveal");
@@ -1279,7 +1452,9 @@
     });
 
 
-    /* ===== ПОДСВЕТКА РАЗДЕЛА В МЕНЮ ===== */
+    /* =========================================================
+       АКТИВНЫЙ РАЗДЕЛ В МЕНЮ
+    ========================================================== */
 
     const sections =
       document.querySelectorAll("main section");
@@ -1297,13 +1472,15 @@
               return;
             }
 
-            const id = entry.target.id;
+            const currentId =
+              entry.target.id;
 
             navLinks.forEach((link) => {
 
               link.classList.toggle(
                 "active",
-                link.getAttribute("href") === `#${id}`
+                link.getAttribute("href") ===
+                `#${currentId}`
               );
 
             });
@@ -1321,7 +1498,9 @@
     });
 
 
-    /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+    /* =========================================================
+       МОБИЛЬНОЕ МЕНЮ
+    ========================================================== */
 
     const menuButton =
       document.getElementById("menuButton");
@@ -1365,7 +1544,10 @@
       });
 
 
-    /* ===== ГАЛЕРЕЯ ===== */
+    /* =========================================================
+       ГАЛЕРЕЯ
+       7 ФОТО
+    ========================================================== */
 
     const gallery =
       document.getElementById("gallery");
@@ -1425,16 +1607,18 @@
     );
 
 
-    /* ===== СВАЙП ===== */
+    /* =========================================================
+       СВАЙП
+    ========================================================== */
 
-    let touchStartX = 0;
-    let touchEndX = 0;
+    let startX = 0;
+    let endX = 0;
 
     gallery.addEventListener(
       "touchstart",
       (event) => {
 
-        touchStartX =
+        startX =
           event.changedTouches[0].screenX;
 
       },
@@ -1447,11 +1631,11 @@
       "touchend",
       (event) => {
 
-        touchEndX =
+        endX =
           event.changedTouches[0].screenX;
 
         const distance =
-          touchStartX - touchEndX;
+          startX - endX;
 
         if (Math.abs(distance) < 45) {
           return;
@@ -1470,7 +1654,9 @@
     );
 
 
-    /* ===== КЛАВИАТУРА ===== */
+    /* =========================================================
+       КЛАВИАТУРА
+    ========================================================== */
 
     document.addEventListener(
       "keydown",
@@ -1486,6 +1672,7 @@
 
       }
     );
+
   </script>
 
 </body>
