@@ -17,9 +17,12 @@
 
   <style>
     :root {
-      --white: #f5f5f5;
-      --muted: rgba(245,245,245,.78);
-      --border: rgba(255,255,255,.18);
+      --text: #171717;
+      --muted: rgba(23, 23, 23, 0.72);
+      --line: rgba(23, 23, 23, 0.20);
+
+      --light-panel: rgba(255, 255, 255, 0.22);
+      --light-panel-hover: rgba(255, 255, 255, 0.30);
     }
 
     * {
@@ -37,13 +40,16 @@
       min-height: 100%;
       overflow-x: hidden;
 
-      color: var(--white);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
 
-      /* ВАЖНО: твой фон */
+      /*
+        ТВОЙ ФОН ОСТАЁТСЯ КАК ЕСТЬ.
+        НИКАКОГО ЧЁРНОГО СЛОЯ ПОВЕРХ НЕГО.
+      */
       background-image: url("img/background.jpg");
-      background-position: center center;
       background-repeat: no-repeat;
+      background-position: center center;
       background-size: cover;
       background-attachment: fixed;
     }
@@ -85,15 +91,15 @@
 
       padding: 7px 10px 7px 18px;
 
-      background: rgba(0,0,0,.16);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.20);
+      border: 1px solid var(--line);
       border-radius: 16px;
 
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
 
       box-shadow:
-        0 10px 28px rgba(0,0,0,.12);
+        0 10px 28px rgba(0, 0, 0, 0.10);
     }
 
     .brand {
@@ -122,23 +128,25 @@
 
       border-radius: 9px;
 
-      color: rgba(245,245,245,.80);
+      color: rgba(23, 23, 23, 0.76);
 
       font-size: 14px;
       font-weight: 600;
 
       transition:
-        background .2s ease,
-        color .2s ease;
+        background 0.2s ease,
+        color 0.2s ease;
     }
 
     .nav a:hover,
     .nav a.active {
-      color: var(--white);
-      background: rgba(255,255,255,.08);
+      color: var(--text);
+      background: rgba(23, 23, 23, 0.08);
     }
 
-    /* MOBILE MENU */
+    /* =========================================================
+       MOBILE MENU
+    ========================================================== */
 
     .menu-button {
       display: none;
@@ -149,10 +157,10 @@
       align-items: center;
       justify-content: center;
 
-      border: 1px solid rgba(255,255,255,.22);
+      border: 1px solid rgba(23, 23, 23, 0.22);
       border-radius: 10px;
 
-      background: rgba(255,255,255,.06);
+      background: rgba(255, 255, 255, 0.20);
 
       cursor: pointer;
     }
@@ -165,11 +173,11 @@
       width: 18px;
       height: 2px;
 
+      position: relative;
+
       border-radius: 4px;
 
-      background: var(--white);
-
-      position: relative;
+      background: var(--text);
     }
 
     .menu-icon::before,
@@ -203,16 +211,16 @@
       flex-direction: column;
       gap: 3px;
 
-      background: rgba(0,0,0,.68);
+      background: rgba(255, 255, 255, 0.68);
 
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       border-radius: 14px;
 
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
 
       box-shadow:
-        0 18px 45px rgba(0,0,0,.26);
+        0 18px 45px rgba(0, 0, 0, 0.15);
 
       opacity: 0;
       visibility: hidden;
@@ -233,14 +241,17 @@
 
     .mobile-menu a {
       padding: 12px 13px;
+
       border-radius: 9px;
+
+      color: var(--text);
 
       font-size: 15px;
       font-weight: 600;
     }
 
     .mobile-menu a:hover {
-      background: rgba(255,255,255,.08);
+      background: rgba(23, 23, 23, 0.08);
     }
 
     /* =========================================================
@@ -295,11 +306,11 @@
       width: 24px;
       height: 1px;
 
-      background: rgba(255,255,255,.45);
+      background: rgba(23, 23, 23, 0.45);
     }
 
     .title {
-      color: var(--white);
+      color: var(--text);
 
       font-size: clamp(42px, 4.7vw, 66px);
       line-height: .98;
@@ -307,28 +318,6 @@
       letter-spacing: -.045em;
 
       font-weight: 700;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    /* =========================================================
-       ANIMATION
-    ========================================================== */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-
-      transition:
-        opacity .7s ease,
-        transform .7s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* =========================================================
@@ -342,7 +331,7 @@
       display: grid;
 
       grid-template-columns:
-        330px
+        300px
         minmax(0, 1fr);
 
       align-items: center;
@@ -351,19 +340,20 @@
     }
 
     .sergey-photo {
-      width: 330px;
+      width: 300px;
       max-width: 100%;
 
       overflow: hidden;
 
       border-radius: 20px;
 
-      border: 1px solid rgba(255,255,255,.20);
+      border:
+        1px solid rgba(23, 23, 23, 0.18);
 
-      background: rgba(0,0,0,.08);
+      background: rgba(255, 255, 255, 0.12);
 
       box-shadow:
-        0 22px 55px rgba(0,0,0,.24);
+        0 22px 55px rgba(0, 0, 0, 0.18);
     }
 
     .sergey-photo img {
@@ -390,6 +380,8 @@
 
       margin-bottom: 18px;
 
+      color: var(--text);
+
       font-size: clamp(17px, 1.35vw, 22px);
       line-height: 1.53;
     }
@@ -399,13 +391,15 @@
 
       margin-bottom: 26px;
 
+      color: var(--text);
+
       font-size: clamp(17px, 1.35vw, 21px);
       line-height: 1.40;
 
       font-weight: 700;
     }
 
-    .actions {
+    .buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
@@ -418,16 +412,17 @@
       align-items: center;
       justify-content: center;
 
-      padding:
-        0 20px;
+      padding: 0 20px;
+
+      border:
+        1px solid rgba(23, 23, 23, 0.30);
 
       border-radius: 11px;
 
-      border:
-        1px solid rgba(255,255,255,.28);
-
       background:
-        rgba(0,0,0,.15);
+        rgba(255, 255, 255, 0.20);
+
+      color: var(--text);
 
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
@@ -445,10 +440,10 @@
       transform: translateY(-2px);
 
       background:
-        rgba(255,255,255,.08);
+        rgba(255, 255, 255, 0.34);
 
       border-color:
-        rgba(255,255,255,.48);
+        rgba(23, 23, 23, 0.48);
     }
 
     /* =========================================================
@@ -476,6 +471,8 @@
 
     .service-main {
       margin-bottom: 20px;
+
+      color: var(--text);
 
       font-size: clamp(20px, 1.7vw, 27px);
       line-height: 1.48;
@@ -509,10 +506,10 @@
       justify-content: space-between;
 
       background:
-        rgba(0,0,0,.14);
+        rgba(255, 255, 255, 0.18);
 
       border:
-        1px solid rgba(255,255,255,.13);
+        1px solid rgba(23, 23, 23, 0.14);
 
       border-radius: 14px;
 
@@ -521,6 +518,8 @@
     }
 
     .service-card strong {
+      color: var(--text);
+
       font-size: 14px;
       line-height: 1.3;
     }
@@ -537,7 +536,7 @@
     ========================================================== */
 
     .works-header {
-      width: min(950px, 100%);
+      width: min(900px, 100%);
       margin: 0 auto 20px;
 
       display: flex;
@@ -561,7 +560,7 @@
     .gallery {
       position: relative;
 
-      width: min(950px, 100%);
+      width: min(900px, 100%);
       margin: 0 auto;
 
       overflow: hidden;
@@ -569,13 +568,13 @@
       border-radius: 20px;
 
       border:
-        1px solid rgba(255,255,255,.15);
+        1px solid rgba(23, 23, 23, 0.16);
 
       background:
-        rgba(0,0,0,.08);
+        rgba(255,255,255,.10);
 
       box-shadow:
-        0 22px 60px rgba(0,0,0,.23);
+        0 22px 60px rgba(0,0,0,.18);
     }
 
     .gallery-track {
@@ -591,16 +590,14 @@
       touch-action: pan-y;
     }
 
-    .slide {
-      flex:
-        0 0 100%;
-
+    .gallery-slide {
+      flex: 0 0 100%;
       width: 100%;
 
       user-select: none;
     }
 
-    .slide img {
+    .gallery-slide img {
       display: block;
 
       width: 100%;
@@ -610,7 +607,7 @@
       object-fit: cover;
     }
 
-    .gallery-arrow {
+    .arrow {
       position: absolute;
       top: 50%;
 
@@ -624,12 +621,16 @@
       justify-content: center;
 
       border:
-        1px solid rgba(255,255,255,.28);
+        1px solid rgba(23,23,23,.28);
 
       border-radius: 50%;
 
       background:
-        rgba(0,0,0,.28);
+        rgba(255,255,255,.30);
+
+      color: var(--text);
+
+      font-size: 25px;
 
       cursor: pointer;
 
@@ -641,20 +642,20 @@
         border-color .2s ease;
     }
 
-    .gallery-arrow:hover {
+    .arrow:hover {
       background:
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.48);
 
       border-color:
-        rgba(255,255,255,.48);
+        rgba(23,23,23,.45);
     }
 
-    .gallery-arrow.left {
+    .arrow-left {
       left: 13px;
       transform: translateY(-50%);
     }
 
-    .gallery-arrow.right {
+    .arrow-right {
       right: 13px;
       transform: translateY(-50%);
     }
@@ -663,31 +664,14 @@
        CONTACTS
     ========================================================== */
 
-    .contact-box {
+    .contact-inner {
       width: min(850px, 100%);
       margin: 0 auto;
 
-      padding:
-        clamp(35px, 5vw, 55px);
-
       text-align: center;
-
-      background:
-        rgba(0,0,0,.18);
-
-      border:
-        1px solid rgba(255,255,255,.17);
-
-      border-radius: 22px;
-
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
-
-      box-shadow:
-        0 25px 65px rgba(0,0,0,.20);
     }
 
-    .contact-box .eyebrow {
+    .contact-inner .eyebrow {
       justify-content: center;
     }
 
@@ -711,6 +695,8 @@
       display: inline-block;
 
       margin-bottom: 24px;
+
+      color: var(--text);
 
       font-size:
         clamp(31px, 3.8vw, 52px);
@@ -745,14 +731,14 @@
 
       .hero-layout {
         grid-template-columns:
-          290px
-          minmax(0, 1fr);
+          270px
+          minmax(0,1fr);
 
         gap: 34px;
       }
 
       .sergey-photo {
-        width: 290px;
+        width: 270px;
       }
 
       .service-layout {
@@ -805,14 +791,18 @@
           28px;
       }
 
-      /* FIRST SCREEN */
+      /* -----------------------------------------------------
+         ПЕРВЫЙ ЭКРАН
+         ФОТО СЛЕВА
+         ТЕКСТ СПРАВА
+      ------------------------------------------------------ */
 
       .hero-layout {
         width: 100%;
 
         grid-template-columns:
           39%
-          minmax(0, 61%);
+          minmax(0,61%);
 
         gap: 9px;
 
@@ -821,7 +811,7 @@
 
       .sergey-photo {
         width: 100%;
-        border-radius: 13px;
+        border-radius: 12px;
       }
 
       .sergey-photo img {
@@ -877,9 +867,8 @@
         line-height: 1.3;
       }
 
-      .actions {
+      .buttons {
         flex-direction: column;
-
         gap: 5px;
       }
 
@@ -896,7 +885,9 @@
         font-size: 9.5px;
       }
 
-      /* SECOND */
+      /* -----------------------------------------------------
+         SECOND
+      ------------------------------------------------------ */
 
       .service-layout {
         gap: 24px;
@@ -919,7 +910,9 @@
 
       .service-card {
         min-height: 110px;
+
         padding: 10px;
+
         border-radius: 11px;
       }
 
@@ -932,7 +925,9 @@
         line-height: 1.3;
       }
 
-      /* WORKS */
+      /* -----------------------------------------------------
+         WORKS
+      ------------------------------------------------------ */
 
       .works-header {
         flex-direction: column;
@@ -955,31 +950,33 @@
         border-radius: 14px;
       }
 
-      .slide img {
+      .gallery-slide img {
         height: 52svh;
         min-height: 270px;
       }
 
-      .gallery-arrow {
+      .arrow {
         width: 40px;
         height: 40px;
+
+        font-size: 21px;
       }
 
-      .gallery-arrow.left {
+      .arrow-left {
         left: 7px;
       }
 
-      .gallery-arrow.right {
+      .arrow-right {
         right: 7px;
       }
 
-      /* CONTACTS */
+      /* -----------------------------------------------------
+         CONTACTS
+      ------------------------------------------------------ */
 
-      .contact-box {
+      .contact-inner {
         padding:
-          30px 16px;
-
-        border-radius: 18px;
+          0 5px;
       }
 
       .contact-title {
@@ -1010,7 +1007,7 @@
       .hero-layout {
         grid-template-columns:
           37%
-          minmax(0, 63%);
+          minmax(0,63%);
 
         gap: 6px;
       }
@@ -1030,20 +1027,9 @@
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
-      }
-    }
   </style>
 </head>
+
 
 <body>
 
@@ -1065,6 +1051,7 @@
           alt="PROZASHITA"
         >
       </a>
+
 
       <nav class="nav">
 
@@ -1098,6 +1085,7 @@
 
       </nav>
 
+
       <button
         class="menu-button"
         id="menuButton"
@@ -1113,7 +1101,9 @@
   </header>
 
 
-  <!-- МОБИЛЬНОЕ МЕНЮ -->
+  <!-- =========================================================
+       MOBILE MENU
+  ========================================================== -->
 
   <nav
     class="mobile-menu"
@@ -1151,7 +1141,7 @@
 
         <div class="hero-layout">
 
-          <div class="sergey-photo reveal">
+          <div class="sergey-photo">
 
             <img
               src="img/sergey.jpg"
@@ -1161,27 +1151,31 @@
           </div>
 
 
-          <div class="hero-content reveal">
+          <div class="hero-content">
 
             <div class="eyebrow">
               PROZASHITA
             </div>
+
 
             <h1 class="title hero-title">
               Огнезащитная
               обработка металла
             </h1>
 
+
             <p class="hero-description">
               Сергей — руководитель и специалист, который лично занимается
               огнезащитной обработкой металлоконструкций.
             </p>
 
+
             <p class="experience">
               10+ лет в сфере огнезащиты и защиты металлоконструкций
             </p>
 
-            <div class="actions">
+
+            <div class="buttons">
 
               <a
                 class="button"
@@ -1189,6 +1183,7 @@
               >
                 Смотреть работы
               </a>
+
 
               <a
                 class="button"
@@ -1220,11 +1215,12 @@
 
         <div class="service-layout">
 
-          <div class="reveal">
+          <div>
 
             <div class="eyebrow">
               Направление работы
             </div>
+
 
             <h2 class="title">
               Защита
@@ -1234,7 +1230,7 @@
           </div>
 
 
-          <div class="service-copy reveal">
+          <div class="service-copy">
 
             <p class="service-main">
               Огнезащитная обработка металлоконструкций помогает повысить
@@ -1242,10 +1238,12 @@
               конструкции при воздействии высокой температуры.
             </p>
 
+
             <p class="service-secondary">
               Работа включает подготовку металлической поверхности
               и нанесение специальных огнезащитных материалов.
             </p>
+
 
             <div class="service-cards">
 
@@ -1306,7 +1304,7 @@
 
       <div class="container">
 
-        <div class="works-header reveal">
+        <div class="works-header">
 
           <div>
 
@@ -1314,11 +1312,13 @@
               Реальные объекты
             </div>
 
+
             <h2 class="title">
               Выполненные работы
             </h2>
 
           </div>
+
 
           <p class="works-description">
             Листайте фотографии стрелками
@@ -1329,7 +1329,7 @@
 
 
         <div
-          class="gallery reveal"
+          class="gallery"
           id="gallery"
         >
 
@@ -1338,49 +1338,55 @@
             id="galleryTrack"
           >
 
-            <div class="slide">
+            <div class="gallery-slide">
               <img
                 src="img/work1.jpg"
                 alt="Выполненная работа"
               >
             </div>
 
-            <div class="slide">
+
+            <div class="gallery-slide">
               <img
                 src="img/work2.jpg"
                 alt="Выполненная работа"
               >
             </div>
 
-            <div class="slide">
+
+            <div class="gallery-slide">
               <img
                 src="img/work3.jpg"
                 alt="Выполненная работа"
               >
             </div>
 
-            <div class="slide">
+
+            <div class="gallery-slide">
               <img
                 src="img/work4.jpg"
                 alt="Выполненная работа"
               >
             </div>
 
-            <div class="slide">
+
+            <div class="gallery-slide">
               <img
                 src="img/work5.jpg"
                 alt="Выполненная работа"
               >
             </div>
 
-            <div class="slide">
+
+            <div class="gallery-slide">
               <img
                 src="img/work6.jpg"
                 alt="Выполненная работа"
               >
             </div>
 
-            <div class="slide">
+
+            <div class="gallery-slide">
               <img
                 src="img/work7.jpg"
                 alt="Выполненная работа"
@@ -1391,22 +1397,22 @@
 
 
           <button
-            class="gallery-arrow left"
+            class="arrow arrow-left"
             id="prevButton"
             type="button"
             aria-label="Предыдущая фотография"
           >
-            ←
+            ‹
           </button>
 
 
           <button
-            class="gallery-arrow right"
+            class="arrow arrow-right"
             id="nextButton"
             type="button"
             aria-label="Следующая фотография"
           >
-            →
+            ›
           </button>
 
         </div>
@@ -1424,20 +1430,23 @@
 
       <div class="container">
 
-        <div class="contact-box reveal">
+        <div class="contact-inner">
 
           <div class="eyebrow">
             Контакты
           </div>
 
+
           <h2 class="title contact-title">
             Защитим ваш объект от огня
           </h2>
+
 
           <p class="contact-text">
             Свяжитесь с Сергеем по вопросам
             огнезащитной обработки металлоконструкций.
           </p>
+
 
           <a
             class="phone"
@@ -1446,7 +1455,8 @@
             8 918 292-44-23
           </a>
 
-          <div class="contact-actions">
+
+          <div class="buttons contact-actions">
 
             <a
               class="button"
@@ -1456,6 +1466,7 @@
             >
               Написать в WhatsApp
             </a>
+
 
             <a
               class="button"
@@ -1478,37 +1489,7 @@
   <script>
 
     /* =========================================================
-       ПОЯВЛЕНИЕ
-    ========================================================== */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const revealObserver =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-            }
-
-          });
-
-        },
-        {
-          threshold: .12
-        }
-      );
-
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-
-
-    /* =========================================================
-       АКТИВНЫЙ РАЗДЕЛ
+       АКТИВНЫЙ РАЗДЕЛ МЕНЮ
     ========================================================== */
 
     const sections =
@@ -1516,6 +1497,7 @@
 
     const navLinks =
       document.querySelectorAll(".nav-link");
+
 
     const sectionObserver =
       new IntersectionObserver(
@@ -1529,6 +1511,7 @@
 
             const id =
               entry.target.id;
+
 
             navLinks.forEach((link) => {
 
@@ -1547,6 +1530,7 @@
         }
       );
 
+
     sections.forEach((section) => {
       sectionObserver.observe(section);
     });
@@ -1562,20 +1546,23 @@
     const mobileMenu =
       document.getElementById("mobileMenu");
 
+
     menuButton.addEventListener(
       "click",
       () => {
 
-        const isOpen =
+        const opened =
           mobileMenu.classList.toggle("open");
+
 
         menuButton.setAttribute(
           "aria-expanded",
-          isOpen ? "true" : "false"
+          opened ? "true" : "false"
         );
 
       }
     );
+
 
     mobileMenu
       .querySelectorAll("a")
@@ -1605,7 +1592,7 @@
     const gallery =
       document.getElementById("gallery");
 
-    const galleryTrack =
+    const track =
       document.getElementById("galleryTrack");
 
     const nextButton =
@@ -1614,16 +1601,19 @@
     const prevButton =
       document.getElementById("prevButton");
 
+
     const totalSlides = 7;
 
     let currentSlide = 0;
 
+
     function updateGallery() {
 
-      galleryTrack.style.transform =
+      track.style.transform =
         `translateX(-${currentSlide * 100}%)`;
 
     }
+
 
     function nextSlide() {
 
@@ -1637,6 +1627,7 @@
 
     }
 
+
     function previousSlide() {
 
       currentSlide--;
@@ -1649,10 +1640,12 @@
 
     }
 
+
     nextButton.addEventListener(
       "click",
       nextSlide
     );
+
 
     prevButton.addEventListener(
       "click",
@@ -1661,11 +1654,12 @@
 
 
     /* =========================================================
-       СВАЙП
+       СВАЙП НА ТЕЛЕФОНЕ
     ========================================================== */
 
     let touchStartX = 0;
     let touchEndX = 0;
+
 
     gallery.addEventListener(
       "touchstart",
@@ -1680,6 +1674,7 @@
       }
     );
 
+
     gallery.addEventListener(
       "touchend",
       (event) => {
@@ -1687,12 +1682,15 @@
         touchEndX =
           event.changedTouches[0].screenX;
 
+
         const distance =
           touchStartX - touchEndX;
+
 
         if (Math.abs(distance) < 45) {
           return;
         }
+
 
         if (distance > 0) {
           nextSlide();
