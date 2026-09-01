@@ -19,12 +19,9 @@
     :root {
       --white: #f5f5f5;
       --muted: rgba(245,245,245,.78);
-
-      --glass: rgba(0,0,0,.16);
-      --glass-strong: rgba(0,0,0,.24);
-
-      --line: rgba(255,255,255,.24);
-      --line-soft: rgba(255,255,255,.15);
+      --line: rgba(255,255,255,.22);
+      --glass: rgba(0,0,0,.20);
+      --glass-light: rgba(0,0,0,.14);
     }
 
     * {
@@ -45,18 +42,47 @@
       color: var(--white);
       font-family: Arial, Helvetica, sans-serif;
 
-      /* ТВОЙ ФОН */
-      background-image:
-        linear-gradient(
-          rgba(0,0,0,.34),
-          rgba(0,0,0,.34)
-        ),
-        url("img/background.jpg");
+      background: #111;
+    }
 
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
+    /* =========================================================
+       НЕПОДВИЖНЫЙ ФОН
+    ========================================================== */
+
+    body::before {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+
+      z-index: -10;
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,.37),
+          rgba(0,0,0,.37)
+        ),
+        url("img/background.jpg")
+        center center /
+        cover no-repeat;
+    }
+
+    body::after {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+
+      z-index: -9;
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,255,255,.025),
+          rgba(0,0,0,.035)
+        );
     }
 
     a {
@@ -75,18 +101,19 @@
 
     .header {
       position: fixed;
+
       top: 0;
       left: 0;
       right: 0;
 
       z-index: 1000;
 
-      padding: 15px 22px;
+      padding: 14px 20px;
     }
 
     .header-inner {
-      width: min(1180px, 100%);
-      min-height: 66px;
+      width: min(1160px,100%);
+      min-height: 64px;
 
       margin: 0 auto;
 
@@ -94,31 +121,39 @@
       align-items: center;
       justify-content: space-between;
 
-      padding: 7px 10px 7px 18px;
+      gap: 20px;
 
-      background: rgba(0,0,0,.20);
+      padding:
+        7px 10px
+        7px 18px;
 
-      border: 1px solid var(--line);
+      background:
+        rgba(0,0,0,.24);
+
+      border:
+        1px solid var(--line);
+
       border-radius: 16px;
 
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
 
       box-shadow:
-        0 10px 30px rgba(0,0,0,.18);
+        0 12px 35px rgba(0,0,0,.20);
     }
 
     .brand {
       display: flex;
       align-items: center;
+
       flex-shrink: 0;
     }
 
     .brand img {
       display: block;
 
-      width: 160px;
-      max-height: 55px;
+      width: 155px;
+      max-height: 52px;
 
       object-fit: contain;
     }
@@ -130,14 +165,16 @@
     }
 
     .nav a {
-      padding: 10px 14px;
+      padding: 9px 12px;
 
       border-radius: 9px;
 
-      color: rgba(245,245,245,.80);
+      color: rgba(245,245,245,.82);
 
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
+
+      white-space: nowrap;
 
       transition:
         background .2s ease,
@@ -147,7 +184,8 @@
     .nav a:hover,
     .nav a.active {
       color: var(--white);
-      background: rgba(255,255,255,.10);
+      background:
+        rgba(255,255,255,.10);
     }
 
     /* =========================================================
@@ -163,10 +201,13 @@
       align-items: center;
       justify-content: center;
 
-      border: 1px solid rgba(255,255,255,.22);
+      border:
+        1px solid rgba(255,255,255,.23);
+
       border-radius: 10px;
 
-      background: rgba(0,0,0,.18);
+      background:
+        rgba(0,0,0,.20);
 
       cursor: pointer;
     }
@@ -176,18 +217,21 @@
     .menu-icon::after {
       display: block;
 
+      position: relative;
+
       width: 18px;
       height: 2px;
 
-      position: relative;
-
       border-radius: 4px;
-      background: var(--white);
+
+      background:
+        var(--white);
     }
 
     .menu-icon::before,
     .menu-icon::after {
       content: "";
+
       position: absolute;
       left: 0;
     }
@@ -203,8 +247,8 @@
     .mobile-menu {
       position: fixed;
 
-      top: 78px;
-      right: 13px;
+      top: 76px;
+      right: 12px;
 
       z-index: 999;
 
@@ -216,19 +260,23 @@
       flex-direction: column;
       gap: 3px;
 
-      background: rgba(0,0,0,.70);
+      background:
+        rgba(0,0,0,.75);
 
-      border: 1px solid var(--line);
+      border:
+        1px solid var(--line);
+
       border-radius: 14px;
 
-      backdrop-filter: blur(13px);
-      -webkit-backdrop-filter: blur(13px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
       box-shadow:
         0 20px 50px rgba(0,0,0,.30);
 
       opacity: 0;
       visibility: hidden;
+
       transform: translateY(-8px);
 
       transition:
@@ -240,11 +288,13 @@
     .mobile-menu.open {
       opacity: 1;
       visibility: visible;
+
       transform: translateY(0);
     }
 
     .mobile-menu a {
-      padding: 12px 13px;
+      padding:
+        12px 13px;
 
       border-radius: 9px;
 
@@ -255,7 +305,8 @@
     }
 
     .mobile-menu a:hover {
-      background: rgba(255,255,255,.08);
+      background:
+        rgba(255,255,255,.08);
     }
 
     /* =========================================================
@@ -274,13 +325,13 @@
 
       padding:
         105px 5vw
-        60px;
+        55px;
 
-      scroll-margin-top: 95px;
+      scroll-margin-top: 90px;
     }
 
     .container {
-      width: min(1140px, 100%);
+      width: min(1120px,100%);
       margin: 0 auto;
     }
 
@@ -293,31 +344,34 @@
       align-items: center;
       gap: 8px;
 
-      margin-bottom: 17px;
+      margin-bottom: 15px;
 
       color: var(--muted);
 
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: .15em;
 
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
 
     .eyebrow::before {
       content: "";
 
-      width: 24px;
+      width: 23px;
       height: 1px;
 
-      background: rgba(255,255,255,.50);
+      background:
+        rgba(255,255,255,.52);
     }
 
     .title {
       color: var(--white);
 
-      font-size: clamp(42px, 4.7vw, 66px);
-      line-height: .98;
+      font-size:
+        clamp(36px,4vw,59px);
+
+      line-height: .99;
 
       letter-spacing: -.045em;
 
@@ -325,26 +379,26 @@
     }
 
     /* =========================================================
-       HERO
+       FIRST SCREEN
     ========================================================== */
 
     .hero-layout {
-      width: min(980px, 100%);
+      width: min(950px,100%);
       margin: 0 auto;
 
       display: grid;
 
       grid-template-columns:
-        300px
-        minmax(0, 1fr);
+        290px
+        minmax(0,1fr);
+
+      gap: 52px;
 
       align-items: center;
-
-      gap: 55px;
     }
 
     .sergey-photo {
-      width: 300px;
+      width: 290px;
       max-width: 100%;
 
       overflow: hidden;
@@ -352,13 +406,10 @@
       border-radius: 20px;
 
       border:
-        1px solid rgba(255,255,255,.20);
-
-      background:
-        rgba(255,255,255,.05);
+        1px solid rgba(255,255,255,.22);
 
       box-shadow:
-        0 24px 60px rgba(0,0,0,.30);
+        0 25px 60px rgba(0,0,0,.30);
     }
 
     .sergey-photo img {
@@ -373,33 +424,38 @@
 
     .hero-content {
       min-width: 0;
+      width: 100%;
       max-width: 610px;
     }
 
     .hero-title {
-      margin-bottom: 25px;
+      margin-bottom: 22px;
     }
 
     .hero-description {
-      max-width: 570px;
+      max-width: 560px;
 
-      margin-bottom: 18px;
+      margin-bottom: 16px;
 
       color: var(--white);
 
-      font-size: clamp(17px,1.35vw,22px);
-      line-height: 1.53;
+      font-size:
+        clamp(16px,1.25vw,20px);
+
+      line-height: 1.52;
     }
 
     .experience {
-      max-width: 560px;
+      max-width: 550px;
 
-      margin-bottom: 26px;
+      margin-bottom: 24px;
 
       color: var(--white);
 
-      font-size: clamp(17px,1.35vw,21px);
-      line-height: 1.40;
+      font-size:
+        clamp(16px,1.25vw,20px);
+
+      line-height: 1.38;
 
       font-weight: 700;
     }
@@ -407,33 +463,34 @@
     .buttons {
       display: flex;
       flex-wrap: wrap;
+
       gap: 9px;
     }
 
     .button {
-      min-height: 49px;
+      min-height: 48px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
       padding:
-        0 20px;
-
-      border-radius: 11px;
+        0 19px;
 
       border:
-        1px solid rgba(255,255,255,.36);
+        1px solid rgba(255,255,255,.35);
+
+      border-radius: 10px;
 
       background:
-        rgba(0,0,0,.20);
+        rgba(0,0,0,.22);
 
       color: var(--white);
 
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
 
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
 
       transition:
@@ -449,45 +506,45 @@
         rgba(255,255,255,.10);
 
       border-color:
-        rgba(255,255,255,.62);
+        rgba(255,255,255,.58);
     }
 
     /* =========================================================
-       SERVICE
+       SECOND SCREEN
     ========================================================== */
 
     .service-layout {
-      width: min(1020px, 100%);
+      width: min(1000px,100%);
       margin: 0 auto;
 
       display: grid;
 
       grid-template-columns:
-        minmax(300px,.85fr)
-        minmax(390px,1.15fr);
+        minmax(290px,.8fr)
+        minmax(370px,1.2fr);
 
-      gap: 70px;
+      gap: 65px;
 
       align-items: center;
     }
 
-    .service-copy {
-      min-width: 0;
-    }
-
     .service-main {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
 
       color: var(--white);
 
-      font-size: clamp(20px,1.7vw,27px);
+      font-size:
+        clamp(19px,1.6vw,25px);
+
       line-height: 1.48;
     }
 
     .service-secondary {
       color: var(--muted);
 
-      font-size: clamp(16px,1.25vw,20px);
+      font-size:
+        clamp(16px,1.15vw,19px);
+
       line-height: 1.58;
     }
 
@@ -499,13 +556,13 @@
 
       gap: 9px;
 
-      margin-top: 27px;
+      margin-top: 25px;
     }
 
     .service-card {
-      min-height: 135px;
+      min-height: 130px;
 
-      padding: 17px;
+      padding: 16px;
 
       display: flex;
       flex-direction: column;
@@ -517,16 +574,14 @@
       border:
         1px solid rgba(255,255,255,.16);
 
-      border-radius: 14px;
+      border-radius: 13px;
 
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .service-card strong {
-      color: var(--white);
-
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.3;
     }
 
@@ -538,22 +593,25 @@
     }
 
     /* =========================================================
-       WORKS
+       THIRD SCREEN
     ========================================================== */
 
     .works-header {
       width: min(900px,100%);
-      margin: 0 auto 22px;
+
+      margin:
+        0 auto
+        20px;
 
       display: flex;
       align-items: end;
       justify-content: space-between;
 
-      gap: 30px;
+      gap: 25px;
     }
 
     .works-description {
-      max-width: 260px;
+      max-width: 250px;
 
       color: var(--muted);
 
@@ -563,44 +621,43 @@
       text-align: right;
     }
 
-    /*
-      ОСНОВНОЙ СЛАЙДЕР
-      Теперь у каждой фотографии есть красивое отделение
-    */
+    /* =========================================================
+       GALLERY
+    ========================================================== */
 
     .gallery {
+      width: min(900px,100%);
+
       position: relative;
 
-      width: min(900px,100%);
       margin: 0 auto;
 
-      padding: 10px;
-
-      overflow: hidden;
+      padding: 9px;
 
       background:
-        rgba(0,0,0,.17);
+        rgba(0,0,0,.20);
 
       border:
-        1px solid rgba(255,255,255,.18);
+        1px solid rgba(255,255,255,.21);
 
-      border-radius: 22px;
+      border-radius: 21px;
 
       box-shadow:
-        0 25px 65px rgba(0,0,0,.28);
+        0 25px 65px rgba(0,0,0,.30);
+
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
     }
 
     .gallery-window {
       position: relative;
+
       overflow: hidden;
 
-      border-radius: 15px;
-
       border:
-        1px solid rgba(255,255,255,.20);
+        1px solid rgba(255,255,255,.22);
 
-      background:
-        rgba(255,255,255,.04);
+      border-radius: 14px;
     }
 
     .gallery-track {
@@ -608,19 +665,20 @@
 
       width: 100%;
 
-      transform: translateX(0);
+      transform:
+        translateX(0);
 
       transition:
-        transform .48s cubic-bezier(.2,.75,.2,1);
+        transform .50s cubic-bezier(.2,.75,.2,1);
 
       touch-action: pan-y;
     }
 
     .gallery-slide {
-      flex: 0 0 100%;
-      width: 100%;
+      flex:
+        0 0 100%;
 
-      padding: 0;
+      width: 100%;
 
       user-select: none;
     }
@@ -630,31 +688,33 @@
 
       width: 100%;
 
-      height: min(46vh, 470px);
+      height:
+        min(45vh,460px);
 
       object-fit: cover;
     }
 
     .arrow {
       position: absolute;
+
       top: 50%;
 
       z-index: 10;
 
-      width: 50px;
-      height: 50px;
+      width: 49px;
+      height: 49px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
       border:
-        1px solid rgba(255,255,255,.35);
+        1px solid rgba(255,255,255,.36);
 
       border-radius: 50%;
 
       background:
-        rgba(0,0,0,.40);
+        rgba(0,0,0,.48);
 
       color: var(--white);
 
@@ -676,29 +736,146 @@
         rgba(255,255,255,.12);
 
       border-color:
-        rgba(255,255,255,.58);
+        rgba(255,255,255,.60);
     }
 
     .arrow:active {
-      transform: translateY(-50%) scale(.95);
+      transform:
+        translateY(-50%)
+        scale(.94);
     }
 
     .arrow-left {
-      left: 22px;
+      left: 20px;
       transform: translateY(-50%);
     }
 
     .arrow-right {
-      right: 22px;
+      right: 20px;
       transform: translateY(-50%);
     }
 
     /* =========================================================
-       CONTACTS
+       FOURTH SCREEN
+       COMPANIES
+    ========================================================== */
+
+    .companies-inner {
+      width: min(1050px,100%);
+      margin: 0 auto;
+
+      text-align: center;
+    }
+
+    .companies-inner .eyebrow {
+      justify-content: center;
+    }
+
+    .companies-title {
+      margin-bottom: 40px;
+    }
+
+    .companies-subtitle {
+      max-width: 620px;
+
+      margin:
+        0 auto
+        38px;
+
+      color: var(--muted);
+
+      font-size:
+        clamp(16px,1.2vw,19px);
+
+      line-height: 1.55;
+    }
+
+    .companies-window {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      padding: 22px 0;
+
+      border-top:
+        1px solid rgba(255,255,255,.20);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.20);
+    }
+
+    .companies-track {
+      display: flex;
+
+      width: max-content;
+
+      animation:
+        companyMove 32s linear infinite;
+    }
+
+    .companies-window:hover .companies-track {
+      animation-play-state: paused;
+    }
+
+    .company-row {
+      display: flex;
+      align-items: center;
+
+      white-space: nowrap;
+    }
+
+    .company {
+      display: inline-flex;
+      align-items: center;
+
+      padding:
+        0 26px;
+
+      color: var(--white);
+
+      font-size:
+        clamp(24px,2.5vw,38px);
+
+      line-height: 1;
+
+      font-weight: 600;
+
+      letter-spacing: -.025em;
+    }
+
+    .company::after {
+      content: "";
+
+      width: 5px;
+      height: 5px;
+
+      margin-left: 52px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.55);
+    }
+
+    @keyframes companyMove {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================================================
+       FIFTH SCREEN
     ========================================================== */
 
     .contact-inner {
-      width: min(850px,100%);
+      width: min(820px,100%);
+
       margin: 0 auto;
 
       text-align: center;
@@ -709,17 +886,20 @@
     }
 
     .contact-title {
-      margin-bottom: 22px;
+      margin-bottom: 21px;
     }
 
     .contact-text {
-      max-width: 620px;
-      margin: 0 auto 23px;
+      max-width: 610px;
+
+      margin:
+        0 auto
+        22px;
 
       color: var(--muted);
 
       font-size:
-        clamp(16px,1.3vw,20px);
+        clamp(16px,1.25vw,20px);
 
       line-height: 1.55;
     }
@@ -727,16 +907,16 @@
     .phone {
       display: inline-block;
 
-      margin-bottom: 24px;
-
-      color: var(--white);
+      margin-bottom: 23px;
 
       font-size:
-        clamp(31px,3.8vw,52px);
+        clamp(30px,3.6vw,50px);
+
+      line-height: 1;
 
       font-weight: 700;
 
-      letter-spacing: -.035em;
+      letter-spacing: -.03em;
     }
 
     .contact-actions {
@@ -759,19 +939,19 @@
 
       .hero-layout {
         grid-template-columns:
-          270px
+          250px
           minmax(0,1fr);
 
-        gap: 34px;
+        gap: 30px;
       }
 
       .sergey-photo {
-        width: 270px;
+        width: 250px;
       }
 
       .service-layout {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 30px;
       }
     }
 
@@ -781,12 +961,15 @@
 
     @media (max-width: 650px) {
 
-      body {
-        /*
-          На телефоне fixed иногда даёт неприятные эффекты,
-          поэтому фон остаётся тем же, но прокручивается естественно.
-        */
-        background-attachment: scroll;
+      body::before {
+        background:
+          linear-gradient(
+            rgba(0,0,0,.39),
+            rgba(0,0,0,.39)
+          ),
+          url("img/background.jpg")
+          center center /
+          cover no-repeat;
       }
 
       .header {
@@ -797,53 +980,51 @@
         min-height: 56px;
 
         padding:
-          6px 7px 6px 12px;
+          6px 7px
+          6px 12px;
 
         border-radius: 13px;
       }
 
       .brand img {
-        width: 118px;
-        max-height: 44px;
+        width: 116px;
+        max-height: 43px;
       }
 
       .mobile-menu {
-        top: 70px;
+        top: 69px;
       }
 
       section {
         min-height: 100svh;
 
         padding:
-          78px 12px
-          28px;
+          76px 12px
+          25px;
       }
 
-      /* =====================================================
-         ПЕРВЫЙ ЭКРАН
-         ФОТО СЛЕВА
-         ТЕКСТ СПРАВА
-      ====================================================== */
+      /* HERO */
 
       .hero-layout {
         width: 100%;
 
         grid-template-columns:
-          39%
-          minmax(0,61%);
+          40%
+          minmax(0,60%);
 
-        gap: 9px;
+        gap: 8px;
 
         align-items: center;
       }
 
       .sergey-photo {
         width: 100%;
+
         border-radius: 12px;
       }
 
       .sergey-photo img {
-        aspect-ratio: .72;
+        aspect-ratio: .71;
       }
 
       .hero-content {
@@ -852,9 +1033,9 @@
       }
 
       .eyebrow {
-        margin-bottom: 9px;
+        margin-bottom: 8px;
 
-        font-size: 7.5px;
+        font-size: 7px;
         letter-spacing: .08em;
 
         gap: 4px;
@@ -866,33 +1047,31 @@
 
       .title {
         font-size:
-          clamp(20px,6.1vw,29px);
+          clamp(20px,6.0vw,28px);
 
-        line-height: .98;
-
-        letter-spacing: -.045em;
+        line-height: .99;
       }
 
       .hero-title {
-        margin-bottom: 10px;
+        margin-bottom: 9px;
       }
 
       .hero-description {
         margin-bottom: 8px;
 
         font-size:
-          clamp(11px,3.35vw,15px);
+          clamp(10.8px,3.25vw,14px);
 
         line-height: 1.34;
       }
 
       .experience {
-        margin-bottom: 10px;
+        margin-bottom: 9px;
 
         font-size:
-          clamp(11px,3.35vw,15px);
+          clamp(10.8px,3.25vw,14px);
 
-        line-height: 1.30;
+        line-height: 1.28;
       }
 
       .buttons {
@@ -903,45 +1082,41 @@
       .button {
         width: 100%;
 
-        min-height: 37px;
+        min-height: 36px;
 
         padding:
           0 7px;
 
         border-radius: 8px;
 
-        font-size: 9.5px;
+        font-size: 9.2px;
       }
 
-      /* =====================================================
-         SECOND SCREEN
-      ====================================================== */
+      /* SERVICE */
 
       .service-layout {
-        gap: 24px;
+        gap: 22px;
       }
 
       .service-main {
         font-size: 18px;
-        line-height: 1.48;
+        line-height: 1.46;
       }
 
       .service-secondary {
         font-size: 15px;
-        line-height: 1.55;
+        line-height: 1.52;
       }
 
       .service-cards {
-        gap: 6px;
-        margin-top: 20px;
+        gap: 5px;
+        margin-top: 19px;
       }
 
       .service-card {
-        min-height: 110px;
-
+        min-height: 108px;
         padding: 10px;
-
-        border-radius: 11px;
+        border-radius: 10px;
       }
 
       .service-card strong {
@@ -953,86 +1128,103 @@
         line-height: 1.3;
       }
 
-      /* =====================================================
-         WORKS
-      ====================================================== */
+      /* WORKS */
 
       .works-header {
         flex-direction: column;
         align-items: flex-start;
 
-        gap: 7px;
-
-        margin-bottom: 14px;
+        gap: 6px;
+        margin-bottom: 13px;
       }
 
       .works-description {
-        max-width: 100%;
-
-        text-align: left;
-
-        font-size: 10.5px;
+        display: none;
       }
 
       .gallery {
-        width: 92%;
-        margin: 0 auto;
-
-        padding: 7px;
-
-        border-radius: 16px;
+        width: 90%;
+        padding: 6px;
+        border-radius: 15px;
       }
 
       .gallery-window {
-        border-radius: 11px;
+        border-radius: 10px;
       }
 
       .gallery-slide img {
-        height: 40svh;
-        min-height: 235px;
-        max-height: 350px;
+        height: 37svh;
+
+        min-height: 215px;
+        max-height: 310px;
       }
 
       .arrow {
         width: 39px;
         height: 39px;
 
-        font-size: 20px;
+        font-size: 19px;
       }
 
       .arrow-left {
-        left: 12px;
+        left: 9px;
       }
 
       .arrow-right {
-        right: 12px;
+        right: 9px;
       }
 
-      /* =====================================================
-         CONTACTS
-      ====================================================== */
+      /* COMPANIES */
 
-      .contact-inner {
-        padding:
-          0 5px;
+      .companies-title {
+        margin-bottom: 24px;
       }
+
+      .companies-subtitle {
+        margin-bottom: 25px;
+
+        font-size: 14px;
+      }
+
+      .companies-window {
+        padding: 18px 0;
+      }
+
+      .company {
+        padding: 0 20px;
+
+        font-size:
+          clamp(19px,6vw,27px);
+      }
+
+      .company::after {
+        width: 4px;
+        height: 4px;
+        margin-left: 40px;
+      }
+
+      .companies-track {
+        animation-duration: 27s;
+      }
+
+      /* CONTACTS */
 
       .contact-title {
-        margin-bottom: 17px;
+        margin-bottom: 16px;
       }
 
       .contact-text {
-        margin-bottom: 20px;
+        margin-bottom: 19px;
 
         font-size: 15px;
         line-height: 1.5;
       }
 
       .phone {
-        font-size:
-          clamp(26px,7.8vw,38px);
-
         margin-bottom: 20px;
+
+        font-size:
+          clamp(26px,7.7vw,38px);
       }
 
       .contact-actions {
@@ -1056,21 +1248,21 @@
 
       .hero-description,
       .experience {
-        font-size: 10.5px;
+        font-size: 10.2px;
       }
 
       .button {
-        min-height: 35px;
-        font-size: 9px;
+        min-height: 34px;
+        font-size: 8.8px;
       }
 
       .gallery {
-        width: 90%;
+        width: 88%;
       }
 
       .gallery-slide img {
-        height: 37svh;
-        min-height: 220px;
+        height: 35svh;
+        min-height: 205px;
       }
     }
   </style>
@@ -1119,7 +1311,14 @@
           href="#works"
           class="nav-link"
         >
-          Работы
+          Обработка зданий
+        </a>
+
+        <a
+          href="#companies"
+          class="nav-link"
+        >
+          Компании
         </a>
 
         <a
@@ -1147,7 +1346,9 @@
   </header>
 
 
-  <!-- MOBILE MENU -->
+  <!-- =========================================================
+       MOBILE MENU
+  ========================================================== -->
 
   <nav
     class="mobile-menu"
@@ -1163,7 +1364,11 @@
     </a>
 
     <a href="#works">
-      Работы
+      Обработка зданий
+    </a>
+
+    <a href="#companies">
+      Компании
     </a>
 
     <a href="#contacts">
@@ -1250,7 +1455,7 @@
 
 
     <!-- =======================================================
-         2. ОБРАБОТКА
+         2. ОГНЕЗАЩИТНАЯ ОБРАБОТКА
     ======================================================== -->
 
     <section id="service">
@@ -1341,7 +1546,7 @@
 
 
     <!-- =======================================================
-         3. РАБОТЫ
+         3. ОБРАБОТКА ЗДАНИЙ
     ======================================================== -->
 
     <section id="works">
@@ -1353,21 +1558,15 @@
           <div>
 
             <div class="eyebrow">
-              Реальные объекты
+              Объекты
             </div>
 
 
             <h2 class="title">
-              Выполненные работы
+              Обработка зданий
             </h2>
 
           </div>
-
-
-          <p class="works-description">
-            Листайте фотографии стрелками
-            или свайпом на телефоне.
-          </p>
 
         </div>
 
@@ -1377,9 +1576,7 @@
           id="gallery"
         >
 
-          <div
-            class="gallery-window"
-          >
+          <div class="gallery-window">
 
             <div
               class="gallery-track"
@@ -1389,49 +1586,49 @@
               <div class="gallery-slide">
                 <img
                   src="img/work1.jpg"
-                  alt="Выполненная работа"
+                  alt="Объект"
                 >
               </div>
 
               <div class="gallery-slide">
                 <img
                   src="img/work2.jpg"
-                  alt="Выполненная работа"
+                  alt="Объект"
                 >
               </div>
 
               <div class="gallery-slide">
                 <img
                   src="img/work3.jpg"
-                  alt="Выполненная работа"
+                  alt="Объект"
                 >
               </div>
 
               <div class="gallery-slide">
                 <img
                   src="img/work4.jpg"
-                  alt="Выполненная работа"
+                  alt="Объект"
                 >
               </div>
 
               <div class="gallery-slide">
                 <img
                   src="img/work5.jpg"
-                  alt="Выполненная работа"
+                  alt="Объект"
                 >
               </div>
 
               <div class="gallery-slide">
                 <img
                   src="img/work6.jpg"
-                  alt="Выполненная работа"
+                  alt="Объект"
                 >
               </div>
 
               <div class="gallery-slide">
                 <img
                   src="img/work7.jpg"
-                  alt="Выполненная работа"
+                  alt="Объект"
                 >
               </div>
 
@@ -1442,7 +1639,7 @@
               class="arrow arrow-left"
               id="prevButton"
               type="button"
-              aria-label="Предыдущая фотография"
+              aria-label="Предыдущий объект"
             >
               ‹
             </button>
@@ -1452,7 +1649,7 @@
               class="arrow arrow-right"
               id="nextButton"
               type="button"
-              aria-label="Следующая фотография"
+              aria-label="Следующий объект"
             >
               ›
             </button>
@@ -1467,7 +1664,134 @@
 
 
     <!-- =======================================================
-         4. КОНТАКТЫ
+         4. КОМПАНИИ
+    ======================================================== -->
+
+    <section id="companies">
+
+      <div class="container">
+
+        <div class="companies-inner">
+
+          <div class="eyebrow">
+            Доверие
+          </div>
+
+
+          <h2 class="title companies-title">
+            Компании, которые нам доверяют
+          </h2>
+
+
+          <p class="companies-subtitle">
+            Работаем с организациями, которым важны надёжность,
+            качество и профессиональное выполнение работ.
+          </p>
+
+
+          <div class="companies-window">
+
+            <div
+              class="companies-track"
+              id="companiesTrack"
+            >
+
+              <div class="company-row">
+
+                <span class="company">
+                  «DOGMA»
+                </span>
+
+                <span class="company">
+                  «ГК „Точно“»
+                </span>
+
+                <span class="company">
+                  «ГК Юртэк»
+                </span>
+
+                <span class="company">
+                  «Юг-Энерго»
+                </span>
+
+                <span class="company">
+                  «УК „СитиМолл“»
+                </span>
+
+                <span class="company">
+                  «ОИКОН»
+                </span>
+
+                <span class="company">
+                  «ВКБ-Новостройки»
+                </span>
+
+                <span class="company">
+                  «Неометрия»
+                </span>
+
+                <span class="company">
+                  «Liquid Group»
+                </span>
+
+              </div>
+
+
+              <!-- ДУБЛЬ ДЛЯ БЕСКОНЕЧНОЙ ЛЕНТЫ -->
+
+              <div class="company-row" aria-hidden="true">
+
+                <span class="company">
+                  «DOGMA»
+                </span>
+
+                <span class="company">
+                  «ГК „Точно“»
+                </span>
+
+                <span class="company">
+                  «ГК Юртэк»
+                </span>
+
+                <span class="company">
+                  «Юг-Энерго»
+                </span>
+
+                <span class="company">
+                  «УК „СитиМолл“»
+                </span>
+
+                <span class="company">
+                  «ОИКОН»
+                </span>
+
+                <span class="company">
+                  «ВКБ-Новостройки»
+                </span>
+
+                <span class="company">
+                  «Неометрия»
+                </span>
+
+                <span class="company">
+                  «Liquid Group»
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         5. КОНТАКТЫ
     ======================================================== -->
 
     <section id="contacts">
@@ -1533,7 +1857,7 @@
   <script>
 
     /* =========================================================
-       АКТИВНЫЙ РАЗДЕЛ МЕНЮ
+       АКТИВНАЯ НАВИГАЦИЯ
     ========================================================== */
 
     const sections =
@@ -1598,7 +1922,6 @@
         const opened =
           mobileMenu.classList.toggle("open");
 
-
         menuButton.setAttribute(
           "aria-expanded",
           opened ? "true" : "false"
@@ -1630,7 +1953,7 @@
 
 
     /* =========================================================
-       ГАЛЕРЕЯ — 7 ФОТО
+       ГАЛЕРЕЯ — 7 ОБЪЕКТОВ
     ========================================================== */
 
     const gallery =
@@ -1702,7 +2025,6 @@
     ========================================================== */
 
     let touchStartX = 0;
-    let touchEndX = 0;
 
 
     gallery.addEventListener(
@@ -1723,9 +2045,8 @@
       "touchend",
       (event) => {
 
-        touchEndX =
+        const touchEndX =
           event.changedTouches[0].screenX;
-
 
         const distance =
           touchStartX - touchEndX;
