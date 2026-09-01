@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROZASHITA — Огнезащита зданий</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('img/background.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+    }
+
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .slide {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        opacity: 0;
+        transition: all 0.6s ease;
+        padding: 40px;
+        box-sizing: border-box;
+        backdrop-filter: blur(4px);
+    }
+
+    .slide.active {
+        left: 0;
+        opacity: 1;
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 80px;
+    }
+
+    .sergey-photo {
+        width: 40%;
+        border-radius: 10px;
+    }
+
+    .sergey-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%);
+        font-size: 26px;
+        max-width: 40%;
+    }
+
+    .gallery-img {
+        width: 70%;
+        border-radius: 10px;
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        font-size: 60px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .left {
+        left: 20px;
+    }
+
+    .right {
+        right: 20px;
+    }
+
+    .dots {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 50%;
+        margin: 5px;
+        opacity: 0.5;
+    }
+
+    .dot.active {
+        opacity: 1;
+    }
+
+    .contact-block {
+        font-size: 28px;
+        margin-top: 120px;
+    }
+
+    .contact-block a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .max-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 15px 30px;
+        background: #ffaa00;
+        color: black;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 24px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="slider">
+
+    <!-- СЛАЙД 1 — Сергей -->
+    <div class="slide active">
+        <img src="img/logo.png" class="logo">
+        <img src="img/sergey.jpg" class="sergey-photo">
+        <div class="sergey-info">
+            <h2>Сергей</h2>
+            <p>Работает в сфере огнезащиты более 10 лет.</p>
+        </div>
+    </div>
+
+    <!-- СЛАЙД 2 — Что такое огнезащита -->
+    <div class="slide">
+        <h1>Что такое огнезащита?</h1>
+        <p style="font-size: 26px; max-width: 70%;">
+            Огнезащита зданий — это обработка конструкций специальными составами, которые не дают огню быстро распространяться. 
+            Если случается пожар, огнезащита замедляет нагрев металла, защищает балки, колонны и перекрытия, чтобы здание не потеряло прочность 
+            и люди успели безопасно выйти.
+        </p>
+    </div>
+
+    <!-- СЛАЙД 3 — Галерея работ -->
+    <div class="slide">
+        <h1>Наши работы</h1>
+        <img src="img/work1.jpg" class="gallery-img" id="gallery">
+        <div class="arrow left" onclick="prevImg()">&#10094;</div>
+        <div class="arrow right" onclick="nextImg()">&#10095;</div>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <!-- СЛАЙД 4 — Контакты -->
+    <div class="slide">
+        <h1>Контакты</h1>
+        <div class="contact-block">
+            Телефон: <a href="tel:+79182944223">+7 918 294‑42‑23</a><br>
+            <a class="max-btn" href="https://wa.me/79182944223">Написать в МАКС</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+    if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+});
+
+// Галерея работ
+let galleryImages = [
+    'img/work1.jpg',
+    'img/work2.jpg',
+    'img/work3.jpg',
+    'img/work4.jpg',
+    'img/work5.jpg'
+];
+
+let galleryIndex = 0;
+
+function updateDots() {
+    let dots = document.querySelectorAll('.dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === galleryIndex));
+}
+
+function nextImg() {
+    galleryIndex = (galleryIndex + 1) % galleryImages.length;
+    document.getElementById('gallery').src = galleryImages[galleryIndex];
+    updateDots();
+}
+
+function prevImg() {
+    galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+    document.getElementById('gallery').src = galleryImages[galleryIndex];
+    updateDots();
+}
+</script>
+
+</body>
+</html>
