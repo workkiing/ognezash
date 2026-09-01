@@ -1,228 +1,375 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PROZASHITA — Огнезащита зданий</title>
+    <meta charset="UTF-8">
+    <title>PROZASHITA — Огнезащита, которой доверяют</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color:#111;
+            background:#000;
+        }
+        .hero {
+            position:relative;
+            min-height:100vh;
+            background:url("img/background.jpg") center/cover no-repeat;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            padding:24px;
+        }
+        .hero-overlay {
+            position:absolute;
+            inset:0;
+            background:linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.25));
+        }
+        .hero-content {
+            position:relative;
+            z-index:1;
+            max-width:960px;
+        }
+        .logo {
+            position:relative;
+            z-index:1;
+            display:flex;
+            justify-content:flex-end;
+            margin-bottom:32px;
+        }
+        .logo img {
+            height:64px;
+        }
+        h1 {
+            font-size:40px;
+            line-height:1.2;
+            color:#fff;
+            margin-bottom:16px;
+        }
+        .tagline {
+            font-size:18px;
+            color:#f5f5f5;
+            margin-bottom:24px;
+        }
+        .hero-actions {
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+            margin-bottom:32px;
+        }
+        .btn {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            padding:10px 20px;
+            border-radius:999px;
+            border:1px solid rgba(255,255,255,0.35);
+            color:#fff;
+            text-decoration:none;
+            font-size:15px;
+            backdrop-filter:blur(6px);
+            background:rgba(0,0,0,0.35);
+            cursor:pointer;
+        }
+        .btn-primary {
+            background:#f5b400;
+            border-color:#f5b400;
+            color:#111;
+            font-weight:600;
+        }
+        .hero-bottom {
+            position:relative;
+            z-index:1;
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-end;
+            gap:24px;
+            flex-wrap:wrap;
+        }
+        .hero-bottom .info {
+            color:#eaeaea;
+            font-size:14px;
+            max-width:420px;
+        }
+        .hero-bottom .contacts {
+            text-align:right;
+            color:#fff;
+            font-size:14px;
+        }
+        .hero-bottom .contacts a {
+            color:#f5b400;
+            text-decoration:none;
+        }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('img/background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-}
+        .section {
+            padding:48px 24px;
+            max-width:1100px;
+            margin:0 auto;
+        }
+        .section-title {
+            font-size:26px;
+            margin-bottom:16px;
+        }
+        .section-sub {
+            font-size:15px;
+            color:#555;
+            margin-bottom:24px;
+        }
 
-.slider {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
+        .about {
+            display:grid;
+            grid-template-columns:minmax(0,2fr) minmax(0,1.4fr);
+            gap:32px;
+            align-items:flex-start;
+        }
+        .about-photo {
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:0 12px 30px rgba(0,0,0,0.25);
+        }
+        .about-photo img {
+            width:100%;
+            display:block;
+        }
+        .about-text p {
+            margin-bottom:12px;
+            font-size:15px;
+            line-height:1.6;
+        }
+        .about-role {
+            font-size:14px;
+            color:#777;
+            margin-top:8px;
+        }
 
-.slide {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    opacity: 0;
-    transition: all 0.6s ease;
-    padding: 40px;
-    box-sizing: border-box;
-    backdrop-filter: blur(4px);
-}
+        .slider-wrapper {
+            margin-top:16px;
+        }
+        .slider {
+            position:relative;
+            overflow:hidden;
+            border-radius:18px;
+            box-shadow:0 14px 36px rgba(0,0,0,0.3);
+            background:#000;
+        }
+        .slides {
+            display:flex;
+            transition:transform 0.5s ease;
+        }
+        .slide {
+            min-width:100%;
+            height:420px;
+            position:relative;
+        }
+        .slide img {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+        .slider-controls {
+            position:absolute;
+            inset:0;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:0 12px;
+            pointer-events:none;
+        }
+        .slider-btn {
+            width:36px;
+            height:36px;
+            border-radius:999px;
+            background:rgba(0,0,0,0.55);
+            color:#fff;
+            border:1px solid rgba(255,255,255,0.35);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            pointer-events:auto;
+        }
+        .slider-dots {
+            position:absolute;
+            bottom:12px;
+            left:50%;
+            transform:translateX(-50%);
+            display:flex;
+            gap:6px;
+        }
+        .slider-dot {
+            width:8px;
+            height:8px;
+            border-radius:999px;
+            background:rgba(255,255,255,0.35);
+            cursor:pointer;
+        }
+        .slider-dot.active {
+            background:#f5b400;
+        }
 
-.slide.active {
-    left: 0;
-    opacity: 1;
-}
+        .contacts-section {
+            text-align:center;
+            font-size:15px;
+        }
+        .contacts-section p {
+            margin-bottom:8px;
+        }
 
-.logo {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    height: 80px;
-}
-
-.sergey-photo {
-    width: 40%;
-    border-radius: 10px;
-}
-
-.sergey-info {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%);
-    font-size: 26px;
-    max-width: 40%;
-}
-
-.gallery-img {
-    width: 70%;
-    border-radius: 10px;
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    font-size: 60px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.left {
-    left: 20px;
-}
-
-.right {
-    right: 20px;
-}
-
-.dots {
-    position: absolute;
-    bottom: 30px;
-    width: 100%;
-    text-align: center;
-}
-
-.dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background: white;
-    border-radius: 50%;
-    margin: 5px;
-    opacity: 0.5;
-}
-
-.dot.active {
-    opacity: 1;
-}
-
-.contact-block {
-    font-size: 28px;
-    margin-top: 120px;
-}
-
-.contact-block a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.max-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 30px;
-    background: #ffaa00;
-    color: black;
-    font-weight: bold;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 24px;
-}
-</style>
+        @media (max-width:768px) {
+            h1 { font-size:30px; }
+            .about {
+                grid-template-columns:1fr;
+            }
+            .slide { height:280px; }
+            .logo { justify-content:flex-start; }
+            .hero-bottom { flex-direction:column; align-items:flex-start; }
+            .hero-bottom .contacts { text-align:left; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="slider">
+<section class="hero">
+    <div class="hero-overlay"></div>
 
-    <!-- СЛАЙД 1 — Сергей -->
-    <div class="slide active">
-        <img src="img/logo.png" class="logo">
-        <img src="img/sergey.jpg" class="sergey-photo">
-        <div class="sergey-info">
-            <h2>Сергей</h2>
-            <p>Работает в сфере огнезащиты более 10 лет.</p>
-        </div>
+    <div class="logo">
+        <img src="img/logo.png" alt="PROZASHITA">
     </div>
 
-    <!-- СЛАЙД 2 — Что такое огнезащита -->
-    <div class="slide">
-        <h1>Что такое огнезащита?</h1>
-        <p style="font-size: 26px; max-width: 70%;">
-            Огнезащита зданий — это обработка конструкций специальными составами, которые не дают огню быстро распространяться. 
-            Если случается пожар, огнезащита замедляет нагрев металла, защищает балки, колонны и перекрытия, чтобы здание не потеряло прочность 
-            и люди успели безопасно выйти.
+    <div class="hero-content">
+        <h1>Огнезащита, которой доверяют</h1>
+        <p class="tagline">
+            Профессиональная огнезащита металлоконструкций, складов, производственных и коммерческих объектов.
         </p>
-    </div>
-
-    <!-- СЛАЙД 3 — Галерея работ -->
-    <div class="slide">
-        <h1>Наши работы</h1>
-        <img src="img/work1.jpg" class="gallery-img" id="gallery">
-        <div class="arrow left" onclick="prevImg()">&#10094;</div>
-        <div class="arrow right" onclick="nextImg()">&#10095;</div>
-
-        <div class="dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <div class="hero-actions">
+            <a href="https://max" class="btn btn-primary">Перейти в МАКС</a>
+            <a href="#works" class="btn">Посмотреть выполненные работы</a>
         </div>
     </div>
 
-    <!-- СЛАЙД 4 — Контакты -->
-    <div class="slide">
-        <h1>Контакты</h1>
-        <div class="contact-block">
-            Телефон: <a href="tel:+79182944223">+7 918 294‑42‑23</a><br>
-            <a class="max-btn" href="https://wa.me/79182944223">Написать в МАКС</a>
+    <div class="hero-bottom">
+        <div class="info">
+            Надёжная огнезащита — это не только материалы и технологии, но и опыт команды.
+            Мы работаем по действующим нормам и сопровождаем объект от проекта до сдачи.
+        </div>
+        <div class="contacts">
+            Телефон: <a href="tel:+79990000000">+7 (999) 000‑00‑00</a><br>
+            МАКС: <a href="https://max">перейти в систему</a>
         </div>
     </div>
+</section>
 
-</div>
+<section class="section">
+    <div class="about">
+        <div class="about-text">
+            <h2 class="section-title">О компании PROZASHITA</h2>
+            <p>
+                Мы занимаемся огнезащитой металлоконструкций и несущих элементов зданий, складов и промышленных объектов.
+                В работе используем сертифицированные материалы и решения, соответствующие требованиям действующих норм.
+            </p>
+            <p>
+                Наша задача — обеспечить устойчивость конструкций к огневому воздействию и сохранить несущую способность
+                здания в критических ситуациях. Мы работаем прозрачно, с понятными сроками и ответственностью за результат.
+            </p>
+            <p class="about-role">
+                Руководитель: Сергей. Более 10 лет в сфере огнезащиты и защиты металлоконструкций.
+            </p>
+        </div>
+        <div class="about-photo">
+            <img src="img/sergey.jpg" alt="Сергей, руководитель PROZASHITA">
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">Что такое огнезащита металлоконструкций</h2>
+    <p class="section-sub">
+        Огнезащита — это комплекс мер и материалов, которые повышают предел огнестойкости конструкций.
+        Правильно выполненная огнезащита даёт время для эвакуации людей и работы пожарных подразделений,
+        снижает риск обрушения и серьёзных повреждений объекта.
+    </p>
+</section>
+
+<section class="section" id="works">
+    <h2 class="section-title">Выполненные работы</h2>
+    <p class="section-sub">
+        Ниже представлены реальные объекты, на которых мы выполняли огнезащиту металлоконструкций, колонн и каркасов.
+    </p>
+
+    <div class="slider-wrapper">
+        <div class="slider" id="slider">
+            <div class="slides">
+                <div class="slide"><img src="img/work1.jpg" alt="Работа 1"></div>
+                <div class="slide"><img src="img/work2.jpg" alt="Работа 2"></div>
+                <div class="slide"><img src="img/work3.jpg" alt="Работа 3"></div>
+                <div class="slide"><img src="img/work4.jpg" alt="Работа 4"></div>
+                <div class="slide"><img src="img/work5.jpg" alt="Работа 5"></div>
+                <div class="slide"><img src="img/work6.jpg" alt="Работа 6"></div>
+                <div class="slide"><img src="img/work7.jpg" alt="Работа 7"></div>
+            </div>
+
+            <div class="slider-controls">
+                <button class="slider-btn" id="prev">&#10094;</button>
+                <button class="slider-btn" id="next">&#10095;</button>
+            </div>
+
+            <div class="slider-dots" id="dots"></div>
+        </div>
+    </div>
+</section>
+
+<section class="section contacts-section">
+    <h2 class="section-title">Контакты</h2>
+    <p>Телефон: <a href="tel:+79990000000">+7 (999) 000‑00‑00</a></p>
+    <p>МАКС: <a href="https://max">перейти в систему</a></p>
+</section>
 
 <script>
-let slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
+    (function() {
+        const slider = document.getElementById('slider');
+        const slidesContainer = slider.querySelector('.slides');
+        const slides = Array.from(slider.querySelectorAll('.slide'));
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const dotsContainer = document.getElementById('dots');
 
-function showSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
+        let currentIndex = 0;
+        const total = slides.length;
 
-document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
-    if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
-});
+        // dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.dataset.index = i;
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
 
-// Галерея работ
-let galleryImages = [
-    'img/work1.jpg',
-    'img/work2.jpg',
-    'img/work3.jpg',
-    'img/work4.jpg',
-    'img/work5.jpg'
-];
+        const dots = Array.from(dotsContainer.querySelectorAll('.slider-dot'));
 
-let galleryIndex = 0;
+        function updateSlider() {
+            slidesContainer.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === currentIndex);
+            });
+        }
 
-function updateDots() {
-    let dots = document.querySelectorAll('.dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === galleryIndex));
-}
+        function goToSlide(index) {
+            if (index < 0) index = total - 1;
+            if (index >= total) index = 0;
+            currentIndex = index;
+            updateSlider();
+        }
 
-function nextImg() {
-    galleryIndex = (galleryIndex + 1) % galleryImages.length;
-    document.getElementById('gallery').src = galleryImages[galleryIndex];
-    updateDots();
-}
+        prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
 
-function prevImg() {
-    galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
-    document.getElementById('gallery').src = galleryImages[galleryIndex];
-    updateDots();
-}
+        // auto
+        setInterval(() => {
+            goToSlide(currentIndex + 1);
+        }, 6000);
+    })();
 </script>
 
 </body>
