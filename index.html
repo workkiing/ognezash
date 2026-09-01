@@ -12,18 +12,10 @@
 
   <meta
     name="description"
-    content="PROZASHITA — огнезащитная обработка металлоконструкций."
+    content="PROZASHITA — профессиональная огнезащитная обработка металлоконструкций и зданий."
   >
 
   <style>
-    :root {
-      --white: #f5f5f5;
-      --muted: rgba(245,245,245,.78);
-      --line: rgba(255,255,255,.22);
-      --glass: rgba(0,0,0,.20);
-      --glass-light: rgba(0,0,0,.14);
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -32,165 +24,110 @@
 
     html {
       scroll-behavior: smooth;
-      background: #111;
     }
 
     body {
-      min-height: 100%;
-      overflow-x: hidden;
-
-      color: var(--white);
       font-family: Arial, Helvetica, sans-serif;
-
+      color: #fff;
       background: #111;
+      overflow-x: hidden;
     }
 
-    /* =========================================================
-       НЕПОДВИЖНЫЙ ФОН
-    ========================================================== */
-
-    body::before {
-      content: "";
-
+    .site-background {
       position: fixed;
       inset: 0;
+      z-index: 0;
 
-      z-index: -10;
-      pointer-events: none;
-
-      background:
+      background-image:
         linear-gradient(
-          rgba(0,0,0,.37),
-          rgba(0,0,0,.37)
+          rgba(0, 0, 0, 0.30),
+          rgba(0, 0, 0, 0.30)
         ),
-        url("img/background.jpg")
-        center center /
-        cover no-repeat;
-    }
+        url("img/background.jpg");
 
-    body::after {
-      content: "";
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
 
-      position: fixed;
-      inset: 0;
-
-      z-index: -9;
       pointer-events: none;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.025),
-          rgba(0,0,0,.035)
-        );
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      color: inherit;
-    }
-
-    /* =========================================================
-       HEADER
-    ========================================================== */
-
-    .header {
+    .site-header {
       position: fixed;
-
       top: 0;
       left: 0;
       right: 0;
-
-      z-index: 1000;
-
-      padding: 14px 20px;
-    }
-
-    .header-inner {
-      width: min(1160px,100%);
-      min-height: 64px;
-
-      margin: 0 auto;
+      z-index: 20;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      gap: 20px;
+      padding: 12px 32px;
 
-      padding:
-        7px 10px
-        7px 18px;
+      background: rgba(15, 15, 15, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
-      background:
-        rgba(0,0,0,.24);
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 16px;
-
-      backdrop-filter: blur(9px);
-      -webkit-backdrop-filter: blur(9px);
-
-      box-shadow:
-        0 12px 35px rgba(0,0,0,.20);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
-    .brand {
+    .logo {
       display: flex;
       align-items: center;
-
-      flex-shrink: 0;
+      text-decoration: none;
     }
 
-    .brand img {
+    .logo img {
       display: block;
-
-      width: 155px;
-      max-height: 52px;
-
+      width: 130px;
+      height: auto;
+      max-height: 48px;
       object-fit: contain;
     }
 
-    .nav {
+    .desktop-nav {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 28px;
     }
 
-    .nav a {
-      padding: 9px 12px;
+    .desktop-nav a {
+      position: relative;
 
-      border-radius: 9px;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
 
-      color: rgba(245,245,245,.82);
+      font-size: 14px;
+      font-weight: 500;
 
-      font-size: 13px;
-      font-weight: 600;
-
+      transition: color 0.25s ease;
       white-space: nowrap;
-
-      transition:
-        background .2s ease,
-        color .2s ease;
     }
 
-    .nav a:hover,
-    .nav a.active {
-      color: var(--white);
-      background:
-        rgba(255,255,255,.10);
+    .desktop-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+
+      width: 0;
+      height: 1px;
+
+      background: #fff;
+
+      transition: width 0.25s ease;
     }
 
-    /* =========================================================
-       MOBILE MENU
-    ========================================================== */
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      color: #fff;
+    }
+
+    .desktop-nav a:hover::after,
+    .desktop-nav a.active::after {
+      width: 100%;
+    }
 
     .menu-button {
       display: none;
@@ -198,668 +135,474 @@
       width: 42px;
       height: 42px;
 
-      align-items: center;
-      justify-content: center;
-
-      border:
-        1px solid rgba(255,255,255,.23);
-
+      border: 1px solid rgba(255,255,255,0.22);
       border-radius: 10px;
 
-      background:
-        rgba(0,0,0,.20);
+      background: rgba(255,255,255,0.07);
+      color: #fff;
 
       cursor: pointer;
     }
 
-    .menu-icon,
-    .menu-icon::before,
-    .menu-icon::after {
-      display: block;
-
-      position: relative;
-
-      width: 18px;
-      height: 2px;
-
-      border-radius: 4px;
-
-      background:
-        var(--white);
-    }
-
-    .menu-icon::before,
-    .menu-icon::after {
-      content: "";
-
-      position: absolute;
-      left: 0;
-    }
-
-    .menu-icon::before {
-      top: -6px;
-    }
-
-    .menu-icon::after {
-      top: 6px;
-    }
-
     .mobile-menu {
+      display: none;
+
       position: fixed;
+      top: 70px;
+      left: 14px;
+      right: 14px;
 
-      top: 76px;
-      right: 12px;
+      z-index: 19;
 
-      z-index: 999;
+      padding: 14px;
 
-      width: 215px;
+      background: rgba(15,15,15,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
 
-      padding: 8px;
-
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-
-      background:
-        rgba(0,0,0,.75);
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 14px;
-
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-
-      box-shadow:
-        0 20px 50px rgba(0,0,0,.30);
-
-      opacity: 0;
-      visibility: hidden;
-
-      transform: translateY(-8px);
-
-      transition:
-        opacity .22s ease,
-        visibility .22s ease,
-        transform .22s ease;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
     }
 
     .mobile-menu.open {
-      opacity: 1;
-      visibility: visible;
-
-      transform: translateY(0);
+      display: block;
     }
 
     .mobile-menu a {
-      padding:
-        12px 13px;
+      display: block;
 
-      border-radius: 9px;
+      padding: 13px 10px;
 
-      color: var(--white);
+      color: #fff;
+      text-decoration: none;
 
       font-size: 15px;
-      font-weight: 600;
+
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .mobile-menu a:hover {
-      background:
-        rgba(255,255,255,.08);
+    .mobile-menu a:last-child {
+      border-bottom: none;
     }
-
-    /* =========================================================
-       SECTIONS
-    ========================================================== */
 
     main {
-      width: 100%;
+      position: relative;
+      z-index: 2;
     }
 
     section {
+      position: relative;
+
       min-height: 100svh;
 
       display: flex;
       align-items: center;
+      justify-content: center;
 
-      padding:
-        105px 5vw
-        55px;
+      padding: 110px 40px 60px;
 
-      scroll-margin-top: 90px;
+      scroll-margin-top: 70px;
     }
 
-    .container {
-      width: min(1120px,100%);
+    .section-inner {
+      width: min(1120px, 100%);
       margin: 0 auto;
     }
-
-    /* =========================================================
-       TEXT
-    ========================================================== */
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      margin-bottom: 12px;
 
-      margin-bottom: 15px;
+      color: rgba(255,255,255,0.68);
 
-      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.3;
 
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .14em;
       text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
-    .eyebrow::before {
-      content: "";
-
-      width: 23px;
-      height: 1px;
-
-      background:
-        rgba(255,255,255,.52);
+    h1,
+    h2,
+    h3,
+    p {
+      max-width: 100%;
     }
 
-    .title {
-      color: var(--white);
-
-      font-size:
-        clamp(36px,4vw,59px);
-
-      line-height: .99;
-
-      letter-spacing: -.045em;
-
+    h1 {
+      font-size: clamp(30px, 4vw, 58px);
+      line-height: 1.06;
       font-weight: 700;
     }
 
-    /* =========================================================
-       FIRST SCREEN
-    ========================================================== */
+    h2 {
+      font-size: clamp(26px, 3vw, 44px);
+      line-height: 1.08;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.88);
+    }
+
+    /* =========================
+       1. ГЛАВНАЯ
+    ========================= */
 
     .hero-layout {
-      width: min(950px,100%);
-      margin: 0 auto;
-
       display: grid;
 
       grid-template-columns:
-        290px
-        minmax(0,1fr);
-
-      gap: 52px;
+        minmax(280px, 0.88fr)
+        minmax(360px, 1.12fr);
 
       align-items: center;
+
+      gap: 58px;
+
+      width: min(1000px, 100%);
+      margin: 0 auto;
     }
 
-    .sergey-photo {
-      width: 290px;
-      max-width: 100%;
+    .hero-photo {
+      width: 100%;
+
+      max-width: 360px;
+      justify-self: center;
+
+      border-radius: 22px;
 
       overflow: hidden;
 
-      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.18);
 
-      border:
-        1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,0.20);
 
       box-shadow:
-        0 25px 60px rgba(0,0,0,.30);
+        0 20px 60px rgba(0,0,0,0.32);
     }
 
-    .sergey-photo img {
+    .hero-photo img {
       display: block;
 
       width: 100%;
+      height: auto;
 
-      aspect-ratio: .80;
+      aspect-ratio: 4 / 5;
 
       object-fit: cover;
     }
 
     .hero-content {
       min-width: 0;
-      width: 100%;
-      max-width: 610px;
     }
 
-    .hero-title {
-      margin-bottom: 22px;
+    .hero-content h1 {
+      max-width: 640px;
+      margin-bottom: 18px;
     }
 
-    .hero-description {
-      max-width: 560px;
-
-      margin-bottom: 16px;
-
-      color: var(--white);
-
-      font-size:
-        clamp(16px,1.25vw,20px);
-
-      line-height: 1.52;
+    .hero-content p {
+      max-width: 600px;
     }
 
-    .experience {
-      max-width: 550px;
+    .hero-experience {
+      margin-top: 18px;
 
-      margin-bottom: 24px;
+      font-size: 15px;
+      line-height: 1.5;
 
-      color: var(--white);
-
-      font-size:
-        clamp(16px,1.25vw,20px);
-
-      line-height: 1.38;
-
-      font-weight: 700;
+      color: rgba(255,255,255,0.70);
     }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 9px;
-    }
-
-    .button {
-      min-height: 48px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      padding:
-        0 19px;
-
-      border:
-        1px solid rgba(255,255,255,.35);
-
-      border-radius: 10px;
-
-      background:
-        rgba(0,0,0,.22);
-
-      color: var(--white);
-
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-
-      font-size: 13px;
-      font-weight: 700;
-
-      transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-
-      background:
-        rgba(255,255,255,.10);
-
-      border-color:
-        rgba(255,255,255,.58);
-    }
-
-    /* =========================================================
-       SECOND SCREEN
-    ========================================================== */
+    /* =========================
+       2. ОБРАБОТКА
+    ========================= */
 
     .service-layout {
-      width: min(1000px,100%);
-      margin: 0 auto;
-
       display: grid;
 
       grid-template-columns:
-        minmax(290px,.8fr)
-        minmax(370px,1.2fr);
+        minmax(250px, 0.78fr)
+        minmax(390px, 1.22fr);
 
-      gap: 65px;
+      gap: 64px;
 
       align-items: center;
+
+      width: min(980px, 100%);
+      margin: 0 auto;
+    }
+
+    .service-left {
+      min-width: 0;
+    }
+
+    .service-left h2 {
+      max-width: 400px;
+    }
+
+    .service-right {
+      min-width: 0;
     }
 
     .service-main {
+      font-size: 18px;
+      line-height: 1.55;
+
       margin-bottom: 18px;
-
-      color: var(--white);
-
-      font-size:
-        clamp(19px,1.6vw,25px);
-
-      line-height: 1.48;
     }
 
     .service-secondary {
-      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
 
-      font-size:
-        clamp(16px,1.15vw,19px);
-
-      line-height: 1.58;
+      color: rgba(255,255,255,0.70);
     }
 
     .service-cards {
+      margin-top: 34px;
+
       display: grid;
 
-      grid-template-columns:
-        repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
 
-      gap: 9px;
-
-      margin-top: 25px;
+      gap: 12px;
     }
 
     .service-card {
-      min-height: 130px;
+      min-width: 0;
 
-      padding: 16px;
+      padding: 18px;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
 
-      background:
-        rgba(0,0,0,.18);
+      background: rgba(0,0,0,0.18);
 
-      border:
-        1px solid rgba(255,255,255,.16);
-
-      border-radius: 13px;
-
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
-    .service-card strong {
+    .service-card h3 {
+      margin-bottom: 8px;
+
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .service-card p {
       font-size: 13px;
-      line-height: 1.3;
+      line-height: 1.45;
+
+      color: rgba(255,255,255,0.66);
     }
 
-    .service-card span {
-      color: var(--muted);
+    /* =========================
+       3. ОБРАБОТКА ЗДАНИЙ
+    ========================= */
 
-      font-size: 11px;
-      line-height: 1.4;
+    .works-section .section-inner {
+      width: min(940px, 100%);
     }
 
-    /* =========================================================
-       THIRD SCREEN
-    ========================================================== */
-
-    .works-header {
-      width: min(900px,100%);
-
-      margin:
-        0 auto
-        20px;
-
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-
-      gap: 25px;
+    .works-heading {
+      text-align: center;
+      margin-bottom: 26px;
     }
 
-    .works-description {
-      max-width: 250px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-      line-height: 1.5;
-
-      text-align: right;
+    .works-heading h2 {
+      margin: 0 auto;
     }
-
-    /* =========================================================
-       GALLERY
-    ========================================================== */
 
     .gallery {
-      width: min(900px,100%);
-
       position: relative;
+
+      width: min(880px, 100%);
 
       margin: 0 auto;
 
-      padding: 9px;
+      padding: 12px;
 
-      background:
-        rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
 
-      border:
-        1px solid rgba(255,255,255,.21);
-
-      border-radius: 21px;
+      background: rgba(0,0,0,0.16);
 
       box-shadow:
-        0 25px 65px rgba(0,0,0,.30);
-
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+        0 18px 50px rgba(0,0,0,0.25);
     }
 
     .gallery-window {
       position: relative;
 
-      overflow: hidden;
-
-      border:
-        1px solid rgba(255,255,255,.22);
-
-      border-radius: 14px;
-    }
-
-    .gallery-track {
-      display: flex;
-
       width: 100%;
 
-      transform:
-        translateX(0);
+      height: 430px;
 
-      transition:
-        transform .50s cubic-bezier(.2,.75,.2,1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      touch-action: pan-y;
+      overflow: hidden;
+
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px;
+
+      background: rgba(0,0,0,0.22);
     }
 
     .gallery-slide {
-      flex:
-        0 0 100%;
+      position: absolute;
+      inset: 0;
 
-      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      user-select: none;
+      padding: 12px;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+    }
+
+    .gallery-slide.active {
+      opacity: 1;
+      visibility: visible;
     }
 
     .gallery-slide img {
       display: block;
 
       width: 100%;
+      height: 100%;
 
-      height:
-        min(45vh,460px);
+      object-fit: contain;
 
-      object-fit: cover;
+      object-position: center;
+
+      border-radius: 9px;
     }
 
-    .arrow {
+    .gallery-arrow {
       position: absolute;
 
       top: 50%;
+      transform: translateY(-50%);
 
-      z-index: 10;
+      z-index: 5;
 
-      width: 49px;
-      height: 49px;
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 50%;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      border:
-        1px solid rgba(255,255,255,.36);
-
-      border-radius: 50%;
-
-      background:
-        rgba(0,0,0,.48);
-
-      color: var(--white);
-
-      font-size: 25px;
+      background: rgba(15,15,15,0.52);
+      color: #fff;
 
       cursor: pointer;
 
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      font-size: 25px;
+      line-height: 1;
 
       transition:
-        background .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
+        background 0.2s ease,
+        transform 0.2s ease;
     }
 
-    .arrow:hover {
-      background:
-        rgba(255,255,255,.12);
-
-      border-color:
-        rgba(255,255,255,.60);
+    .gallery-arrow:hover {
+      background: rgba(255,255,255,0.13);
     }
 
-    .arrow:active {
-      transform:
-        translateY(-50%)
-        scale(.94);
+    .gallery-arrow.prev {
+      left: 24px;
     }
 
-    .arrow-left {
-      left: 20px;
-      transform: translateY(-50%);
+    .gallery-arrow.next {
+      right: 24px;
     }
 
-    .arrow-right {
-      right: 20px;
-      transform: translateY(-50%);
+    /* =========================
+       4. КОМПАНИИ
+    ========================= */
+
+    .companies-section {
+      overflow: hidden;
     }
 
-    /* =========================================================
-       FOURTH SCREEN
-       COMPANIES
-    ========================================================== */
-
-    .companies-inner {
-      width: min(1050px,100%);
-      margin: 0 auto;
-
+    .companies-heading {
       text-align: center;
+      margin-bottom: 48px;
     }
 
-    .companies-inner .eyebrow {
-      justify-content: center;
+    .companies-heading h2 {
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .companies-title {
-      margin-bottom: 40px;
-    }
-
-    .companies-subtitle {
-      max-width: 620px;
-
-      margin:
-        0 auto
-        38px;
-
-      color: var(--muted);
-
-      font-size:
-        clamp(16px,1.2vw,19px);
-
-      line-height: 1.55;
-    }
-
-    .companies-window {
+    .marquee {
       position: relative;
 
-      width: 100%;
+      width: 100vw;
+
+      left: 50%;
+      transform: translateX(-50%);
 
       overflow: hidden;
-
-      padding: 22px 0;
-
-      border-top:
-        1px solid rgba(255,255,255,.20);
-
-      border-bottom:
-        1px solid rgba(255,255,255,.20);
     }
 
-    .companies-track {
+    .marquee-track {
       display: flex;
 
       width: max-content;
 
-      animation:
-        companyMove 32s linear infinite;
+      animation: marquee 32s linear infinite;
     }
 
-    .companies-window:hover .companies-track {
-      animation-play-state: paused;
-    }
-
-    .company-row {
+    .company-group {
       display: flex;
       align-items: center;
-
-      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .company {
+    .company-name {
       display: inline-flex;
       align-items: center;
 
-      padding:
-        0 26px;
+      padding: 0 28px;
 
-      color: var(--white);
+      white-space: nowrap;
 
-      font-size:
-        clamp(24px,2.5vw,38px);
-
+      font-size: clamp(24px, 3vw, 44px);
       line-height: 1;
 
       font-weight: 600;
 
-      letter-spacing: -.025em;
+      color: rgba(255,255,255,0.88);
     }
 
-    .company::after {
-      content: "";
-
+    .company-separator {
       width: 5px;
       height: 5px;
 
-      margin-left: 52px;
-
       border-radius: 50%;
 
-      background:
-        rgba(255,255,255,.55);
+      background: rgba(255,255,255,0.44);
+
+      flex: 0 0 auto;
     }
 
-    @keyframes companyMove {
+    @keyframes marquee {
       from {
         transform: translateX(0);
       }
@@ -869,580 +612,423 @@
       }
     }
 
-    /* =========================================================
-       FIFTH SCREEN
-    ========================================================== */
+    /* =========================
+       5. КОНТАКТЫ
+    ========================= */
 
-    .contact-inner {
-      width: min(820px,100%);
-
-      margin: 0 auto;
-
+    .contact-section {
       text-align: center;
     }
 
-    .contact-inner .eyebrow {
-      justify-content: center;
+    .contact-content {
+      width: min(760px, 100%);
+      margin: 0 auto;
     }
 
-    .contact-title {
-      margin-bottom: 21px;
+    .contact-content h2 {
+      margin-bottom: 18px;
     }
 
-    .contact-text {
-      max-width: 610px;
-
-      margin:
-        0 auto
-        22px;
-
-      color: var(--muted);
-
-      font-size:
-        clamp(16px,1.25vw,20px);
-
-      line-height: 1.55;
-    }
-
-    .phone {
+    .contact-phone {
       display: inline-block;
 
-      margin-bottom: 23px;
+      margin-top: 20px;
 
-      font-size:
-        clamp(30px,3.6vw,50px);
+      color: #fff;
+      text-decoration: none;
 
-      line-height: 1;
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 600;
 
-      font-weight: 700;
-
-      letter-spacing: -.03em;
+      transition: opacity 0.2s ease;
     }
 
-    .contact-actions {
+    .contact-phone:hover {
+      opacity: 0.75;
+    }
+
+    .contact-buttons {
+      margin-top: 30px;
+
+      display: flex;
+      align-items: center;
       justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
     }
 
-    /* =========================================================
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding: 0 22px;
+
+      border-radius: 10px;
+
+      color: #fff;
+      text-decoration: none;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      border: 1px solid rgba(255,255,255,0.20);
+
+      background: rgba(255,255,255,0.08);
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .contact-button:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-1px);
+    }
+
+    /* =========================
        TABLET
-    ========================================================== */
+    ========================= */
 
-    @media (max-width: 980px) {
+    @media (max-width: 900px) {
+      .site-header {
+        padding: 10px 18px;
+      }
 
-      .nav {
+      .desktop-nav {
         display: none;
       }
 
       .menu-button {
         display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      section {
+        padding: 96px 22px 50px;
       }
 
       .hero-layout {
-        grid-template-columns:
-          250px
-          minmax(0,1fr);
-
         gap: 30px;
+        grid-template-columns:
+          minmax(230px, 0.9fr)
+          minmax(280px, 1.1fr);
       }
 
-      .sergey-photo {
-        width: 250px;
+      .hero-photo {
+        max-width: 300px;
       }
 
       .service-layout {
+        gap: 35px;
+        grid-template-columns:
+          minmax(220px, 0.8fr)
+          minmax(280px, 1.2fr);
+      }
+
+      .service-cards {
         grid-template-columns: 1fr;
-        gap: 30px;
+      }
+
+      .gallery {
+        width: min(760px, 100%);
+      }
+
+      .gallery-window {
+        height: 390px;
       }
     }
 
-    /* =========================================================
-       PHONE
-    ========================================================== */
+    /* =========================
+       MOBILE
+    ========================= */
 
-    @media (max-width: 650px) {
-
-      body::before {
-        background:
-          linear-gradient(
-            rgba(0,0,0,.39),
-            rgba(0,0,0,.39)
-          ),
-          url("img/background.jpg")
-          center center /
-          cover no-repeat;
+    @media (max-width: 640px) {
+      .site-header {
+        padding: 9px 14px;
       }
 
-      .header {
-        padding: 9px;
-      }
-
-      .header-inner {
-        min-height: 56px;
-
-        padding:
-          6px 7px
-          6px 12px;
-
-        border-radius: 13px;
-      }
-
-      .brand img {
-        width: 116px;
-        max-height: 43px;
-      }
-
-      .mobile-menu {
-        top: 69px;
+      .logo img {
+        width: 106px;
+        max-height: 40px;
       }
 
       section {
         min-height: 100svh;
 
-        padding:
-          76px 12px
-          25px;
-      }
-
-      /* HERO */
-
-      .hero-layout {
-        width: 100%;
-
-        grid-template-columns:
-          40%
-          minmax(0,60%);
-
-        gap: 8px;
-
-        align-items: center;
-      }
-
-      .sergey-photo {
-        width: 100%;
-
-        border-radius: 12px;
-      }
-
-      .sergey-photo img {
-        aspect-ratio: .71;
-      }
-
-      .hero-content {
-        width: 100%;
-        min-width: 0;
+        padding: 88px 14px 40px;
       }
 
       .eyebrow {
-        margin-bottom: 8px;
-
-        font-size: 7px;
-        letter-spacing: .08em;
-
-        gap: 4px;
+        font-size: 11px;
       }
 
-      .eyebrow::before {
-        width: 13px;
+      h1 {
+        font-size: 25px;
+        line-height: 1.08;
       }
 
-      .title {
-        font-size:
-          clamp(20px,6.0vw,28px);
-
-        line-height: .99;
+      h2 {
+        font-size: 24px;
+        line-height: 1.1;
       }
 
-      .hero-title {
-        margin-bottom: 9px;
+      p {
+        font-size: 14px;
+        line-height: 1.5;
       }
 
-      .hero-description {
-        margin-bottom: 8px;
+      /* Главная сохраняет фото слева, текст справа */
 
-        font-size:
-          clamp(10.8px,3.25vw,14px);
+      .hero-layout {
+        grid-template-columns:
+          minmax(120px, 0.42fr)
+          minmax(0, 0.58fr);
 
-        line-height: 1.34;
-      }
+        gap: 14px;
 
-      .experience {
-        margin-bottom: 9px;
-
-        font-size:
-          clamp(10.8px,3.25vw,14px);
-
-        line-height: 1.28;
-      }
-
-      .buttons {
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .button {
         width: 100%;
-
-        min-height: 36px;
-
-        padding:
-          0 7px;
-
-        border-radius: 8px;
-
-        font-size: 9.2px;
       }
 
-      /* SERVICE */
+      .hero-photo {
+        width: 100%;
+        max-width: none;
 
-      .service-layout {
-        gap: 22px;
-      }
-
-      .service-main {
-        font-size: 18px;
-        line-height: 1.46;
-      }
-
-      .service-secondary {
-        font-size: 15px;
-        line-height: 1.52;
-      }
-
-      .service-cards {
-        gap: 5px;
-        margin-top: 19px;
-      }
-
-      .service-card {
-        min-height: 108px;
-        padding: 10px;
-        border-radius: 10px;
-      }
-
-      .service-card strong {
-        font-size: 10px;
-      }
-
-      .service-card span {
-        font-size: 8.5px;
-        line-height: 1.3;
-      }
-
-      /* WORKS */
-
-      .works-header {
-        flex-direction: column;
-        align-items: flex-start;
-
-        gap: 6px;
-        margin-bottom: 13px;
-      }
-
-      .works-description {
-        display: none;
-      }
-
-      .gallery {
-        width: 90%;
-        padding: 6px;
         border-radius: 15px;
       }
 
-      .gallery-window {
-        border-radius: 10px;
+      .hero-photo img {
+        aspect-ratio: 3 / 4;
       }
 
-      .gallery-slide img {
-        height: 37svh;
-
-        min-height: 215px;
-        max-height: 310px;
+      .hero-content h1 {
+        margin-bottom: 10px;
+        font-size: 21px;
       }
 
-      .arrow {
-        width: 39px;
-        height: 39px;
-
-        font-size: 19px;
+      .hero-content p {
+        font-size: 12px;
+        line-height: 1.42;
       }
 
-      .arrow-left {
-        left: 9px;
+      .hero-experience {
+        margin-top: 10px;
+
+        font-size: 11px;
+        line-height: 1.4;
       }
 
-      .arrow-right {
-        right: 9px;
+      /* Обработка */
+
+      .service-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
       }
 
-      /* COMPANIES */
-
-      .companies-title {
-        margin-bottom: 24px;
+      .service-left h2 {
+        max-width: 100%;
       }
 
-      .companies-subtitle {
-        margin-bottom: 25px;
-
-        font-size: 14px;
-      }
-
-      .companies-window {
-        padding: 18px 0;
-      }
-
-      .company {
-        padding: 0 20px;
-
-        font-size:
-          clamp(19px,6vw,27px);
-      }
-
-      .company::after {
-        width: 4px;
-        height: 4px;
-        margin-left: 40px;
-      }
-
-      .companies-track {
-        animation-duration: 27s;
-      }
-
-      /* CONTACTS */
-
-      .contact-title {
-        margin-bottom: 16px;
-      }
-
-      .contact-text {
-        margin-bottom: 19px;
-
+      .service-main {
         font-size: 15px;
         line-height: 1.5;
       }
 
-      .phone {
-        margin-bottom: 20px;
-
-        font-size:
-          clamp(26px,7.7vw,38px);
+      .service-secondary {
+        font-size: 13px;
+        line-height: 1.5;
       }
 
-      .contact-actions {
+      .service-cards {
+        margin-top: 22px;
+        gap: 9px;
+      }
+
+      .service-card {
+        padding: 14px;
+      }
+
+      .service-card h3 {
+        font-size: 14px;
+      }
+
+      .service-card p {
+        font-size: 12px;
+      }
+
+      /* Галерея */
+
+      .works-heading {
+        margin-bottom: 18px;
+      }
+
+      .gallery {
+        width: 92%;
+        padding: 8px;
+
+        border-radius: 15px;
+      }
+
+      .gallery-window {
+        height: 270px;
+
+        border-radius: 10px;
+      }
+
+      .gallery-slide {
+        padding: 8px;
+      }
+
+      .gallery-slide img {
+        object-fit: contain;
+      }
+
+      .gallery-arrow {
+        width: 38px;
+        height: 38px;
+
+        font-size: 21px;
+      }
+
+      .gallery-arrow.prev {
+        left: 10px;
+      }
+
+      .gallery-arrow.next {
+        right: 10px;
+      }
+
+      /* Компании */
+
+      .companies-heading {
+        margin-bottom: 34px;
+      }
+
+      .company-name {
+        padding: 0 18px;
+
+        font-size: 25px;
+      }
+
+      /* Контакты */
+
+      .contact-content h2 {
+        font-size: 26px;
+      }
+
+      .contact-phone {
+        font-size: 25px;
+      }
+
+      .contact-buttons {
         flex-direction: column;
+        width: 100%;
+      }
+
+      .contact-button {
+        width: 100%;
       }
     }
 
     @media (max-width: 380px) {
-
       .hero-layout {
         grid-template-columns:
-          37%
-          minmax(0,63%);
+          minmax(108px, 0.40fr)
+          minmax(0, 0.60fr);
 
-        gap: 6px;
+        gap: 10px;
       }
 
-      .title {
+      .hero-content h1 {
         font-size: 19px;
       }
 
-      .hero-description,
-      .experience {
-        font-size: 10.2px;
+      .hero-content p {
+        font-size: 11px;
       }
 
-      .button {
-        min-height: 34px;
-        font-size: 8.8px;
+      .hero-experience {
+        font-size: 10px;
       }
 
-      .gallery {
-        width: 88%;
-      }
-
-      .gallery-slide img {
-        height: 35svh;
-        min-height: 205px;
+      .gallery-window {
+        height: 245px;
       }
     }
   </style>
 </head>
 
-
 <body>
 
-  <!-- =========================================================
-       HEADER
-  ========================================================== -->
+  <div class="site-background"></div>
 
-  <header class="header">
+  <header class="site-header">
 
-    <div class="header-inner">
+    <a class="logo" href="#home" aria-label="PROZASHITA">
+      <img src="img/logo.jpg" alt="PROZASHITA">
+    </a>
 
-      <a
-        class="brand"
-        href="#home"
-        aria-label="PROZASHITA"
-      >
-        <img
-          src="img/logo.jpg"
-          alt="PROZASHITA"
-        >
-      </a>
+    <nav class="desktop-nav">
+      <a href="#home" class="active">Главная</a>
+      <a href="#processing">Обработка</a>
+      <a href="#buildings">Обработка зданий</a>
+      <a href="#companies">Компании</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
 
-
-      <nav class="nav">
-
-        <a
-          href="#home"
-          class="nav-link active"
-        >
-          Главная
-        </a>
-
-        <a
-          href="#service"
-          class="nav-link"
-        >
-          Обработка
-        </a>
-
-        <a
-          href="#works"
-          class="nav-link"
-        >
-          Обработка зданий
-        </a>
-
-        <a
-          href="#companies"
-          class="nav-link"
-        >
-          Компании
-        </a>
-
-        <a
-          href="#contacts"
-          class="nav-link"
-        >
-          Контакты
-        </a>
-
-      </nav>
-
-
-      <button
-        class="menu-button"
-        id="menuButton"
-        type="button"
-        aria-label="Открыть меню"
-        aria-expanded="false"
-      >
-        <span class="menu-icon"></span>
-      </button>
-
-    </div>
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Открыть меню"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
 
   </header>
 
-
-  <!-- =========================================================
-       MOBILE MENU
-  ========================================================== -->
-
-  <nav
-    class="mobile-menu"
-    id="mobileMenu"
-  >
-
-    <a href="#home">
-      Главная
-    </a>
-
-    <a href="#service">
-      Обработка
-    </a>
-
-    <a href="#works">
-      Обработка зданий
-    </a>
-
-    <a href="#companies">
-      Компании
-    </a>
-
-    <a href="#contacts">
-      Контакты
-    </a>
-
-  </nav>
-
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Главная</a>
+    <a href="#processing">Обработка</a>
+    <a href="#buildings">Обработка зданий</a>
+    <a href="#companies">Компании</a>
+    <a href="#contacts">Контакты</a>
+  </div>
 
   <main>
 
-    <!-- =======================================================
-         1. ГЛАВНАЯ
-    ======================================================== -->
+    <!-- 1. ГЛАВНАЯ -->
 
     <section id="home">
-
-      <div class="container">
+      <div class="section-inner">
 
         <div class="hero-layout">
 
-          <div class="sergey-photo">
-
+          <div class="hero-photo">
             <img
               src="img/sergey.jpg"
-              alt="Сергей"
+              alt="Сергей — специалист по огнезащите"
             >
-
           </div>
-
 
           <div class="hero-content">
 
-            <div class="eyebrow">
-              PROZASHITA
-            </div>
-
-
-            <h1 class="title hero-title">
-              Огнезащитная
-              обработка металла
+            <h1>
+              Огнезащитная обработка металла
             </h1>
 
-
-            <p class="hero-description">
+            <p>
               Сергей — руководитель и специалист, который лично занимается
               огнезащитной обработкой металлоконструкций.
             </p>
 
-
-            <p class="experience">
+            <div class="hero-experience">
               10+ лет в сфере огнезащиты и защиты металлоконструкций
-            </p>
-
-
-            <div class="buttons">
-
-              <a
-                class="button"
-                href="#works"
-              >
-                Смотреть работы
-              </a>
-
-
-              <a
-                class="button"
-                href="https://wa.me/79182944223?text=Здравствуйте!%20Хотел%20бы%20узнать%20об%20огнезащитной%20обработке."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Написать в WhatsApp
-              </a>
-
             </div>
 
           </div>
@@ -1450,36 +1036,30 @@
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =======================================================
-         2. ОГНЕЗАЩИТНАЯ ОБРАБОТКА
-    ======================================================== -->
+    <!-- 2. ОБРАБОТКА -->
 
-    <section id="service">
+    <section id="processing">
 
-      <div class="container">
+      <div class="section-inner">
 
         <div class="service-layout">
 
-          <div>
+          <div class="service-left">
 
             <div class="eyebrow">
               Направление работы
             </div>
 
-
-            <h2 class="title">
-              Защита
-              металлоконструкций
+            <h2>
+              Защита металлоконструкций
             </h2>
 
           </div>
 
-
-          <div class="service-copy">
+          <div class="service-right">
 
             <p class="service-main">
               Огнезащитная обработка металлоконструкций помогает повысить
@@ -1487,51 +1067,32 @@
               конструкции при воздействии высокой температуры.
             </p>
 
-
             <p class="service-secondary">
-              Работа включает подготовку металлической поверхности
-              и нанесение специальных огнезащитных материалов.
+              Работа включает подготовку металлической поверхности и нанесение
+              специальных огнезащитных материалов.
             </p>
-
 
             <div class="service-cards">
 
               <div class="service-card">
-
-                <strong>
-                  Металлоконструкции
-                </strong>
-
-                <span>
+                <h3>Металлоконструкции</h3>
+                <p>
                   Обработка металлических элементов и конструкций
-                </span>
-
+                </p>
               </div>
 
-
               <div class="service-card">
-
-                <strong>
-                  Огнестойкость
-                </strong>
-
-                <span>
+                <h3>Огнестойкость</h3>
+                <p>
                   Повышение устойчивости стали к воздействию огня
-                </span>
-
+                </p>
               </div>
 
-
               <div class="service-card">
-
-                <strong>
-                  Опыт
-                </strong>
-
-                <span>
+                <h3>Опыт</h3>
+                <p>
                   Более 10 лет работы в сфере огнезащиты
-                </span>
-
+                </p>
               </div>
 
             </div>
@@ -1545,111 +1106,96 @@
     </section>
 
 
-    <!-- =======================================================
-         3. ОБРАБОТКА ЗДАНИЙ
-    ======================================================== -->
+    <!-- 3. ОБРАБОТКА ЗДАНИЙ -->
 
-    <section id="works">
+    <section id="buildings" class="works-section">
 
-      <div class="container">
+      <div class="section-inner">
 
-        <div class="works-header">
+        <div class="works-heading">
 
-          <div>
-
-            <div class="eyebrow">
-              Объекты
-            </div>
-
-
-            <h2 class="title">
-              Обработка зданий
-            </h2>
-
+          <div class="eyebrow">
+            Объекты
           </div>
+
+          <h2>
+            Обработка зданий
+          </h2>
 
         </div>
 
+        <div class="gallery">
 
-        <div
-          class="gallery"
-          id="gallery"
-        >
+          <div class="gallery-window" id="galleryWindow">
 
-          <div class="gallery-window">
-
-            <div
-              class="gallery-track"
-              id="galleryTrack"
-            >
-
-              <div class="gallery-slide">
-                <img
-                  src="img/work1.jpg"
-                  alt="Объект"
-                >
-              </div>
-
-              <div class="gallery-slide">
-                <img
-                  src="img/work2.jpg"
-                  alt="Объект"
-                >
-              </div>
-
-              <div class="gallery-slide">
-                <img
-                  src="img/work3.jpg"
-                  alt="Объект"
-                >
-              </div>
-
-              <div class="gallery-slide">
-                <img
-                  src="img/work4.jpg"
-                  alt="Объект"
-                >
-              </div>
-
-              <div class="gallery-slide">
-                <img
-                  src="img/work5.jpg"
-                  alt="Объект"
-                >
-              </div>
-
-              <div class="gallery-slide">
-                <img
-                  src="img/work6.jpg"
-                  alt="Объект"
-                >
-              </div>
-
-              <div class="gallery-slide">
-                <img
-                  src="img/work7.jpg"
-                  alt="Объект"
-                >
-              </div>
-
+            <div class="gallery-slide active">
+              <img
+                src="img/work1.jpg"
+                alt="Объект"
+                draggable="false"
+              >
             </div>
 
+            <div class="gallery-slide">
+              <img
+                src="img/work2.jpg"
+                alt="Объект"
+                draggable="false"
+              >
+            </div>
+
+            <div class="gallery-slide">
+              <img
+                src="img/work3.jpg"
+                alt="Объект"
+                draggable="false"
+              >
+            </div>
+
+            <div class="gallery-slide">
+              <img
+                src="img/work4.jpg"
+                alt="Объект"
+                draggable="false"
+              >
+            </div>
+
+            <div class="gallery-slide">
+              <img
+                src="img/work5.jpg"
+                alt="Объект"
+                draggable="false"
+              >
+            </div>
+
+            <div class="gallery-slide">
+              <img
+                src="img/work6.jpg"
+                alt="Объект"
+                draggable="false"
+              >
+            </div>
+
+            <div class="gallery-slide">
+              <img
+                src="img/work7.jpg"
+                alt="Объект"
+                draggable="false"
+              >
+            </div>
 
             <button
-              class="arrow arrow-left"
-              id="prevButton"
-              type="button"
-              aria-label="Предыдущий объект"
+              class="gallery-arrow prev"
+              id="prevBtn"
+              aria-label="Предыдущая фотография"
             >
               ‹
             </button>
 
-
             <button
-              class="arrow arrow-right"
-              id="nextButton"
-              type="button"
-              aria-label="Следующий объект"
+              class="gallery-arrow next"
+              id="nextBtn"
+              aria-label="Следующая фотография"
             >
               ›
             </button>
@@ -1663,121 +1209,86 @@
     </section>
 
 
-    <!-- =======================================================
-         4. КОМПАНИИ
-    ======================================================== -->
+    <!-- 4. КОМПАНИИ -->
 
-    <section id="companies">
+    <section id="companies" class="companies-section">
 
-      <div class="container">
+      <div class="section-inner">
 
-        <div class="companies-inner">
+        <div class="companies-heading">
 
           <div class="eyebrow">
-            Доверие
+            Наши партнёры
           </div>
 
-
-          <h2 class="title companies-title">
+          <h2>
             Компании, которые нам доверяют
           </h2>
 
+        </div>
 
-          <p class="companies-subtitle">
-            Работаем с организациями, которым важны надёжность,
-            качество и профессиональное выполнение работ.
-          </p>
+        <div class="marquee">
 
+          <div class="marquee-track">
 
-          <div class="companies-window">
+            <div class="company-group">
 
-            <div
-              class="companies-track"
-              id="companiesTrack"
-            >
+              <div class="company-name">«DOGMA»</div>
+              <div class="company-separator"></div>
 
-              <div class="company-row">
+              <div class="company-name">«ГК „Точно“»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «DOGMA»
-                </span>
+              <div class="company-name">«ГК Юртэк»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ГК „Точно“»
-                </span>
+              <div class="company-name">«Юг-Энерго»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ГК Юртэк»
-                </span>
+              <div class="company-name">«УК „СитиМолл“»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «Юг-Энерго»
-                </span>
+              <div class="company-name">«ОИКОН»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «УК „СитиМолл“»
-                </span>
+              <div class="company-name">«ВКБ-Новостройки»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ОИКОН»
-                </span>
+              <div class="company-name">«Неометрия»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ВКБ-Новостройки»
-                </span>
+              <div class="company-name">«Liquid Group»</div>
 
-                <span class="company">
-                  «Неометрия»
-                </span>
-
-                <span class="company">
-                  «Liquid Group»
-                </span>
-
-              </div>
+            </div>
 
 
-              <!-- ДУБЛЬ ДЛЯ БЕСКОНЕЧНОЙ ЛЕНТЫ -->
+            <div class="company-group">
 
-              <div class="company-row" aria-hidden="true">
+              <div class="company-name">«DOGMA»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «DOGMA»
-                </span>
+              <div class="company-name">«ГК „Точно“»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ГК „Точно“»
-                </span>
+              <div class="company-name">«ГК Юртэк»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ГК Юртэк»
-                </span>
+              <div class="company-name">«Юг-Энерго»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «Юг-Энерго»
-                </span>
+              <div class="company-name">«УК „СитиМолл“»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «УК „СитиМолл“»
-                </span>
+              <div class="company-name">«ОИКОН»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ОИКОН»
-                </span>
+              <div class="company-name">«ВКБ-Новостройки»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «ВКБ-Новостройки»
-                </span>
+              <div class="company-name">«Неометрия»</div>
+              <div class="company-separator"></div>
 
-                <span class="company">
-                  «Неометрия»
-                </span>
-
-                <span class="company">
-                  «Liquid Group»
-                </span>
-
-              </div>
+              <div class="company-name">«Liquid Group»</div>
 
             </div>
 
@@ -1790,44 +1301,33 @@
     </section>
 
 
-    <!-- =======================================================
-         5. КОНТАКТЫ
-    ======================================================== -->
+    <!-- 5. КОНТАКТЫ -->
 
-    <section id="contacts">
+    <section id="contacts" class="contact-section">
 
-      <div class="container">
+      <div class="section-inner">
 
-        <div class="contact-inner">
+        <div class="contact-content">
 
           <div class="eyebrow">
             Контакты
           </div>
 
-
-          <h2 class="title contact-title">
+          <h2>
             Защитим ваш объект от огня
           </h2>
 
-
-          <p class="contact-text">
-            Свяжитесь с Сергеем по вопросам
-            огнезащитной обработки металлоконструкций.
-          </p>
-
-
           <a
-            class="phone"
+            class="contact-phone"
             href="tel:89182944223"
           >
             8 918 292-44-23
           </a>
 
-
-          <div class="buttons contact-actions">
+          <div class="contact-buttons">
 
             <a
-              class="button"
+              class="contact-button"
               href="https://wa.me/79182944223?text=Здравствуйте!%20Хотел%20бы%20узнать%20об%20огнезащитной%20обработке."
               target="_blank"
               rel="noopener noreferrer"
@@ -1835,9 +1335,8 @@
               Написать в WhatsApp
             </a>
 
-
             <a
-              class="button"
+              class="contact-button"
               href="tel:89182944223"
             >
               Позвонить
@@ -1855,37 +1354,164 @@
 
 
   <script>
+    /* =========================
+       МОБИЛЬНОЕ МЕНЮ
+    ========================= */
 
-    /* =========================================================
-       АКТИВНАЯ НАВИГАЦИЯ
-    ========================================================== */
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+    });
+
+    document
+      .querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.remove("open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
+      });
+
+
+    /* =========================
+       ГАЛЕРЕЯ
+    ========================= */
+
+    const slides = Array.from(
+      document.querySelectorAll(".gallery-slide")
+    );
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const galleryWindow = document.getElementById("galleryWindow");
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+
+      currentSlide =
+        (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+
+        slide.classList.toggle(
+          "active",
+          i === currentSlide
+        );
+
+      });
+
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+
+
+    /* Клавиатура */
+
+    document.addEventListener("keydown", event => {
+
+      if (event.key === "ArrowRight") {
+        nextSlide();
+      }
+
+      if (event.key === "ArrowLeft") {
+        prevSlide();
+      }
+
+    });
+
+
+    /* Свайп на телефоне */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    galleryWindow.addEventListener(
+      "touchstart",
+      event => {
+
+        touchStartX =
+          event.changedTouches[0].screenX;
+
+      },
+      { passive: true }
+    );
+
+    galleryWindow.addEventListener(
+      "touchend",
+      event => {
+
+        touchEndX =
+          event.changedTouches[0].screenX;
+
+        const distance =
+          touchEndX - touchStartX;
+
+        if (Math.abs(distance) < 45) {
+          return;
+        }
+
+        if (distance < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+
+      },
+      { passive: true }
+    );
+
+
+    /* =========================
+       АКТИВНЫЙ ПУНКТ МЕНЮ
+    ========================= */
 
     const sections =
       document.querySelectorAll("main section");
 
     const navLinks =
-      document.querySelectorAll(".nav-link");
+      document.querySelectorAll(".desktop-nav a");
 
-
-    const sectionObserver =
+    const observer =
       new IntersectionObserver(
-        (entries) => {
+        entries => {
 
-          entries.forEach((entry) => {
+          entries.forEach(entry => {
 
             if (!entry.isIntersecting) {
               return;
             }
 
-            const id =
-              entry.target.id;
-
-
-            navLinks.forEach((link) => {
+            navLinks.forEach(link => {
 
               link.classList.toggle(
                 "active",
-                link.getAttribute("href") === `#${id}`
+                link.getAttribute("href") ===
+                "#" + entry.target.id
               );
 
             });
@@ -1894,201 +1520,13 @@
 
         },
         {
-          threshold: .55
+          threshold: 0.55
         }
       );
 
-
-    sections.forEach((section) => {
-      sectionObserver.observe(section);
+    sections.forEach(section => {
+      observer.observe(section);
     });
-
-
-    /* =========================================================
-       МОБИЛЬНОЕ МЕНЮ
-    ========================================================== */
-
-    const menuButton =
-      document.getElementById("menuButton");
-
-    const mobileMenu =
-      document.getElementById("mobileMenu");
-
-
-    menuButton.addEventListener(
-      "click",
-      () => {
-
-        const opened =
-          mobileMenu.classList.toggle("open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          opened ? "true" : "false"
-        );
-
-      }
-    );
-
-
-    mobileMenu
-      .querySelectorAll("a")
-      .forEach((link) => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            mobileMenu.classList.remove("open");
-
-            menuButton.setAttribute(
-              "aria-expanded",
-              "false"
-            );
-
-          }
-        );
-
-      });
-
-
-    /* =========================================================
-       ГАЛЕРЕЯ — 7 ОБЪЕКТОВ
-    ========================================================== */
-
-    const gallery =
-      document.getElementById("gallery");
-
-    const track =
-      document.getElementById("galleryTrack");
-
-    const nextButton =
-      document.getElementById("nextButton");
-
-    const prevButton =
-      document.getElementById("prevButton");
-
-
-    const totalSlides = 7;
-
-    let currentSlide = 0;
-
-
-    function updateGallery() {
-
-      track.style.transform =
-        `translateX(-${currentSlide * 100}%)`;
-
-    }
-
-
-    function nextSlide() {
-
-      currentSlide++;
-
-      if (currentSlide >= totalSlides) {
-        currentSlide = 0;
-      }
-
-      updateGallery();
-
-    }
-
-
-    function previousSlide() {
-
-      currentSlide--;
-
-      if (currentSlide < 0) {
-        currentSlide = totalSlides - 1;
-      }
-
-      updateGallery();
-
-    }
-
-
-    nextButton.addEventListener(
-      "click",
-      nextSlide
-    );
-
-
-    prevButton.addEventListener(
-      "click",
-      previousSlide
-    );
-
-
-    /* =========================================================
-       СВАЙП
-    ========================================================== */
-
-    let touchStartX = 0;
-
-
-    gallery.addEventListener(
-      "touchstart",
-      (event) => {
-
-        touchStartX =
-          event.changedTouches[0].screenX;
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    gallery.addEventListener(
-      "touchend",
-      (event) => {
-
-        const touchEndX =
-          event.changedTouches[0].screenX;
-
-        const distance =
-          touchStartX - touchEndX;
-
-
-        if (Math.abs(distance) < 45) {
-          return;
-        }
-
-
-        if (distance > 0) {
-          nextSlide();
-        } else {
-          previousSlide();
-        }
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    /* =========================================================
-       КЛАВИАТУРА
-    ========================================================== */
-
-    document.addEventListener(
-      "keydown",
-      (event) => {
-
-        if (event.key === "ArrowRight") {
-          nextSlide();
-        }
-
-        if (event.key === "ArrowLeft") {
-          previousSlide();
-        }
-
-      }
-    );
-
   </script>
 
 </body>
