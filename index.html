@@ -29,13 +29,13 @@
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: #fff;
-      background: #111;
+      background: #101010;
       overflow-x: hidden;
     }
 
-    /* =========================
+    /* =====================================================
        ФОНОВОЕ ВИДЕО
-    ========================= */
+    ===================================================== */
 
     .site-video {
       position: fixed;
@@ -50,9 +50,9 @@
       z-index: 0;
 
       pointer-events: none;
-    }
 
-    /* Затемнение поверх видео */
+      background: #111;
+    }
 
     .video-overlay {
       position: fixed;
@@ -60,14 +60,18 @@
 
       z-index: 1;
 
-      background: rgba(0, 0, 0, 0.34);
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.38),
+          rgba(0, 0, 0, 0.38)
+        );
 
       pointer-events: none;
     }
 
-    /* =========================
+    /* =====================================================
        HEADER
-    ========================= */
+    ===================================================== */
 
     .site-header {
       position: fixed;
@@ -83,12 +87,12 @@
 
       padding: 12px 32px;
 
-      background: rgba(15, 15, 15, 0.38);
+      background: rgba(12, 12, 12, 0.34);
 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(13px);
+      -webkit-backdrop-filter: blur(13px);
 
-      border-bottom: 1px solid rgba(255,255,255,0.10);
+      border-bottom: 1px solid rgba(255,255,255,0.11);
     }
 
     .logo {
@@ -96,14 +100,14 @@
       align-items: center;
 
       text-decoration: none;
+
+      min-width: 0;
     }
 
     .logo img {
       display: block;
 
       width: 130px;
-      height: auto;
-
       max-height: 48px;
 
       object-fit: contain;
@@ -113,7 +117,7 @@
       display: flex;
       align-items: center;
 
-      gap: 28px;
+      gap: 27px;
     }
 
     .desktop-nav a {
@@ -157,9 +161,9 @@
       width: 100%;
     }
 
-    /* =========================
-       MOBILE MENU
-    ========================= */
+    /* =====================================================
+       МОБИЛЬНОЕ МЕНЮ
+    ===================================================== */
 
     .menu-button {
       display: none;
@@ -195,14 +199,17 @@
 
       padding: 14px;
 
-      background: rgba(15,15,15,0.93);
+      background: rgba(14,14,14,0.95);
 
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
 
       border: 1px solid rgba(255,255,255,0.12);
 
       border-radius: 16px;
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35);
     }
 
     .mobile-menu.open {
@@ -220,19 +227,21 @@
 
       font-size: 15px;
 
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom:
+        1px solid rgba(255,255,255,0.08);
     }
 
     .mobile-menu a:last-child {
       border-bottom: none;
     }
 
-    /* =========================
+    /* =====================================================
        ОСНОВА
-    ========================= */
+    ===================================================== */
 
     main {
       position: relative;
+
       z-index: 2;
     }
 
@@ -245,13 +254,46 @@
       align-items: center;
       justify-content: center;
 
-      padding: 110px 40px 60px;
+      padding:
+        110px 40px
+        65px;
 
       scroll-margin-top: 70px;
     }
 
+    /*
+      Тонкий визуальный разделитель между экранами.
+      Он не создаёт лишнего большого пустого пространства.
+    */
+
+    section::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      bottom: 0;
+
+      width: min(820px, 72%);
+
+      height: 1px;
+
+      transform: translateX(-50%);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.24),
+          transparent
+        );
+
+      opacity: 0.7;
+    }
+
     .section-inner {
       width: min(1120px, 100%);
+
       margin: 0 auto;
     }
 
@@ -295,9 +337,9 @@
       color: rgba(255,255,255,0.88);
     }
 
-    /* =========================
+    /* =====================================================
        1. ГЛАВНАЯ
-    ========================= */
+    ===================================================== */
 
     .hero-layout {
       display: grid;
@@ -326,12 +368,13 @@
 
       overflow: hidden;
 
-      border: 1px solid rgba(255,255,255,0.18);
+      border:
+        1px solid rgba(255,255,255,0.19);
 
       background: rgba(0,0,0,0.20);
 
       box-shadow:
-        0 20px 60px rgba(0,0,0,0.32);
+        0 20px 60px rgba(0,0,0,0.34);
     }
 
     .hero-photo img {
@@ -368,9 +411,9 @@
       color: rgba(255,255,255,0.70);
     }
 
-    /* =========================
+    /* =====================================================
        2. ОБРАБОТКА
-    ========================= */
+    ===================================================== */
 
     .service-layout {
       display: grid;
@@ -427,11 +470,12 @@
 
       padding: 18px;
 
-      border: 1px solid rgba(255,255,255,0.12);
+      border:
+        1px solid rgba(255,255,255,0.12);
 
       border-radius: 14px;
 
-      background: rgba(0,0,0,0.18);
+      background: rgba(0,0,0,0.17);
 
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -451,9 +495,9 @@
       color: rgba(255,255,255,0.66);
     }
 
-    /* =========================
+    /* =====================================================
        3. ОБРАБОТКА ЗДАНИЙ
-    ========================= */
+    ===================================================== */
 
     .works-section .section-inner {
       width: min(940px, 100%);
@@ -478,14 +522,15 @@
 
       padding: 12px;
 
-      border: 1px solid rgba(255,255,255,0.18);
+      border:
+        1px solid rgba(255,255,255,0.18);
 
       border-radius: 20px;
 
       background: rgba(0,0,0,0.16);
 
       box-shadow:
-        0 18px 50px rgba(0,0,0,0.25);
+        0 18px 50px rgba(0,0,0,0.27);
     }
 
     .gallery-window {
@@ -501,7 +546,8 @@
 
       overflow: hidden;
 
-      border: 1px solid rgba(255,255,255,0.14);
+      border:
+        1px solid rgba(255,255,255,0.14);
 
       border-radius: 14px;
 
@@ -533,7 +579,11 @@
       visibility: visible;
     }
 
-    /* ФОТО ПОКАЗЫВАЕТСЯ ЦЕЛИКОМ */
+    /*
+      ВАЖНО:
+      contain = фотография целиком,
+      без обрезания.
+    */
 
     .gallery-slide img {
       display: block;
@@ -559,11 +609,13 @@
       width: 44px;
       height: 44px;
 
-      border: 1px solid rgba(255,255,255,0.22);
+      border:
+        1px solid rgba(255,255,255,0.22);
 
       border-radius: 50%;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -574,6 +626,7 @@
       cursor: pointer;
 
       font-size: 25px;
+
       line-height: 1;
 
       transition:
@@ -582,7 +635,8 @@
     }
 
     .gallery-arrow:hover {
-      background: rgba(255,255,255,0.13);
+      background:
+        rgba(255,255,255,0.13);
     }
 
     .gallery-arrow.prev {
@@ -593,9 +647,9 @@
       right: 24px;
     }
 
-    /* =========================
+    /* =====================================================
        4. КОМПАНИИ
-    ========================= */
+    ===================================================== */
 
     .companies-section {
       overflow: hidden;
@@ -630,11 +684,13 @@
 
       width: max-content;
 
-      animation: marquee 32s linear infinite;
+      animation:
+        marquee 32s linear infinite;
     }
 
     .company-group {
       display: flex;
+
       align-items: center;
 
       flex-shrink: 0;
@@ -664,7 +720,8 @@
 
       border-radius: 50%;
 
-      background: rgba(255,255,255,0.44);
+      background:
+        rgba(255,255,255,0.44);
 
       flex: 0 0 auto;
     }
@@ -679,12 +736,21 @@
       }
     }
 
-    /* =========================
+    /* =====================================================
        5. КОНТАКТЫ
-    ========================= */
+    ===================================================== */
 
     .contact-section {
       text-align: center;
+    }
+
+    /*
+      На последнем экране разделитель убираем,
+      чтобы страница красиво завершалась.
+    */
+
+    .contact-section::after {
+      display: none;
     }
 
     .contact-content {
@@ -710,7 +776,8 @@
 
       font-weight: 600;
 
-      transition: opacity 0.2s ease;
+      transition:
+        opacity 0.2s ease;
     }
 
     .contact-phone:hover {
@@ -750,9 +817,11 @@
 
       font-weight: 600;
 
-      border: 1px solid rgba(255,255,255,0.20);
+      border:
+        1px solid rgba(255,255,255,0.20);
 
-      background: rgba(255,255,255,0.08);
+      background:
+        rgba(255,255,255,0.08);
 
       transition:
         background 0.2s ease,
@@ -760,14 +829,15 @@
     }
 
     .contact-button:hover {
-      background: rgba(255,255,255,0.14);
+      background:
+        rgba(255,255,255,0.14);
 
       transform: translateY(-1px);
     }
 
-    /* =========================
+    /* =====================================================
        TABLET
-    ========================= */
+    ===================================================== */
 
     @media (max-width: 900px) {
 
@@ -784,7 +854,9 @@
       }
 
       section {
-        padding: 96px 22px 50px;
+        padding:
+          96px 22px
+          48px;
       }
 
       .hero-layout {
@@ -820,9 +892,9 @@
       }
     }
 
-    /* =========================
+    /* =====================================================
        MOBILE
-    ========================= */
+    ===================================================== */
 
     @media (max-width: 640px) {
 
@@ -836,24 +908,59 @@
         max-height: 40px;
       }
 
-      section {
-        min-height: 100svh;
+      /*
+        Секции делаем плотнее.
+        Уже не 100svh каждая.
+      */
 
-        padding: 88px 14px 40px;
+      section {
+        min-height: 0;
+
+        padding:
+          76px 14px
+          46px;
+      }
+
+      section::after {
+        width: 64%;
+
+        opacity: 0.58;
+      }
+
+      #home {
+        min-height: 90svh;
+      }
+
+      #processing {
+        min-height: 82svh;
+      }
+
+      #buildings {
+        min-height: 76svh;
+      }
+
+      #companies {
+        min-height: 68svh;
+      }
+
+      #contacts {
+        min-height: 70svh;
       }
 
       .eyebrow {
-        font-size: 11px;
+        margin-bottom: 9px;
+
+        font-size: 10px;
       }
 
       h1 {
-        font-size: 25px;
+        font-size: 24px;
 
         line-height: 1.08;
       }
 
       h2 {
-        font-size: 24px;
+        font-size: 23px;
 
         line-height: 1.1;
       }
@@ -864,16 +971,16 @@
         line-height: 1.5;
       }
 
-      /* Главная:
-         фото слева,
-         текст справа */
+      /* =================================================
+         ГЛАВНАЯ НА ТЕЛЕФОНЕ
+      ================================================= */
 
       .hero-layout {
         grid-template-columns:
-          minmax(120px, 0.42fr)
-          minmax(0, 0.58fr);
+          minmax(118px, 0.43fr)
+          minmax(0, 0.57fr);
 
-        gap: 14px;
+        gap: 13px;
 
         width: 100%;
       }
@@ -883,39 +990,47 @@
 
         max-width: none;
 
-        border-radius: 15px;
+        border-radius: 14px;
       }
 
       .hero-photo img {
         aspect-ratio: 3 / 4;
       }
 
-      .hero-content h1 {
-        margin-bottom: 10px;
+      .hero-content {
+        min-width: 0;
+      }
 
-        font-size: 21px;
+      .hero-content h1 {
+        margin-bottom: 9px;
+
+        font-size: 20px;
+
+        line-height: 1.08;
       }
 
       .hero-content p {
-        font-size: 12px;
+        font-size: 11.5px;
 
         line-height: 1.42;
       }
 
       .hero-experience {
-        margin-top: 10px;
+        margin-top: 9px;
 
-        font-size: 11px;
+        font-size: 10.5px;
 
         line-height: 1.4;
       }
 
-      /* Обработка */
+      /* =================================================
+         ОБРАБОТКА
+      ================================================= */
 
       .service-layout {
         grid-template-columns: 1fr;
 
-        gap: 24px;
+        gap: 22px;
       }
 
       .service-left h2 {
@@ -923,135 +1038,194 @@
       }
 
       .service-main {
-        font-size: 15px;
+        margin-bottom: 14px;
+
+        font-size: 14.5px;
 
         line-height: 1.5;
       }
 
       .service-secondary {
-        font-size: 13px;
+        font-size: 12.5px;
 
-        line-height: 1.5;
+        line-height: 1.48;
       }
 
       .service-cards {
-        margin-top: 22px;
+        margin-top: 19px;
 
-        gap: 9px;
+        gap: 8px;
       }
 
       .service-card {
-        padding: 14px;
+        padding: 13px;
+
+        border-radius: 12px;
       }
 
       .service-card h3 {
-        font-size: 14px;
+        margin-bottom: 6px;
+
+        font-size: 13.5px;
       }
 
       .service-card p {
-        font-size: 12px;
+        font-size: 11.5px;
+
+        line-height: 1.42;
       }
 
-      /* Галерея */
+      /* =================================================
+         ГАЛЕРЕЯ
+      ================================================= */
 
       .works-heading {
-        margin-bottom: 18px;
+        margin-bottom: 16px;
       }
 
       .gallery {
-        width: 92%;
+        width: 91%;
 
-        padding: 8px;
+        padding: 7px;
 
-        border-radius: 15px;
+        border-radius: 14px;
       }
 
       .gallery-window {
-        height: 270px;
+        height: 250px;
 
         border-radius: 10px;
       }
 
       .gallery-slide {
-        padding: 8px;
+        padding: 7px;
       }
+
+      /*
+        Фотографии показываются полностью.
+      */
 
       .gallery-slide img {
         object-fit: contain;
       }
 
       .gallery-arrow {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
 
-        font-size: 21px;
+        font-size: 20px;
       }
 
       .gallery-arrow.prev {
-        left: 10px;
+        left: 8px;
       }
 
       .gallery-arrow.next {
-        right: 10px;
+        right: 8px;
       }
 
-      /* Компании */
+      /* =================================================
+         КОМПАНИИ
+      ================================================= */
 
       .companies-heading {
-        margin-bottom: 34px;
+        margin-bottom: 30px;
       }
 
       .company-name {
-        padding: 0 18px;
+        padding: 0 17px;
 
-        font-size: 25px;
+        font-size: 24px;
       }
 
-      /* Контакты */
+      .company-separator {
+        width: 4px;
+        height: 4px;
+      }
+
+      /* =================================================
+         КОНТАКТЫ
+      ================================================= */
 
       .contact-content h2 {
-        font-size: 26px;
+        font-size: 25px;
       }
 
       .contact-phone {
-        font-size: 25px;
+        margin-top: 17px;
+
+        font-size: 24px;
       }
 
       .contact-buttons {
+        margin-top: 24px;
+
         flex-direction: column;
 
         width: 100%;
+
+        gap: 9px;
       }
 
       .contact-button {
         width: 100%;
+
+        min-height: 46px;
       }
     }
 
+    /* =====================================================
+       МАЛЕНЬКИЕ ТЕЛЕФОНЫ
+    ===================================================== */
+
     @media (max-width: 380px) {
+
+      #home {
+        min-height: 88svh;
+      }
+
+      #processing {
+        min-height: 78svh;
+      }
+
+      #buildings {
+        min-height: 72svh;
+      }
+
+      #companies {
+        min-height: 64svh;
+      }
+
+      #contacts {
+        min-height: 66svh;
+      }
 
       .hero-layout {
         grid-template-columns:
-          minmax(108px, 0.40fr)
-          minmax(0, 0.60fr);
+          minmax(105px, 0.41fr)
+          minmax(0, 0.59fr);
 
         gap: 10px;
       }
 
       .hero-content h1 {
-        font-size: 19px;
+        font-size: 18.5px;
       }
 
       .hero-content p {
-        font-size: 11px;
+        font-size: 10.5px;
       }
 
       .hero-experience {
-        font-size: 10px;
+        font-size: 9.8px;
       }
 
       .gallery-window {
-        height: 245px;
+        height: 225px;
+      }
+
+      .company-name {
+        font-size: 22px;
       }
     }
   </style>
@@ -1059,7 +1233,10 @@
 
 <body>
 
-  <!-- ФОНОВОЕ ВИДЕО -->
+  <!-- =====================================================
+       ФОНОВОЕ ВИДЕО
+       Файл: img/video.mp4
+  ===================================================== -->
 
   <video
     class="site-video"
@@ -1069,13 +1246,18 @@
     playsinline
     preload="auto"
   >
-    <source src="img/video.mp4" type="video/mp4">
+    <source
+      src="img/video.mp4"
+      type="video/mp4"
+    >
   </video>
 
   <div class="video-overlay"></div>
 
 
-  <!-- HEADER -->
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
 
   <header class="site-header">
 
@@ -1129,7 +1311,9 @@
   </header>
 
 
-  <!-- MOBILE MENU -->
+  <!-- =====================================================
+       MOBILE MENU
+  ===================================================== -->
 
   <div
     class="mobile-menu"
@@ -1161,9 +1345,9 @@
 
   <main>
 
-    <!-- =========================
+    <!-- ===================================================
          1. ГЛАВНАЯ
-    ========================= -->
+    =================================================== -->
 
     <section id="home">
 
@@ -1179,6 +1363,7 @@
             >
 
           </div>
+
 
           <div class="hero-content">
 
@@ -1205,9 +1390,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ===================================================
          2. ОБРАБОТКА
-    ========================= -->
+    =================================================== -->
 
     <section id="processing">
 
@@ -1227,6 +1412,7 @@
 
           </div>
 
+
           <div class="service-right">
 
             <p class="service-main">
@@ -1241,6 +1427,7 @@
               поверхности и нанесение специальных
               огнезащитных материалов.
             </p>
+
 
             <div class="service-cards">
 
@@ -1257,6 +1444,7 @@
 
               </div>
 
+
               <div class="service-card">
 
                 <h3>
@@ -1269,6 +1457,7 @@
                 </p>
 
               </div>
+
 
               <div class="service-card">
 
@@ -1293,9 +1482,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ===================================================
          3. ОБРАБОТКА ЗДАНИЙ
-    ========================= -->
+    =================================================== -->
 
     <section
       id="buildings"
@@ -1334,6 +1523,7 @@
 
             </div>
 
+
             <div class="gallery-slide">
 
               <img
@@ -1343,6 +1533,7 @@
               >
 
             </div>
+
 
             <div class="gallery-slide">
 
@@ -1354,6 +1545,7 @@
 
             </div>
 
+
             <div class="gallery-slide">
 
               <img
@@ -1363,6 +1555,7 @@
               >
 
             </div>
+
 
             <div class="gallery-slide">
 
@@ -1374,6 +1567,7 @@
 
             </div>
 
+
             <div class="gallery-slide">
 
               <img
@@ -1383,6 +1577,7 @@
               >
 
             </div>
+
 
             <div class="gallery-slide">
 
@@ -1403,6 +1598,7 @@
               ‹
             </button>
 
+
             <button
               class="gallery-arrow next"
               id="nextBtn"
@@ -1420,9 +1616,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ===================================================
          4. КОМПАНИИ
-    ========================= -->
+    =================================================== -->
 
     <section
       id="companies"
@@ -1570,9 +1766,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ===================================================
          5. КОНТАКТЫ
-    ========================= -->
+    =================================================== -->
 
     <section
       id="contacts"
@@ -1611,6 +1807,7 @@
               Написать в WhatsApp
             </a>
 
+
             <a
               class="contact-button"
               href="tel:89182944223"
@@ -1631,9 +1828,9 @@
 
   <script>
 
-    /* =========================
+    /* =====================================================
        МОБИЛЬНОЕ МЕНЮ
-    ========================= */
+    ===================================================== */
 
     const menuButton =
       document.getElementById("menuButton");
@@ -1679,9 +1876,9 @@
       });
 
 
-    /* =========================
+    /* =====================================================
        ГАЛЕРЕЯ
-    ========================= */
+    ===================================================== */
 
     const slides =
       Array.from(
@@ -1743,23 +1940,19 @@
     );
 
 
-    /* =========================
+    /* =====================================================
        КЛАВИАТУРА
-    ========================= */
+    ===================================================== */
 
     document.addEventListener(
       "keydown",
       event => {
 
-        if (
-          event.key === "ArrowRight"
-        ) {
+        if (event.key === "ArrowRight") {
           nextSlide();
         }
 
-        if (
-          event.key === "ArrowLeft"
-        ) {
+        if (event.key === "ArrowLeft") {
           prevSlide();
         }
 
@@ -1767,9 +1960,9 @@
     );
 
 
-    /* =========================
+    /* =====================================================
        СВАЙП
-    ========================= */
+    ===================================================== */
 
     let touchStartX = 0;
     let touchEndX = 0;
@@ -1819,9 +2012,9 @@
     );
 
 
-    /* =========================
+    /* =====================================================
        АКТИВНЫЙ ПУНКТ МЕНЮ
-    ========================= */
+    ===================================================== */
 
     const sections =
       document.querySelectorAll(
