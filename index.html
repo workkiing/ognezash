@@ -33,30 +33,48 @@
       overflow-x: hidden;
     }
 
-    .site-background {
+    /* =========================
+       ФОНОВОЕ ВИДЕО
+    ========================= */
+
+    .site-video {
       position: fixed;
       inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
       z-index: 0;
-
-      background-image:
-        linear-gradient(
-          rgba(0, 0, 0, 0.30),
-          rgba(0, 0, 0, 0.30)
-        ),
-        url("img/background.jpg");
-
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
 
       pointer-events: none;
     }
+
+    /* Затемнение поверх видео */
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 1;
+
+      background: rgba(0, 0, 0, 0.34);
+
+      pointer-events: none;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     .site-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
+
       z-index: 20;
 
       display: flex;
@@ -65,7 +83,8 @@
 
       padding: 12px 32px;
 
-      background: rgba(15, 15, 15, 0.45);
+      background: rgba(15, 15, 15, 0.38);
+
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
 
@@ -75,20 +94,25 @@
     .logo {
       display: flex;
       align-items: center;
+
       text-decoration: none;
     }
 
     .logo img {
       display: block;
+
       width: 130px;
       height: auto;
+
       max-height: 48px;
+
       object-fit: contain;
     }
 
     .desktop-nav {
       display: flex;
       align-items: center;
+
       gap: 28px;
     }
 
@@ -96,18 +120,22 @@
       position: relative;
 
       color: rgba(255,255,255,0.82);
+
       text-decoration: none;
 
       font-size: 14px;
       font-weight: 500;
 
-      transition: color 0.25s ease;
       white-space: nowrap;
+
+      transition: color 0.25s ease;
     }
 
     .desktop-nav a::after {
       content: "";
+
       position: absolute;
+
       left: 0;
       bottom: -7px;
 
@@ -129,25 +157,36 @@
       width: 100%;
     }
 
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
     .menu-button {
       display: none;
 
       width: 42px;
       height: 42px;
 
+      align-items: center;
+      justify-content: center;
+
       border: 1px solid rgba(255,255,255,0.22);
       border-radius: 10px;
 
       background: rgba(255,255,255,0.07);
+
       color: #fff;
 
       cursor: pointer;
+
+      font-size: 20px;
     }
 
     .mobile-menu {
       display: none;
 
       position: fixed;
+
       top: 70px;
       left: 14px;
       right: 14px;
@@ -156,11 +195,13 @@
 
       padding: 14px;
 
-      background: rgba(15,15,15,0.94);
+      background: rgba(15,15,15,0.93);
+
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
 
       border: 1px solid rgba(255,255,255,0.12);
+
       border-radius: 16px;
     }
 
@@ -174,6 +215,7 @@
       padding: 13px 10px;
 
       color: #fff;
+
       text-decoration: none;
 
       font-size: 15px;
@@ -184,6 +226,10 @@
     .mobile-menu a:last-child {
       border-bottom: none;
     }
+
+    /* =========================
+       ОСНОВА
+    ========================= */
 
     main {
       position: relative;
@@ -231,18 +277,21 @@
     h1 {
       font-size: clamp(30px, 4vw, 58px);
       line-height: 1.06;
+
       font-weight: 700;
     }
 
     h2 {
       font-size: clamp(26px, 3vw, 44px);
       line-height: 1.08;
+
       font-weight: 700;
     }
 
     p {
       font-size: 17px;
       line-height: 1.6;
+
       color: rgba(255,255,255,0.88);
     }
 
@@ -262,6 +311,7 @@
       gap: 58px;
 
       width: min(1000px, 100%);
+
       margin: 0 auto;
     }
 
@@ -269,6 +319,7 @@
       width: 100%;
 
       max-width: 360px;
+
       justify-self: center;
 
       border-radius: 22px;
@@ -300,6 +351,7 @@
 
     .hero-content h1 {
       max-width: 640px;
+
       margin-bottom: 18px;
     }
 
@@ -332,10 +384,12 @@
       align-items: center;
 
       width: min(980px, 100%);
+
       margin: 0 auto;
     }
 
-    .service-left {
+    .service-left,
+    .service-right {
       min-width: 0;
     }
 
@@ -343,15 +397,11 @@
       max-width: 400px;
     }
 
-    .service-right {
-      min-width: 0;
-    }
-
     .service-main {
+      margin-bottom: 18px;
+
       font-size: 18px;
       line-height: 1.55;
-
-      margin-bottom: 18px;
     }
 
     .service-secondary {
@@ -366,7 +416,8 @@
 
       display: grid;
 
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
       gap: 12px;
     }
@@ -377,6 +428,7 @@
       padding: 18px;
 
       border: 1px solid rgba(255,255,255,0.12);
+
       border-radius: 14px;
 
       background: rgba(0,0,0,0.18);
@@ -409,6 +461,7 @@
 
     .works-heading {
       text-align: center;
+
       margin-bottom: 26px;
     }
 
@@ -426,6 +479,7 @@
       padding: 12px;
 
       border: 1px solid rgba(255,255,255,0.18);
+
       border-radius: 20px;
 
       background: rgba(0,0,0,0.16);
@@ -438,16 +492,17 @@
       position: relative;
 
       width: 100%;
-
       height: 430px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       overflow: hidden;
 
       border: 1px solid rgba(255,255,255,0.14);
+
       border-radius: 14px;
 
       background: rgba(0,0,0,0.22);
@@ -455,9 +510,11 @@
 
     .gallery-slide {
       position: absolute;
+
       inset: 0;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -476,6 +533,8 @@
       visibility: visible;
     }
 
+    /* ФОТО ПОКАЗЫВАЕТСЯ ЦЕЛИКОМ */
+
     .gallery-slide img {
       display: block;
 
@@ -483,7 +542,6 @@
       height: 100%;
 
       object-fit: contain;
-
       object-position: center;
 
       border-radius: 9px;
@@ -493,6 +551,7 @@
       position: absolute;
 
       top: 50%;
+
       transform: translateY(-50%);
 
       z-index: 5;
@@ -501,6 +560,7 @@
       height: 44px;
 
       border: 1px solid rgba(255,255,255,0.22);
+
       border-radius: 50%;
 
       display: flex;
@@ -508,6 +568,7 @@
       justify-content: center;
 
       background: rgba(15,15,15,0.52);
+
       color: #fff;
 
       cursor: pointer;
@@ -542,11 +603,13 @@
 
     .companies-heading {
       text-align: center;
+
       margin-bottom: 48px;
     }
 
     .companies-heading h2 {
       max-width: 900px;
+
       margin: 0 auto;
     }
 
@@ -556,6 +619,7 @@
       width: 100vw;
 
       left: 50%;
+
       transform: translateX(-50%);
 
       overflow: hidden;
@@ -572,11 +636,13 @@
     .company-group {
       display: flex;
       align-items: center;
+
       flex-shrink: 0;
     }
 
     .company-name {
       display: inline-flex;
+
       align-items: center;
 
       padding: 0 28px;
@@ -584,6 +650,7 @@
       white-space: nowrap;
 
       font-size: clamp(24px, 3vw, 44px);
+
       line-height: 1;
 
       font-weight: 600;
@@ -622,6 +689,7 @@
 
     .contact-content {
       width: min(760px, 100%);
+
       margin: 0 auto;
     }
 
@@ -635,9 +703,11 @@
       margin-top: 20px;
 
       color: #fff;
+
       text-decoration: none;
 
       font-size: clamp(24px, 3vw, 38px);
+
       font-weight: 600;
 
       transition: opacity 0.2s ease;
@@ -651,6 +721,7 @@
       margin-top: 30px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -661,6 +732,7 @@
 
     .contact-button {
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
 
@@ -671,9 +743,11 @@
       border-radius: 10px;
 
       color: #fff;
+
       text-decoration: none;
 
       font-size: 14px;
+
       font-weight: 600;
 
       border: 1px solid rgba(255,255,255,0.20);
@@ -687,6 +761,7 @@
 
     .contact-button:hover {
       background: rgba(255,255,255,0.14);
+
       transform: translateY(-1px);
     }
 
@@ -695,6 +770,7 @@
     ========================= */
 
     @media (max-width: 900px) {
+
       .site-header {
         padding: 10px 18px;
       }
@@ -705,8 +781,6 @@
 
       .menu-button {
         display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
       section {
@@ -715,6 +789,7 @@
 
       .hero-layout {
         gap: 30px;
+
         grid-template-columns:
           minmax(230px, 0.9fr)
           minmax(280px, 1.1fr);
@@ -726,6 +801,7 @@
 
       .service-layout {
         gap: 35px;
+
         grid-template-columns:
           minmax(220px, 0.8fr)
           minmax(280px, 1.2fr);
@@ -749,12 +825,14 @@
     ========================= */
 
     @media (max-width: 640px) {
+
       .site-header {
         padding: 9px 14px;
       }
 
       .logo img {
         width: 106px;
+
         max-height: 40px;
       }
 
@@ -770,20 +848,25 @@
 
       h1 {
         font-size: 25px;
+
         line-height: 1.08;
       }
 
       h2 {
         font-size: 24px;
+
         line-height: 1.1;
       }
 
       p {
         font-size: 14px;
+
         line-height: 1.5;
       }
 
-      /* Главная сохраняет фото слева, текст справа */
+      /* Главная:
+         фото слева,
+         текст справа */
 
       .hero-layout {
         grid-template-columns:
@@ -797,6 +880,7 @@
 
       .hero-photo {
         width: 100%;
+
         max-width: none;
 
         border-radius: 15px;
@@ -808,11 +892,13 @@
 
       .hero-content h1 {
         margin-bottom: 10px;
+
         font-size: 21px;
       }
 
       .hero-content p {
         font-size: 12px;
+
         line-height: 1.42;
       }
 
@@ -820,6 +906,7 @@
         margin-top: 10px;
 
         font-size: 11px;
+
         line-height: 1.4;
       }
 
@@ -827,6 +914,7 @@
 
       .service-layout {
         grid-template-columns: 1fr;
+
         gap: 24px;
       }
 
@@ -836,16 +924,19 @@
 
       .service-main {
         font-size: 15px;
+
         line-height: 1.5;
       }
 
       .service-secondary {
         font-size: 13px;
+
         line-height: 1.5;
       }
 
       .service-cards {
         margin-top: 22px;
+
         gap: 9px;
       }
 
@@ -869,6 +960,7 @@
 
       .gallery {
         width: 92%;
+
         padding: 8px;
 
         border-radius: 15px;
@@ -927,6 +1019,7 @@
 
       .contact-buttons {
         flex-direction: column;
+
         width: 100%;
       }
 
@@ -936,6 +1029,7 @@
     }
 
     @media (max-width: 380px) {
+
       .hero-layout {
         grid-template-columns:
           minmax(108px, 0.40fr)
@@ -965,20 +1059,62 @@
 
 <body>
 
-  <div class="site-background"></div>
+  <!-- ФОНОВОЕ ВИДЕО -->
+
+  <video
+    class="site-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  >
+    <source src="img/video.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-overlay"></div>
+
+
+  <!-- HEADER -->
 
   <header class="site-header">
 
-    <a class="logo" href="#home" aria-label="PROZASHITA">
-      <img src="img/logo.jpg" alt="PROZASHITA">
+    <a
+      class="logo"
+      href="#home"
+      aria-label="PROZASHITA"
+    >
+      <img
+        src="img/logo.jpg"
+        alt="PROZASHITA"
+      >
     </a>
 
     <nav class="desktop-nav">
-      <a href="#home" class="active">Главная</a>
-      <a href="#processing">Обработка</a>
-      <a href="#buildings">Обработка зданий</a>
-      <a href="#companies">Компании</a>
-      <a href="#contacts">Контакты</a>
+
+      <a
+        href="#home"
+        class="active"
+      >
+        Главная
+      </a>
+
+      <a href="#processing">
+        Обработка
+      </a>
+
+      <a href="#buildings">
+        Обработка зданий
+      </a>
+
+      <a href="#companies">
+        Компании
+      </a>
+
+      <a href="#contacts">
+        Контакты
+      </a>
+
     </nav>
 
     <button
@@ -992,28 +1128,56 @@
 
   </header>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#home">Главная</a>
-    <a href="#processing">Обработка</a>
-    <a href="#buildings">Обработка зданий</a>
-    <a href="#companies">Компании</a>
-    <a href="#contacts">Контакты</a>
+
+  <!-- MOBILE MENU -->
+
+  <div
+    class="mobile-menu"
+    id="mobileMenu"
+  >
+
+    <a href="#home">
+      Главная
+    </a>
+
+    <a href="#processing">
+      Обработка
+    </a>
+
+    <a href="#buildings">
+      Обработка зданий
+    </a>
+
+    <a href="#companies">
+      Компании
+    </a>
+
+    <a href="#contacts">
+      Контакты
+    </a>
+
   </div>
+
 
   <main>
 
-    <!-- 1. ГЛАВНАЯ -->
+    <!-- =========================
+         1. ГЛАВНАЯ
+    ========================= -->
 
     <section id="home">
+
       <div class="section-inner">
 
         <div class="hero-layout">
 
           <div class="hero-photo">
+
             <img
               src="img/sergey.jpg"
               alt="Сергей — специалист по огнезащите"
             >
+
           </div>
 
           <div class="hero-content">
@@ -1023,8 +1187,9 @@
             </h1>
 
             <p>
-              Сергей — руководитель и специалист, который лично занимается
-              огнезащитной обработкой металлоконструкций.
+              Сергей — руководитель и специалист,
+              который лично занимается огнезащитной
+              обработкой металлоконструкций.
             </p>
 
             <div class="hero-experience">
@@ -1036,10 +1201,13 @@
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- 2. ОБРАБОТКА -->
+    <!-- =========================
+         2. ОБРАБОТКА
+    ========================= -->
 
     <section id="processing">
 
@@ -1062,37 +1230,56 @@
           <div class="service-right">
 
             <p class="service-main">
-              Огнезащитная обработка металлоконструкций помогает повысить
-              огнестойкость стали и дольше сохранять несущую способность
-              конструкции при воздействии высокой температуры.
+              Огнезащитная обработка металлоконструкций
+              помогает повысить огнестойкость стали и дольше
+              сохранять несущую способность конструкции
+              при воздействии высокой температуры.
             </p>
 
             <p class="service-secondary">
-              Работа включает подготовку металлической поверхности и нанесение
-              специальных огнезащитных материалов.
+              Работа включает подготовку металлической
+              поверхности и нанесение специальных
+              огнезащитных материалов.
             </p>
 
             <div class="service-cards">
 
               <div class="service-card">
-                <h3>Металлоконструкции</h3>
+
+                <h3>
+                  Металлоконструкции
+                </h3>
+
                 <p>
-                  Обработка металлических элементов и конструкций
+                  Обработка металлических элементов
+                  и конструкций
                 </p>
+
               </div>
 
               <div class="service-card">
-                <h3>Огнестойкость</h3>
+
+                <h3>
+                  Огнестойкость
+                </h3>
+
                 <p>
-                  Повышение устойчивости стали к воздействию огня
+                  Повышение устойчивости стали
+                  к воздействию огня
                 </p>
+
               </div>
 
               <div class="service-card">
-                <h3>Опыт</h3>
+
+                <h3>
+                  Опыт
+                </h3>
+
                 <p>
                   Более 10 лет работы в сфере огнезащиты
                 </p>
+
               </div>
 
             </div>
@@ -1106,9 +1293,14 @@
     </section>
 
 
-    <!-- 3. ОБРАБОТКА ЗДАНИЙ -->
+    <!-- =========================
+         3. ОБРАБОТКА ЗДАНИЙ
+    ========================= -->
 
-    <section id="buildings" class="works-section">
+    <section
+      id="buildings"
+      class="works-section"
+    >
 
       <div class="section-inner">
 
@@ -1124,65 +1316,84 @@
 
         </div>
 
+
         <div class="gallery">
 
-          <div class="gallery-window" id="galleryWindow">
+          <div
+            class="gallery-window"
+            id="galleryWindow"
+          >
 
             <div class="gallery-slide active">
+
               <img
                 src="img/work1.jpg"
                 alt="Объект"
                 draggable="false"
               >
+
             </div>
 
             <div class="gallery-slide">
+
               <img
                 src="img/work2.jpg"
                 alt="Объект"
                 draggable="false"
               >
+
             </div>
 
             <div class="gallery-slide">
+
               <img
                 src="img/work3.jpg"
                 alt="Объект"
                 draggable="false"
               >
+
             </div>
 
             <div class="gallery-slide">
+
               <img
                 src="img/work4.jpg"
                 alt="Объект"
                 draggable="false"
               >
+
             </div>
 
             <div class="gallery-slide">
+
               <img
                 src="img/work5.jpg"
                 alt="Объект"
                 draggable="false"
               >
+
             </div>
 
             <div class="gallery-slide">
+
               <img
                 src="img/work6.jpg"
                 alt="Объект"
                 draggable="false"
               >
+
             </div>
 
             <div class="gallery-slide">
+
               <img
                 src="img/work7.jpg"
                 alt="Объект"
                 draggable="false"
               >
+
             </div>
+
 
             <button
               class="gallery-arrow prev"
@@ -1209,9 +1420,14 @@
     </section>
 
 
-    <!-- 4. КОМПАНИИ -->
+    <!-- =========================
+         4. КОМПАНИИ
+    ========================= -->
 
-    <section id="companies" class="companies-section">
+    <section
+      id="companies"
+      class="companies-section"
+    >
 
       <div class="section-inner">
 
@@ -1227,68 +1443,121 @@
 
         </div>
 
+
         <div class="marquee">
 
           <div class="marquee-track">
 
             <div class="company-group">
 
-              <div class="company-name">«DOGMA»</div>
+              <div class="company-name">
+                «DOGMA»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ГК „Точно“»</div>
+              <div class="company-name">
+                «ГК „Точно“»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ГК Юртэк»</div>
+              <div class="company-name">
+                «ГК Юртэк»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«Юг-Энерго»</div>
+              <div class="company-name">
+                «Юг-Энерго»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«УК „СитиМолл“»</div>
+              <div class="company-name">
+                «УК „СитиМолл“»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ОИКОН»</div>
+              <div class="company-name">
+                «ОИКОН»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ВКБ-Новостройки»</div>
+              <div class="company-name">
+                «ВКБ-Новостройки»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«Неометрия»</div>
+              <div class="company-name">
+                «Неометрия»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«Liquid Group»</div>
+              <div class="company-name">
+                «Liquid Group»
+              </div>
 
             </div>
 
 
             <div class="company-group">
 
-              <div class="company-name">«DOGMA»</div>
+              <div class="company-name">
+                «DOGMA»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ГК „Точно“»</div>
+              <div class="company-name">
+                «ГК „Точно“»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ГК Юртэк»</div>
+              <div class="company-name">
+                «ГК Юртэк»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«Юг-Энерго»</div>
+              <div class="company-name">
+                «Юг-Энерго»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«УК „СитиМолл“»</div>
+              <div class="company-name">
+                «УК „СитиМолл“»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ОИКОН»</div>
+              <div class="company-name">
+                «ОИКОН»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«ВКБ-Новостройки»</div>
+              <div class="company-name">
+                «ВКБ-Новостройки»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«Неометрия»</div>
+              <div class="company-name">
+                «Неометрия»
+              </div>
+
               <div class="company-separator"></div>
 
-              <div class="company-name">«Liquid Group»</div>
+              <div class="company-name">
+                «Liquid Group»
+              </div>
 
             </div>
 
@@ -1301,9 +1570,14 @@
     </section>
 
 
-    <!-- 5. КОНТАКТЫ -->
+    <!-- =========================
+         5. КОНТАКТЫ
+    ========================= -->
 
-    <section id="contacts" class="contact-section">
+    <section
+      id="contacts"
+      class="contact-section"
+    >
 
       <div class="section-inner">
 
@@ -1317,12 +1591,14 @@
             Защитим ваш объект от огня
           </h2>
 
+
           <a
             class="contact-phone"
             href="tel:89182944223"
           >
             8 918 292-44-23
           </a>
+
 
           <div class="contact-buttons">
 
@@ -1354,36 +1630,51 @@
 
 
   <script>
+
     /* =========================
        МОБИЛЬНОЕ МЕНЮ
     ========================= */
 
-    const menuButton = document.getElementById("menuButton");
-    const mobileMenu = document.getElementById("mobileMenu");
+    const menuButton =
+      document.getElementById("menuButton");
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("open");
+    const mobileMenu =
+      document.getElementById("mobileMenu");
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-    });
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          mobileMenu.classList.toggle("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+      }
+    );
+
 
     document
       .querySelectorAll(".mobile-menu a")
       .forEach(link => {
 
-        link.addEventListener("click", () => {
+        link.addEventListener(
+          "click",
+          () => {
 
-          mobileMenu.classList.remove("open");
+            mobileMenu.classList.remove("open");
 
-          menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
 
-        });
+          }
+        );
 
       });
 
@@ -1392,63 +1683,97 @@
        ГАЛЕРЕЯ
     ========================= */
 
-    const slides = Array.from(
-      document.querySelectorAll(".gallery-slide")
-    );
+    const slides =
+      Array.from(
+        document.querySelectorAll(".gallery-slide")
+      );
 
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const galleryWindow = document.getElementById("galleryWindow");
+    const prevBtn =
+      document.getElementById("prevBtn");
+
+    const nextBtn =
+      document.getElementById("nextBtn");
+
+    const galleryWindow =
+      document.getElementById("galleryWindow");
+
 
     let currentSlide = 0;
+
 
     function showSlide(index) {
 
       currentSlide =
         (index + slides.length) % slides.length;
 
-      slides.forEach((slide, i) => {
 
-        slide.classList.toggle(
-          "active",
-          i === currentSlide
-        );
+      slides.forEach(
+        (slide, i) => {
 
-      });
+          slide.classList.toggle(
+            "active",
+            i === currentSlide
+          );
+
+        }
+      );
 
     }
+
 
     function nextSlide() {
       showSlide(currentSlide + 1);
     }
 
+
     function prevSlide() {
       showSlide(currentSlide - 1);
     }
 
-    nextBtn.addEventListener("click", nextSlide);
-    prevBtn.addEventListener("click", prevSlide);
+
+    nextBtn.addEventListener(
+      "click",
+      nextSlide
+    );
 
 
-    /* Клавиатура */
+    prevBtn.addEventListener(
+      "click",
+      prevSlide
+    );
 
-    document.addEventListener("keydown", event => {
 
-      if (event.key === "ArrowRight") {
-        nextSlide();
+    /* =========================
+       КЛАВИАТУРА
+    ========================= */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "ArrowRight"
+        ) {
+          nextSlide();
+        }
+
+        if (
+          event.key === "ArrowLeft"
+        ) {
+          prevSlide();
+        }
+
       }
-
-      if (event.key === "ArrowLeft") {
-        prevSlide();
-      }
-
-    });
+    );
 
 
-    /* Свайп на телефоне */
+    /* =========================
+       СВАЙП
+    ========================= */
 
     let touchStartX = 0;
     let touchEndX = 0;
+
 
     galleryWindow.addEventListener(
       "touchstart",
@@ -1458,8 +1783,11 @@
           event.changedTouches[0].screenX;
 
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
+
 
     galleryWindow.addEventListener(
       "touchend",
@@ -1468,12 +1796,15 @@
         touchEndX =
           event.changedTouches[0].screenX;
 
+
         const distance =
           touchEndX - touchStartX;
+
 
         if (Math.abs(distance) < 45) {
           return;
         }
+
 
         if (distance < 0) {
           nextSlide();
@@ -1482,7 +1813,9 @@
         }
 
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
 
@@ -1491,32 +1824,42 @@
     ========================= */
 
     const sections =
-      document.querySelectorAll("main section");
+      document.querySelectorAll(
+        "main section"
+      );
 
     const navLinks =
-      document.querySelectorAll(".desktop-nav a");
+      document.querySelectorAll(
+        ".desktop-nav a"
+      );
+
 
     const observer =
       new IntersectionObserver(
         entries => {
 
-          entries.forEach(entry => {
+          entries.forEach(
+            entry => {
 
-            if (!entry.isIntersecting) {
-              return;
-            }
+              if (!entry.isIntersecting) {
+                return;
+              }
 
-            navLinks.forEach(link => {
 
-              link.classList.toggle(
-                "active",
-                link.getAttribute("href") ===
-                "#" + entry.target.id
+              navLinks.forEach(
+                link => {
+
+                  link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") ===
+                    "#" + entry.target.id
+                  );
+
+                }
               );
 
-            });
-
-          });
+            }
+          );
 
         },
         {
@@ -1524,9 +1867,13 @@
         }
       );
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+
+    sections.forEach(
+      section => {
+        observer.observe(section);
+      }
+    );
+
   </script>
 
 </body>
