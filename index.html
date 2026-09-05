@@ -298,12 +298,6 @@
     ========================= */
 
     .service-layout {
-      display: grid;
-      grid-template-columns:
-        minmax(250px, 0.78fr)
-        minmax(390px, 1.22fr);
-      gap: 64px;
-      align-items: center;
       width: min(980px, 100%);
       margin: 0 auto;
     }
@@ -313,31 +307,46 @@
       min-width: 0;
     }
 
-    /* ИЗМЕНЕНО:
-       заголовок всегда одной строкой */
+    .service-left {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .service-left .eyebrow {
+      margin-bottom: 10px;
+    }
+
     .service-left h2 {
-      display: block;
-      max-width: 100%;
-      margin: 12px 0 0;
-      line-height: 1.15;
-      white-space: nowrap;
-      font-size: clamp(22px, 2.8vw, 38px);
+      margin: 0 auto;
+      font-size: clamp(27px, 3.2vw, 43px);
+      line-height: 1.08;
+      font-weight: 700;
+      white-space: normal;
+    }
+
+    .service-right {
+      width: 100%;
     }
 
     .service-main {
-      margin-bottom: 18px;
-      font-size: 18px;
+      width: min(820px, 100%);
+      margin: 0 auto 14px;
+      text-align: center;
+      font-size: 17px;
       line-height: 1.55;
     }
 
     .service-secondary {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      text-align: center;
       font-size: 15px;
       line-height: 1.6;
       color: rgba(255,255,255,0.70);
     }
 
     .service-cards {
-      margin-top: 34px;
+      margin-top: 30px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
@@ -346,6 +355,7 @@
     .service-card {
       min-width: 0;
       padding: 18px;
+      text-align: center;
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 14px;
       background: rgba(0,0,0,0.17);
@@ -635,19 +645,24 @@
         max-width: 300px;
       }
 
-      .service-layout {
-        gap: 35px;
-        grid-template-columns:
-          minmax(220px, 0.8fr)
-          minmax(280px, 1.2fr);
+      /* =========================
+         ОБРАБОТКА
+      ========================= */
+
+      .service-left {
+        margin-bottom: 24px;
       }
 
       .service-left h2 {
-        font-size: clamp(21px, 3vw, 32px);
+        font-size: 30px;
+      }
+
+      .service-main {
+        font-size: 16px;
       }
 
       .service-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .gallery {
@@ -772,34 +787,37 @@
       ========================= */
 
       .service-layout {
-        grid-template-columns: 1fr;
-        gap: 22px;
+        width: 100%;
       }
 
-      /* ИЗМЕНЕНО:
-         фраза не переносится */
+      .service-left {
+        margin-bottom: 18px;
+        text-align: center;
+      }
+
       .service-left h2 {
-        display: block;
-        max-width: 100%;
-        margin: 10px 0 0;
-        line-height: 1.15;
-        white-space: nowrap;
-        font-size: 20px;
+        margin: 0 auto;
+        font-size: 23px;
+        line-height: 1.12;
+        white-space: normal;
       }
 
       .service-main {
-        margin-bottom: 14px;
-        font-size: 14.5px;
+        margin-bottom: 12px;
+        font-size: 14px;
         line-height: 1.5;
+        text-align: center;
       }
 
       .service-secondary {
         font-size: 12.5px;
         line-height: 1.48;
+        text-align: center;
       }
 
       .service-cards {
-        margin-top: 19px;
+        margin-top: 18px;
+        grid-template-columns: 1fr;
         gap: 8px;
       }
 
@@ -948,7 +966,6 @@
         font-size: 9.8px;
       }
 
-      /* Ещё немного уменьшаем только этот заголовок */
       .service-left h2 {
         font-size: 18px;
       }
@@ -1046,6 +1063,10 @@
 
   <main>
 
+    <!-- =========================
+         СЛАЙД 1 — ГЛАВНАЯ
+    ========================= -->
+
     <section id="home">
 
       <div class="section-inner">
@@ -1085,6 +1106,11 @@
 
     </section>
 
+
+    <!-- =========================
+         СЛАЙД 2 — ОБРАБОТКА
+    ========================= -->
+
     <section id="processing">
 
       <div class="section-inner">
@@ -1098,7 +1124,7 @@
             </div>
 
             <h2>
-              Защита металлоконструкций
+              Огнезащитная обработка металлоконструкций
             </h2>
 
           </div>
@@ -1113,9 +1139,8 @@
             </p>
 
             <p class="service-secondary">
-              Работа включает подготовку металлической
-              поверхности и нанесение специальных
-              огнезащитных материалов.
+              Работа включает подготовку металлической поверхности
+              и нанесение специальных огнезащитных материалов.
             </p>
 
             <div class="service-cards">
@@ -1149,11 +1174,12 @@
               <div class="service-card">
 
                 <h3>
-                  Опыт
+                  10+ лет опыта
                 </h3>
 
                 <p>
-                  Более 10 лет работы в сфере огнезащиты
+                  Более 10 лет работы
+                  в сфере огнезащиты
                 </p>
 
               </div>
@@ -1167,6 +1193,11 @@
       </div>
 
     </section>
+
+
+    <!-- =========================
+         СЛАЙД 3 — ОБРАБОТКА ЗДАНИЙ
+    ========================= -->
 
     <section id="buildings" class="works-section">
 
@@ -1239,6 +1270,11 @@
       </div>
 
     </section>
+
+
+    <!-- =========================
+         СЛАЙД 4 — КОМПАНИИ
+    ========================= -->
 
     <section id="companies" class="companies-section">
 
@@ -1328,6 +1364,11 @@
 
     </section>
 
+
+    <!-- =========================
+         СЛАЙД 5 — КОНТАКТЫ
+    ========================= -->
+
     <section id="contacts" class="contact-section">
 
       <div class="section-inner">
@@ -1376,6 +1417,7 @@
     </section>
 
   </main>
+
 
   <script>
 
@@ -1605,4 +1647,3 @@
 
 </body>
 </html>
-```
