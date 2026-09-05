@@ -1,19 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>PROZASHITA — Огнезащитная обработка металла</title>
 
-  <meta
-    name="description"
-    content="PROZASHITA — профессиональная огнезащитная обработка металлоконструкций и зданий."
-  >
+  <meta name="description" content="PROZASHITA — профессиональная огнезащитная обработка металлоконструкций и зданий.">
 
   <style>
     * {
@@ -33,52 +27,34 @@
       overflow-x: hidden;
     }
 
-    /* =====================================================
-       ФОНОВОЕ ВИДЕО
-    ===================================================== */
-
     .site-video {
       position: fixed;
       inset: 0;
-
       width: 100%;
       height: 100%;
-
       object-fit: cover;
       object-position: center;
-
       z-index: 0;
-
       pointer-events: none;
-
       background: #111;
     }
 
     .video-overlay {
       position: fixed;
       inset: 0;
-
       z-index: 1;
-
-      background:
-        linear-gradient(
-          rgba(0, 0, 0, 0.38),
-          rgba(0, 0, 0, 0.38)
-        );
-
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.55)
+      );
       pointer-events: none;
     }
-
-    /* =====================================================
-       HEADER
-    ===================================================== */
 
     .site-header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-
       z-index: 20;
 
       display: flex;
@@ -98,56 +74,41 @@
     .logo {
       display: flex;
       align-items: center;
-
       text-decoration: none;
-
       min-width: 0;
     }
 
     .logo img {
       display: block;
-
       width: 130px;
       max-height: 48px;
-
       object-fit: contain;
     }
 
     .desktop-nav {
       display: flex;
       align-items: center;
-
       gap: 27px;
     }
 
     .desktop-nav a {
       position: relative;
-
       color: rgba(255,255,255,0.82);
-
       text-decoration: none;
-
       font-size: 14px;
       font-weight: 500;
-
       white-space: nowrap;
-
       transition: color 0.25s ease;
     }
 
     .desktop-nav a::after {
       content: "";
-
       position: absolute;
-
       left: 0;
       bottom: -7px;
-
       width: 0;
       height: 1px;
-
       background: #fff;
-
       transition: width 0.25s ease;
     }
 
@@ -161,55 +122,34 @@
       width: 100%;
     }
 
-    /* =====================================================
-       МОБИЛЬНОЕ МЕНЮ
-    ===================================================== */
-
     .menu-button {
       display: none;
-
       width: 42px;
       height: 42px;
-
       align-items: center;
       justify-content: center;
-
       border: 1px solid rgba(255,255,255,0.22);
       border-radius: 10px;
-
       background: rgba(255,255,255,0.07);
-
       color: #fff;
-
       cursor: pointer;
-
       font-size: 20px;
     }
 
     .mobile-menu {
       display: none;
-
       position: fixed;
-
       top: 70px;
       left: 14px;
       right: 14px;
-
       z-index: 19;
-
       padding: 14px;
-
       background: rgba(14,14,14,0.95);
-
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
-
       border: 1px solid rgba(255,255,255,0.12);
-
       border-radius: 16px;
-
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
     }
 
     .mobile-menu.open {
@@ -218,93 +158,59 @@
 
     .mobile-menu a {
       display: block;
-
       padding: 13px 10px;
-
       color: #fff;
-
       text-decoration: none;
-
       font-size: 15px;
-
-      border-bottom:
-        1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .mobile-menu a:last-child {
       border-bottom: none;
     }
 
-    /* =====================================================
-       ОСНОВА
-    ===================================================== */
-
     main {
       position: relative;
-
       z-index: 2;
     }
 
     section {
       position: relative;
-
       min-height: 100svh;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
-      padding:
-        110px 40px
-        65px;
-
+      padding: 110px 40px 65px;
       scroll-margin-top: 70px;
     }
 
-    /*
-      Тонкий визуальный разделитель между экранами.
-      Он не создаёт лишнего большого пустого пространства.
-    */
-
     section::after {
       content: "";
-
       position: absolute;
-
       left: 50%;
       bottom: 0;
-
       width: min(820px, 72%);
-
       height: 1px;
-
       transform: translateX(-50%);
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,0.24),
-          transparent
-        );
-
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.24),
+        transparent
+      );
       opacity: 0.7;
     }
 
     .section-inner {
       width: min(1120px, 100%);
-
       margin: 0 auto;
     }
 
     .eyebrow {
       margin-bottom: 12px;
-
       color: rgba(255,255,255,0.68);
-
       font-size: 13px;
       line-height: 1.3;
-
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
@@ -319,72 +225,52 @@
     h1 {
       font-size: clamp(30px, 4vw, 58px);
       line-height: 1.06;
-
       font-weight: 700;
     }
 
     h2 {
       font-size: clamp(26px, 3vw, 44px);
       line-height: 1.08;
-
       font-weight: 700;
     }
 
     p {
       font-size: 17px;
       line-height: 1.6;
-
       color: rgba(255,255,255,0.88);
     }
 
-    /* =====================================================
-       1. ГЛАВНАЯ
-    ===================================================== */
+    /* =========================
+       ГЛАВНАЯ
+    ========================= */
 
     .hero-layout {
       display: grid;
-
       grid-template-columns:
         minmax(280px, 0.88fr)
         minmax(360px, 1.12fr);
-
       align-items: center;
-
       gap: 58px;
-
       width: min(1000px, 100%);
-
       margin: 0 auto;
     }
 
     .hero-photo {
       width: 100%;
-
       max-width: 360px;
-
       justify-self: center;
-
       border-radius: 22px;
-
       overflow: hidden;
-
-      border:
-        1px solid rgba(255,255,255,0.19);
-
+      border: 1px solid rgba(255,255,255,0.19);
       background: rgba(0,0,0,0.20);
-
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.34);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.34);
     }
 
     .hero-photo img {
       display: block;
-
       width: 100%;
       height: auto;
-
       aspect-ratio: 4 / 5;
-
       object-fit: cover;
     }
 
@@ -394,7 +280,6 @@
 
     .hero-content h1 {
       max-width: 640px;
-
       margin-bottom: 18px;
     }
 
@@ -404,30 +289,23 @@
 
     .hero-experience {
       margin-top: 18px;
-
       font-size: 15px;
       line-height: 1.5;
-
       color: rgba(255,255,255,0.70);
     }
 
-    /* =====================================================
-       2. ОБРАБОТКА
-    ===================================================== */
+    /* =========================
+       ОБРАБОТКА
+    ========================= */
 
     .service-layout {
       display: grid;
-
       grid-template-columns:
         minmax(250px, 0.78fr)
         minmax(390px, 1.22fr);
-
       gap: 64px;
-
       align-items: center;
-
       width: min(980px, 100%);
-
       margin: 0 auto;
     }
 
@@ -436,13 +314,19 @@
       min-width: 0;
     }
 
+    /* ИЗМЕНЕНО:
+       заголовок всегда одной строкой */
     .service-left h2 {
-      max-width: 400px;
+      display: block;
+      max-width: 100%;
+      margin: 12px 0 0;
+      line-height: 1.15;
+      white-space: nowrap;
+      font-size: clamp(22px, 2.8vw, 38px);
     }
 
     .service-main {
       margin-bottom: 18px;
-
       font-size: 18px;
       line-height: 1.55;
     }
@@ -450,40 +334,28 @@
     .service-secondary {
       font-size: 15px;
       line-height: 1.6;
-
       color: rgba(255,255,255,0.70);
     }
 
     .service-cards {
       margin-top: 34px;
-
       display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
 
     .service-card {
       min-width: 0;
-
       padding: 18px;
-
-      border:
-        1px solid rgba(255,255,255,0.12);
-
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 14px;
-
       background: rgba(0,0,0,0.17);
-
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
 
     .service-card h3 {
       margin-bottom: 8px;
-
       font-size: 15px;
       line-height: 1.25;
     }
@@ -491,13 +363,12 @@
     .service-card p {
       font-size: 13px;
       line-height: 1.45;
-
       color: rgba(255,255,255,0.66);
     }
 
-    /* =====================================================
-       3. ОБРАБОТКА ЗДАНИЙ
-    ===================================================== */
+    /* =========================
+       ОБРАБОТКА ЗДАНИЙ
+    ========================= */
 
     .works-section .section-inner {
       width: min(940px, 100%);
@@ -505,7 +376,6 @@
 
     .works-heading {
       text-align: center;
-
       margin-bottom: 26px;
     }
 
@@ -515,60 +385,37 @@
 
     .gallery {
       position: relative;
-
       width: min(880px, 100%);
-
       margin: 0 auto;
-
       padding: 12px;
-
-      border:
-        1px solid rgba(255,255,255,0.18);
-
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 20px;
-
       background: rgba(0,0,0,0.16);
-
-      box-shadow:
-        0 18px 50px rgba(0,0,0,0.27);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.27);
     }
 
     .gallery-window {
       position: relative;
-
       width: 100%;
       height: 430px;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       overflow: hidden;
-
-      border:
-        1px solid rgba(255,255,255,0.14);
-
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 14px;
-
       background: rgba(0,0,0,0.22);
     }
 
     .gallery-slide {
       position: absolute;
-
       inset: 0;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       padding: 12px;
-
       opacity: 0;
       visibility: hidden;
-
       transition:
         opacity 0.35s ease,
         visibility 0.35s ease;
@@ -579,64 +426,39 @@
       visibility: visible;
     }
 
-    /*
-      ВАЖНО:
-      contain = фотография целиком,
-      без обрезания.
-    */
-
     .gallery-slide img {
       display: block;
-
       width: 100%;
       height: 100%;
-
       object-fit: contain;
       object-position: center;
-
       border-radius: 9px;
     }
 
     .gallery-arrow {
       position: absolute;
-
       top: 50%;
-
       transform: translateY(-50%);
-
       z-index: 5;
-
       width: 44px;
       height: 44px;
-
-      border:
-        1px solid rgba(255,255,255,0.22);
-
+      border: 1px solid rgba(255,255,255,0.22);
       border-radius: 50%;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       background: rgba(15,15,15,0.52);
-
       color: #fff;
-
       cursor: pointer;
-
       font-size: 25px;
-
       line-height: 1;
-
       transition:
         background 0.2s ease,
         transform 0.2s ease;
     }
 
     .gallery-arrow:hover {
-      background:
-        rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.13);
     }
 
     .gallery-arrow.prev {
@@ -647,9 +469,9 @@
       right: 24px;
     }
 
-    /* =====================================================
-       4. КОМПАНИИ
-    ===================================================== */
+    /* =========================
+       КОМПАНИИ
+    ========================= */
 
     .companies-section {
       overflow: hidden;
@@ -657,72 +479,50 @@
 
     .companies-heading {
       text-align: center;
-
       margin-bottom: 48px;
     }
 
     .companies-heading h2 {
       max-width: 900px;
-
       margin: 0 auto;
     }
 
     .marquee {
       position: relative;
-
       width: 100vw;
-
       left: 50%;
-
       transform: translateX(-50%);
-
       overflow: hidden;
     }
 
     .marquee-track {
       display: flex;
-
       width: max-content;
-
-      animation:
-        marquee 32s linear infinite;
+      animation: marquee 32s linear infinite;
     }
 
     .company-group {
       display: flex;
-
       align-items: center;
-
       flex-shrink: 0;
     }
 
     .company-name {
       display: inline-flex;
-
       align-items: center;
-
       padding: 0 28px;
-
       white-space: nowrap;
-
       font-size: clamp(24px, 3vw, 44px);
-
       line-height: 1;
-
       font-weight: 600;
-
       color: rgba(255,255,255,0.88);
     }
 
     .company-separator {
       width: 5px;
       height: 5px;
-
       border-radius: 50%;
-
-      background:
-        rgba(255,255,255,0.44);
-
+      background: rgba(255,255,255,0.44);
       flex: 0 0 auto;
     }
 
@@ -736,18 +536,13 @@
       }
     }
 
-    /* =====================================================
-       5. КОНТАКТЫ
-    ===================================================== */
+    /* =========================
+       КОНТАКТЫ
+    ========================= */
 
     .contact-section {
       text-align: center;
     }
-
-    /*
-      На последнем экране разделитель убираем,
-      чтобы страница красиво завершалась.
-    */
 
     .contact-section::after {
       display: none;
@@ -755,7 +550,6 @@
 
     .contact-content {
       width: min(760px, 100%);
-
       margin: 0 auto;
     }
 
@@ -765,19 +559,12 @@
 
     .contact-phone {
       display: inline-block;
-
       margin-top: 20px;
-
       color: #fff;
-
       text-decoration: none;
-
       font-size: clamp(24px, 3vw, 38px);
-
       font-weight: 600;
-
-      transition:
-        opacity 0.2s ease;
+      transition: opacity 0.2s ease;
     }
 
     .contact-phone:hover {
@@ -786,58 +573,39 @@
 
     .contact-buttons {
       margin-top: 30px;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       gap: 12px;
-
       flex-wrap: wrap;
     }
 
     .contact-button {
       display: inline-flex;
-
       align-items: center;
       justify-content: center;
-
       min-height: 48px;
-
       padding: 0 22px;
-
       border-radius: 10px;
-
       color: #fff;
-
       text-decoration: none;
-
       font-size: 14px;
-
       font-weight: 600;
-
-      border:
-        1px solid rgba(255,255,255,0.20);
-
-      background:
-        rgba(255,255,255,0.08);
-
+      border: 1px solid rgba(255,255,255,0.20);
+      background: rgba(255,255,255,0.08);
       transition:
         background 0.2s ease,
         transform 0.2s ease;
     }
 
     .contact-button:hover {
-      background:
-        rgba(255,255,255,0.14);
-
+      background: rgba(255,255,255,0.14);
       transform: translateY(-1px);
     }
 
-    /* =====================================================
+    /* =========================
        TABLET
-    ===================================================== */
+    ========================= */
 
     @media (max-width: 900px) {
 
@@ -854,14 +622,11 @@
       }
 
       section {
-        padding:
-          96px 22px
-          48px;
+        padding: 96px 22px 48px;
       }
 
       .hero-layout {
         gap: 30px;
-
         grid-template-columns:
           minmax(230px, 0.9fr)
           minmax(280px, 1.1fr);
@@ -873,10 +638,13 @@
 
       .service-layout {
         gap: 35px;
-
         grid-template-columns:
           minmax(220px, 0.8fr)
           minmax(280px, 1.2fr);
+      }
+
+      .service-left h2 {
+        font-size: clamp(21px, 3vw, 32px);
       }
 
       .service-cards {
@@ -892,9 +660,9 @@
       }
     }
 
-    /* =====================================================
+    /* =========================
        MOBILE
-    ===================================================== */
+    ========================= */
 
     @media (max-width: 640px) {
 
@@ -904,26 +672,16 @@
 
       .logo img {
         width: 106px;
-
         max-height: 40px;
       }
 
-      /*
-        Секции делаем плотнее.
-        Уже не 100svh каждая.
-      */
-
       section {
         min-height: 0;
-
-        padding:
-          76px 14px
-          46px;
+        padding: 76px 14px 46px;
       }
 
       section::after {
         width: 64%;
-
         opacity: 0.58;
       }
 
@@ -949,47 +707,39 @@
 
       .eyebrow {
         margin-bottom: 9px;
-
         font-size: 10px;
       }
 
       h1 {
         font-size: 24px;
-
         line-height: 1.08;
       }
 
       h2 {
         font-size: 23px;
-
         line-height: 1.1;
       }
 
       p {
         font-size: 14px;
-
         line-height: 1.5;
       }
 
-      /* =================================================
-         ГЛАВНАЯ НА ТЕЛЕФОНЕ
-      ================================================= */
+      /* =========================
+         ГЛАВНАЯ
+      ========================= */
 
       .hero-layout {
         grid-template-columns:
           minmax(118px, 0.43fr)
           minmax(0, 0.57fr);
-
         gap: 13px;
-
         width: 100%;
       }
 
       .hero-photo {
         width: 100%;
-
         max-width: none;
-
         border-radius: 14px;
       }
 
@@ -1003,81 +753,75 @@
 
       .hero-content h1 {
         margin-bottom: 9px;
-
         font-size: 20px;
-
         line-height: 1.08;
       }
 
       .hero-content p {
         font-size: 11.5px;
-
         line-height: 1.42;
       }
 
       .hero-experience {
         margin-top: 9px;
-
         font-size: 10.5px;
-
         line-height: 1.4;
       }
 
-      /* =================================================
+      /* =========================
          ОБРАБОТКА
-      ================================================= */
+      ========================= */
 
       .service-layout {
         grid-template-columns: 1fr;
-
         gap: 22px;
       }
 
+      /* ИЗМЕНЕНО:
+         фраза не переносится */
       .service-left h2 {
+        display: block;
         max-width: 100%;
+        margin: 10px 0 0;
+        line-height: 1.15;
+        white-space: nowrap;
+        font-size: 20px;
       }
 
       .service-main {
         margin-bottom: 14px;
-
         font-size: 14.5px;
-
         line-height: 1.5;
       }
 
       .service-secondary {
         font-size: 12.5px;
-
         line-height: 1.48;
       }
 
       .service-cards {
         margin-top: 19px;
-
         gap: 8px;
       }
 
       .service-card {
         padding: 13px;
-
         border-radius: 12px;
       }
 
       .service-card h3 {
         margin-bottom: 6px;
-
         font-size: 13.5px;
       }
 
       .service-card p {
         font-size: 11.5px;
-
         line-height: 1.42;
       }
 
-      /* =================================================
+      /* =========================
          ГАЛЕРЕЯ
-      ================================================= */
+      ========================= */
 
       .works-heading {
         margin-bottom: 16px;
@@ -1085,25 +829,18 @@
 
       .gallery {
         width: 91%;
-
         padding: 7px;
-
         border-radius: 14px;
       }
 
       .gallery-window {
         height: 250px;
-
         border-radius: 10px;
       }
 
       .gallery-slide {
         padding: 7px;
       }
-
-      /*
-        Фотографии показываются полностью.
-      */
 
       .gallery-slide img {
         object-fit: contain;
@@ -1112,7 +849,6 @@
       .gallery-arrow {
         width: 36px;
         height: 36px;
-
         font-size: 20px;
       }
 
@@ -1124,9 +860,9 @@
         right: 8px;
       }
 
-      /* =================================================
+      /* =========================
          КОМПАНИИ
-      ================================================= */
+      ========================= */
 
       .companies-heading {
         margin-bottom: 30px;
@@ -1134,7 +870,6 @@
 
       .company-name {
         padding: 0 17px;
-
         font-size: 24px;
       }
 
@@ -1143,9 +878,9 @@
         height: 4px;
       }
 
-      /* =================================================
+      /* =========================
          КОНТАКТЫ
-      ================================================= */
+      ========================= */
 
       .contact-content h2 {
         font-size: 25px;
@@ -1153,30 +888,25 @@
 
       .contact-phone {
         margin-top: 17px;
-
         font-size: 24px;
       }
 
       .contact-buttons {
         margin-top: 24px;
-
         flex-direction: column;
-
         width: 100%;
-
         gap: 9px;
       }
 
       .contact-button {
         width: 100%;
-
         min-height: 46px;
       }
     }
 
-    /* =====================================================
+    /* =========================
        МАЛЕНЬКИЕ ТЕЛЕФОНЫ
-    ===================================================== */
+    ========================= */
 
     @media (max-width: 380px) {
 
@@ -1204,7 +934,6 @@
         grid-template-columns:
           minmax(105px, 0.41fr)
           minmax(0, 0.59fr);
-
         gap: 10px;
       }
 
@@ -1220,6 +949,11 @@
         font-size: 9.8px;
       }
 
+      /* Ещё немного уменьшаем только этот заголовок */
+      .service-left h2 {
+        font-size: 18px;
+      }
+
       .gallery-window {
         height: 225px;
       }
@@ -1233,11 +967,6 @@
 
 <body>
 
-  <!-- =====================================================
-       ФОНОВОЕ ВИДЕО
-       Файл: img/video.mp4
-  ===================================================== -->
-
   <video
     class="site-video"
     autoplay
@@ -1246,43 +975,25 @@
     playsinline
     preload="auto"
   >
-    <source
-      src="img/video.mp4"
-      type="video/mp4"
-    >
+    <source src="img/video.mp4" type="video/mp4">
   </video>
 
   <div class="video-overlay"></div>
 
-
-  <!-- =====================================================
-       HEADER
-  ===================================================== -->
-
   <header class="site-header">
 
-    <a
-      class="logo"
-      href="#home"
-      aria-label="PROZASHITA"
-    >
-      <img
-        src="img/logo.jpg"
-        alt="PROZASHITA"
-      >
+    <a class="logo" href="#home" aria-label="PROZASHITA">
+      <img src="img/logo.jpg" alt="PROZASHITA">
     </a>
 
     <nav class="desktop-nav">
 
-      <a
-        href="#home"
-        class="active"
-      >
+      <a href="#home" class="active">
         Главная
       </a>
 
       <a href="#processing">
-        Обработка
+        Направление
       </a>
 
       <a href="#buildings">
@@ -1310,15 +1021,7 @@
 
   </header>
 
-
-  <!-- =====================================================
-       MOBILE MENU
-  ===================================================== -->
-
-  <div
-    class="mobile-menu"
-    id="mobileMenu"
-  >
+  <div class="mobile-menu" id="mobileMenu">
 
     <a href="#home">
       Главная
@@ -1342,12 +1045,7 @@
 
   </div>
 
-
   <main>
-
-    <!-- ===================================================
-         1. ГЛАВНАЯ
-    =================================================== -->
 
     <section id="home">
 
@@ -1363,7 +1061,6 @@
             >
 
           </div>
-
 
           <div class="hero-content">
 
@@ -1389,11 +1086,6 @@
 
     </section>
 
-
-    <!-- ===================================================
-         2. ОБРАБОТКА
-    =================================================== -->
-
     <section id="processing">
 
       <div class="section-inner">
@@ -1412,7 +1104,6 @@
 
           </div>
 
-
           <div class="service-right">
 
             <p class="service-main">
@@ -1427,7 +1118,6 @@
               поверхности и нанесение специальных
               огнезащитных материалов.
             </p>
-
 
             <div class="service-cards">
 
@@ -1444,7 +1134,6 @@
 
               </div>
 
-
               <div class="service-card">
 
                 <h3>
@@ -1457,7 +1146,6 @@
                 </p>
 
               </div>
-
 
               <div class="service-card">
 
@@ -1481,15 +1169,7 @@
 
     </section>
 
-
-    <!-- ===================================================
-         3. ОБРАБОТКА ЗДАНИЙ
-    =================================================== -->
-
-    <section
-      id="buildings"
-      class="works-section"
-    >
+    <section id="buildings" class="works-section">
 
       <div class="section-inner">
 
@@ -1505,90 +1185,37 @@
 
         </div>
 
-
         <div class="gallery">
 
-          <div
-            class="gallery-window"
-            id="galleryWindow"
-          >
+          <div class="gallery-window" id="galleryWindow">
 
             <div class="gallery-slide active">
-
-              <img
-                src="img/work1.jpg"
-                alt="Объект"
-                draggable="false"
-              >
-
+              <img src="img/work1.jpg" alt="Объект" draggable="false">
             </div>
-
 
             <div class="gallery-slide">
-
-              <img
-                src="img/work2.jpg"
-                alt="Объект"
-                draggable="false"
-              >
-
+              <img src="img/work2.jpg" alt="Объект" draggable="false">
             </div>
-
 
             <div class="gallery-slide">
-
-              <img
-                src="img/work3.jpg"
-                alt="Объект"
-                draggable="false"
-              >
-
+              <img src="img/work3.jpg" alt="Объект" draggable="false">
             </div>
-
 
             <div class="gallery-slide">
-
-              <img
-                src="img/work4.jpg"
-                alt="Объект"
-                draggable="false"
-              >
-
+              <img src="img/work4.jpg" alt="Объект" draggable="false">
             </div>
-
 
             <div class="gallery-slide">
-
-              <img
-                src="img/work5.jpg"
-                alt="Объект"
-                draggable="false"
-              >
-
+              <img src="img/work5.jpg" alt="Объект" draggable="false">
             </div>
-
 
             <div class="gallery-slide">
-
-              <img
-                src="img/work6.jpg"
-                alt="Объект"
-                draggable="false"
-              >
-
+              <img src="img/work6.jpg" alt="Объект" draggable="false">
             </div>
-
 
             <div class="gallery-slide">
-
-              <img
-                src="img/work7.jpg"
-                alt="Объект"
-                draggable="false"
-              >
-
+              <img src="img/work7.jpg" alt="Объект" draggable="false">
             </div>
-
 
             <button
               class="gallery-arrow prev"
@@ -1597,7 +1224,6 @@
             >
               ‹
             </button>
-
 
             <button
               class="gallery-arrow next"
@@ -1615,15 +1241,7 @@
 
     </section>
 
-
-    <!-- ===================================================
-         4. КОМПАНИИ
-    =================================================== -->
-
-    <section
-      id="companies"
-      class="companies-section"
-    >
+    <section id="companies" class="companies-section">
 
       <div class="section-inner">
 
@@ -1639,121 +1257,67 @@
 
         </div>
 
-
         <div class="marquee">
 
           <div class="marquee-track">
 
             <div class="company-group">
 
-              <div class="company-name">
-                «DOGMA»
-              </div>
-
+              <div class="company-name">«DOGMA»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ГК „Точно“»
-              </div>
-
+              <div class="company-name">«ГК „Точно“»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ГК Юртэк»
-              </div>
-
+              <div class="company-name">«ГК Юртэк»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «Юг-Энерго»
-              </div>
-
+              <div class="company-name">«Юг-Энерго»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «УК „СитиМолл“»
-              </div>
-
+              <div class="company-name">«УК „СитиМолл“»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ОИКОН»
-              </div>
-
+              <div class="company-name">«ОИКОН»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ВКБ-Новостройки»
-              </div>
-
+              <div class="company-name">«ВКБ-Новостройки»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «Неометрия»
-              </div>
-
+              <div class="company-name">«Неометрия»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «Liquid Group»
-              </div>
+              <div class="company-name">«Liquid Group»</div>
 
             </div>
 
-
             <div class="company-group">
 
-              <div class="company-name">
-                «DOGMA»
-              </div>
-
+              <div class="company-name">«DOGMA»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ГК „Точно“»
-              </div>
-
+              <div class="company-name">«ГК „Точно“»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ГК Юртэк»
-              </div>
-
+              <div class="company-name">«ГК Юртэк»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «Юг-Энерго»
-              </div>
-
+              <div class="company-name">«Юг-Энерго»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «УК „СитиМолл“»
-              </div>
-
+              <div class="company-name">«УК „СитиМолл“»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ОИКОН»
-              </div>
-
+              <div class="company-name">«ОИКОН»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «ВКБ-Новостройки»
-              </div>
-
+              <div class="company-name">«ВКБ-Новостройки»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «Неометрия»
-              </div>
-
+              <div class="company-name">«Неометрия»</div>
               <div class="company-separator"></div>
 
-              <div class="company-name">
-                «Liquid Group»
-              </div>
+              <div class="company-name">«Liquid Group»</div>
 
             </div>
 
@@ -1765,15 +1329,7 @@
 
     </section>
 
-
-    <!-- ===================================================
-         5. КОНТАКТЫ
-    =================================================== -->
-
-    <section
-      id="contacts"
-      class="contact-section"
-    >
+    <section id="contacts" class="contact-section">
 
       <div class="section-inner">
 
@@ -1787,14 +1343,12 @@
             Защитим ваш объект от огня
           </h2>
 
-
           <a
             class="contact-phone"
             href="tel:89182944223"
           >
             8 918 292-44-23
           </a>
-
 
           <div class="contact-buttons">
 
@@ -1806,7 +1360,6 @@
             >
               Написать в WhatsApp
             </a>
-
 
             <a
               class="contact-button"
@@ -1825,19 +1378,17 @@
 
   </main>
 
-
   <script>
 
-    /* =====================================================
+    /* =========================
        МОБИЛЬНОЕ МЕНЮ
-    ===================================================== */
+    ========================= */
 
     const menuButton =
       document.getElementById("menuButton");
 
     const mobileMenu =
       document.getElementById("mobileMenu");
-
 
     menuButton.addEventListener(
       "click",
@@ -1853,7 +1404,6 @@
 
       }
     );
-
 
     document
       .querySelectorAll(".mobile-menu a")
@@ -1876,9 +1426,9 @@
       });
 
 
-    /* =====================================================
+    /* =========================
        ГАЛЕРЕЯ
-    ===================================================== */
+    ========================= */
 
     const slides =
       Array.from(
@@ -1894,15 +1444,12 @@
     const galleryWindow =
       document.getElementById("galleryWindow");
 
-
     let currentSlide = 0;
-
 
     function showSlide(index) {
 
       currentSlide =
         (index + slides.length) % slides.length;
-
 
       slides.forEach(
         (slide, i) => {
@@ -1917,22 +1464,18 @@
 
     }
 
-
     function nextSlide() {
       showSlide(currentSlide + 1);
     }
-
 
     function prevSlide() {
       showSlide(currentSlide - 1);
     }
 
-
     nextBtn.addEventListener(
       "click",
       nextSlide
     );
-
 
     prevBtn.addEventListener(
       "click",
@@ -1940,9 +1483,9 @@
     );
 
 
-    /* =====================================================
+    /* =========================
        КЛАВИАТУРА
-    ===================================================== */
+    ========================= */
 
     document.addEventListener(
       "keydown",
@@ -1960,13 +1503,12 @@
     );
 
 
-    /* =====================================================
+    /* =========================
        СВАЙП
-    ===================================================== */
+    ========================= */
 
     let touchStartX = 0;
     let touchEndX = 0;
-
 
     galleryWindow.addEventListener(
       "touchstart",
@@ -1981,7 +1523,6 @@
       }
     );
 
-
     galleryWindow.addEventListener(
       "touchend",
       event => {
@@ -1989,15 +1530,12 @@
         touchEndX =
           event.changedTouches[0].screenX;
 
-
         const distance =
           touchEndX - touchStartX;
-
 
         if (Math.abs(distance) < 45) {
           return;
         }
-
 
         if (distance < 0) {
           nextSlide();
@@ -2012,9 +1550,9 @@
     );
 
 
-    /* =====================================================
+    /* =========================
        АКТИВНЫЙ ПУНКТ МЕНЮ
-    ===================================================== */
+    ========================= */
 
     const sections =
       document.querySelectorAll(
@@ -2026,7 +1564,6 @@
         ".desktop-nav a"
       );
 
-
     const observer =
       new IntersectionObserver(
         entries => {
@@ -2037,7 +1574,6 @@
               if (!entry.isIntersecting) {
                 return;
               }
-
 
               navLinks.forEach(
                 link => {
@@ -2060,7 +1596,6 @@
         }
       );
 
-
     sections.forEach(
       section => {
         observer.observe(section);
@@ -2071,3 +1606,4 @@
 
 </body>
 </html>
+```
