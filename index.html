@@ -10,6 +10,7 @@
 <meta name="description" content="PROZASHITA — профессиональная огнезащитная обработка металлоконструкций. Более 10 лет опыта.">
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -18,13 +19,13 @@
 
 html{
     scroll-behavior:smooth;
-    background:#090a0c;
+    background:#08090b;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    color:#f7f7f5;
-    background:#090a0c;
+    color:#fff;
+    background:#08090b;
     overflow-x:hidden;
 }
 
@@ -33,14 +34,19 @@ body{
 ========================= */
 
 :root{
-    --bg:#090a0c;
-    --panel:rgba(19,21,25,.78);
+    --bg:#08090b;
+    --panel:rgba(18,19,22,.80);
+
     --line:rgba(255,255,255,.14);
-    --text:#f7f7f5;
-    --muted:#b8b9bc;
-    --fire:#ff5a1f;
-    --fire2:#ff9a36;
-    --shadow:0 25px 80px rgba(0,0,0,.5);
+
+    --text:#fff;
+    --muted:#b9bbc0;
+
+    --white:#fff;
+    --soft-white:#e8e9eb;
+    --dark:#090a0c;
+
+    --shadow:0 25px 80px rgba(0,0,0,.55);
 }
 
 /* =========================
@@ -49,31 +55,39 @@ body{
 
 .site-video{
     position:fixed;
+
     top:0;
     left:0;
+
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     z-index:0;
-    background:#090a0c;
+
+    background:#08090b;
 }
 
 .video-overlay{
     position:fixed;
+
     inset:0;
+
     z-index:1;
+
     pointer-events:none;
 
     background:
         linear-gradient(
             90deg,
-            rgba(5,6,8,.92),
-            rgba(5,6,8,.62)
+            rgba(5,6,8,.94),
+            rgba(5,6,8,.68)
         ),
         linear-gradient(
             180deg,
-            rgba(5,6,8,.25),
-            rgba(5,6,8,.90)
+            rgba(5,6,8,.32),
+            rgba(5,6,8,.94)
         );
 }
 
@@ -83,29 +97,34 @@ body{
 
 .site-header{
     position:fixed;
+
     top:14px;
     left:50%;
+
     transform:translateX(-50%);
 
     width:calc(100% - 32px);
     max-width:1180px;
+
     height:68px;
 
     z-index:100;
 
     display:flex;
+
     align-items:center;
     justify-content:space-between;
 
     padding:10px 14px 10px 22px;
 
-    border:1px solid var(--line);
+    border:1px solid rgba(255,255,255,.14);
+
     border-radius:18px;
 
-    background:rgba(12,13,16,.82);
+    background:rgba(10,11,14,.84);
 
     box-shadow:
-        0 12px 50px rgba(0,0,0,.25);
+        0 12px 50px rgba(0,0,0,.30);
 
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
@@ -113,27 +132,36 @@ body{
 
 .logo{
     display:flex;
+
     align-items:center;
+
     text-decoration:none;
 }
 
 .logo img{
     display:block;
+
     width:132px;
     max-height:46px;
+
     object-fit:contain;
 }
 
 .desktop-nav{
     display:flex;
+
     align-items:center;
+
     gap:28px;
 }
 
 .desktop-nav a{
-    color:#b8b9bc;
+    color:#bfc1c5;
+
     text-decoration:none;
+
     font-size:13px;
+
     transition:.25s ease;
 }
 
@@ -144,31 +172,40 @@ body{
 
 .header-call{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
     min-height:44px;
-    padding:0 18px;
+
+    padding:0 19px;
 
     border-radius:11px;
 
-    color:#fff;
+    color:#090a0c;
+
     text-decoration:none;
 
     font-size:13px;
-    font-weight:700;
+    font-weight:800;
 
-    background:linear-gradient(
-        135deg,
-        #ff5a1f,
-        #e83f17
-    );
+    background:#fff;
 
     box-shadow:
-        0 8px 24px rgba(255,90,31,.25);
+        0 8px 25px rgba(255,255,255,.10);
+
+    transition:.25s ease;
 }
 
-/* MOBILE BUTTON */
+.header-call:hover{
+    transform:translateY(-2px);
+
+    background:#e8e8e8;
+}
+
+/* =========================
+   MOBILE BUTTON
+========================= */
 
 .menu-button{
     display:none;
@@ -176,24 +213,30 @@ body{
     width:42px;
     height:42px;
 
-    border:1px solid var(--line);
+    border:1px solid rgba(255,255,255,.16);
+
     border-radius:12px;
 
     background:#15171b;
+
     color:#fff;
 
     font-size:21px;
+
     cursor:pointer;
 }
 
-/* MOBILE MENU */
+/* =========================
+   MOBILE MENU
+========================= */
 
 .mobile-menu{
     display:none;
 
     position:fixed;
 
-    top:88px;
+    top:78px;
+
     left:10px;
     right:10px;
 
@@ -201,10 +244,11 @@ body{
 
     padding:12px;
 
-    border:1px solid var(--line);
+    border:1px solid rgba(255,255,255,.14);
+
     border-radius:18px;
 
-    background:rgba(10,11,14,.97);
+    background:rgba(9,10,13,.97);
 
     box-shadow:var(--shadow);
 
@@ -222,9 +266,11 @@ body{
     padding:16px 12px;
 
     color:#fff;
+
     text-decoration:none;
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 }
 
 .mobile-menu a:last-child{
@@ -237,6 +283,7 @@ body{
 
 main{
     position:relative;
+
     z-index:2;
 }
 
@@ -247,6 +294,7 @@ section{
     min-height:100svh;
 
     display:flex;
+
     align-items:center;
 
     padding:120px 24px 80px;
@@ -254,19 +302,23 @@ section{
 
 .section-inner{
     width:100%;
+
     max-width:1120px;
+
     margin:0 auto;
 }
 
 .eyebrow{
     margin-bottom:16px;
 
-    color:var(--fire2);
+    color:#fff;
 
     font-size:11px;
+
     font-weight:700;
 
     letter-spacing:.18em;
+
     text-transform:uppercase;
 }
 
@@ -278,18 +330,23 @@ h3{
 
 h1{
     font-size:clamp(44px,6vw,82px);
+
     line-height:.98;
+
     letter-spacing:-.055em;
 }
 
 h2{
     font-size:clamp(34px,4vw,58px);
+
     line-height:1.03;
+
     letter-spacing:-.04em;
 }
 
 p{
     color:var(--muted);
+
     line-height:1.65;
 }
 
@@ -308,6 +365,7 @@ a{
 
 .hero-grid{
     display:grid;
+
     grid-template-columns:.9fr 1.1fr;
 
     gap:70px;
@@ -315,12 +373,15 @@ a{
     align-items:center;
 }
 
-/* PHOTO */
+/* =========================
+   PHOTO
+========================= */
 
 .hero-photo-wrap{
     position:relative;
 
     width:100%;
+
     max-width:390px;
 
     margin:0 auto;
@@ -336,15 +397,15 @@ a{
     border-radius:30px;
 
     background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,.18),
-        transparent 45%
-    );
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.18),
+            transparent 45%
+        );
 
     filter:blur(24px);
 
-    opacity:.45;
+    opacity:.40;
 }
 
 .hero-photo{
@@ -354,7 +415,8 @@ a{
 
     border-radius:24px;
 
-    border:1px solid rgba(255,255,255,.2);
+    border:
+        1px solid rgba(255,255,255,.20);
 
     background:#111;
 
@@ -371,20 +433,25 @@ a{
     object-fit:cover;
 }
 
-/* EXPERIENCE */
+/* =========================
+   EXPERIENCE
+========================= */
 
 .experience{
     position:absolute;
 
     right:-36px;
+
     bottom:28px;
 
     padding:17px 19px;
 
-    border:1px solid rgba(255,255,255,.16);
+    border:
+        1px solid rgba(255,255,255,.16);
+
     border-radius:16px;
 
-    background:rgba(12,13,16,.88);
+    background:rgba(12,13,16,.90);
 
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
@@ -397,18 +464,20 @@ a{
 
     margin-bottom:4px;
 
-    color:var(--fire2);
+    color:#fff;
 
     font-size:27px;
 }
 
 .experience span{
-    color:var(--muted);
+    color:#b9bbc0;
 
     font-size:11px;
 }
 
-/* HERO TEXT */
+/* =========================
+   HERO TEXT
+========================= */
 
 .hero-text > p{
     max-width:610px;
@@ -420,7 +489,9 @@ a{
 
 .hero-actions{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:12px;
 
     margin-top:32px;
@@ -428,6 +499,7 @@ a{
 
 .btn{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
@@ -437,11 +509,13 @@ a{
 
     border-radius:13px;
 
-    border:1px solid var(--line);
+    border:
+        1px solid rgba(255,255,255,.16);
 
     text-decoration:none;
 
     font-size:14px;
+
     font-weight:700;
 
     transition:
@@ -455,27 +529,39 @@ a{
 }
 
 .btn.primary{
-    color:#fff;
+    color:#090a0c;
 
     border-color:transparent;
 
-    background:#ffffff;
-   color:#090a0c;
+    background:#fff;
 
     box-shadow:
-        0 12px 32px rgba(255,90,31,.25);
+        0 12px 32px rgba(255,255,255,.10);
+}
+
+.btn.primary:hover{
+    background:#e7e7e7;
 }
 
 .btn.secondary{
+    color:#fff;
+
     background:rgba(255,255,255,.06);
 }
 
-/* SCROLL */
+.btn.secondary:hover{
+    background:rgba(255,255,255,.12);
+}
+
+/* =========================
+   SCROLL
+========================= */
 
 .scroll-cue{
     position:absolute;
 
     left:50%;
+
     bottom:28px;
 
     transform:translateX(-50%);
@@ -485,6 +571,7 @@ a{
     font-size:11px;
 
     letter-spacing:.12em;
+
     text-transform:uppercase;
 
     text-align:center;
@@ -499,15 +586,17 @@ a{
 
     margin-top:5px;
 
-    color:var(--fire2);
+    color:#fff;
 
     font-size:22px;
 }
 
 @keyframes float{
+
     50%{
         transform:translate(-50%,8px);
     }
+
 }
 
 /* =========================
@@ -515,7 +604,8 @@ a{
 ========================= */
 
 .glass{
-    border:1px solid var(--line);
+    border:
+        1px solid rgba(255,255,255,.14);
 
     background:var(--panel);
 
@@ -564,7 +654,7 @@ a{
     transform:translateY(-7px);
 
     border-color:
-        rgba(255,90,31,.5);
+        rgba(255,255,255,.32);
 }
 
 .icon{
@@ -572,16 +662,20 @@ a{
     height:46px;
 
     display:grid;
+
     place-items:center;
 
     margin-bottom:22px;
 
     border-radius:14px;
 
-    color:var(--fire2);
+    color:#fff;
 
     background:
-        rgba(255,90,31,.12);
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.10);
 
     font-size:22px;
 }
@@ -596,7 +690,9 @@ a{
     font-size:14px;
 }
 
-/* STATS */
+/* =========================
+   STATS
+========================= */
 
 .stats{
     display:grid;
@@ -628,7 +724,7 @@ a{
 }
 
 .stat span{
-    color:var(--muted);
+    color:#b9bbc0;
 
     font-size:12px;
 }
@@ -653,6 +749,7 @@ a{
     position:relative;
 
     height:min(62vw,560px);
+
     min-height:360px;
 
     overflow:hidden;
@@ -697,7 +794,9 @@ a{
     background:#090a0c;
 }
 
-/* ARROWS */
+/* =========================
+   ARROWS
+========================= */
 
 .gallery-arrow{
     position:absolute;
@@ -711,10 +810,12 @@ a{
 
     transform:translateY(-50%);
 
-    border:1px solid rgba(255,255,255,.18);
+    border:
+        1px solid rgba(255,255,255,.18);
+
     border-radius:50%;
 
-    background:rgba(8,9,11,.72);
+    background:rgba(8,9,11,.78);
 
     color:#fff;
 
@@ -726,11 +827,15 @@ a{
 }
 
 .gallery-arrow:hover{
-    background:rgba(255,90,31,.85);
+    background:#fff;
 
-    border-color:transparent;
+    color:#090a0c;
 
-    transform:translateY(-50%) scale(1.05);
+    border-color:#fff;
+
+    transform:
+        translateY(-50%)
+        scale(1.05);
 }
 
 .prev{
@@ -741,12 +846,15 @@ a{
     right:18px;
 }
 
-/* COUNTER */
+/* =========================
+   COUNTER
+========================= */
 
 .counter{
     position:absolute;
 
     right:20px;
+
     bottom:18px;
 
     z-index:6;
@@ -762,7 +870,9 @@ a{
     font-size:12px;
 }
 
-/* DOTS */
+/* =========================
+   DOTS
+========================= */
 
 .dots{
     display:flex;
@@ -783,6 +893,7 @@ a{
     padding:0;
 
     border:none;
+
     border-radius:50%;
 
     background:#555;
@@ -797,7 +908,7 @@ a{
 
     border-radius:8px;
 
-    background:var(--fire);
+    background:#fff;
 }
 
 /* =========================
@@ -825,6 +936,7 @@ a{
     padding:20px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:18px;
@@ -844,7 +956,7 @@ a{
     transform:scale(1.03);
 
     border-color:
-        rgba(255,90,31,.5);
+        rgba(255,255,255,.32);
 }
 
 /* =========================
@@ -878,14 +990,15 @@ a{
     left:50%;
     top:50%;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,90,31,.18),
+            rgba(255,255,255,.08),
             transparent 65%
         );
 
@@ -894,6 +1007,7 @@ a{
 
 .contact-box > *{
     position:relative;
+
     z-index:2;
 }
 
@@ -911,6 +1025,10 @@ a{
     font-weight:800;
 
     letter-spacing:-.04em;
+}
+
+.phone:hover{
+    color:#ddd;
 }
 
 .contact-box p{
@@ -1012,6 +1130,7 @@ a{
 
     .logo img{
         width:115px;
+
         max-height:40px;
     }
 
@@ -1026,6 +1145,7 @@ a{
 
     .hero{
         min-height:100vh;
+
         min-height:100svh;
 
         padding-top:100px;
@@ -1049,6 +1169,7 @@ a{
 
     .hero-text > p{
         margin-left:auto;
+
         margin-right:auto;
 
         font-size:16px;
@@ -1100,6 +1221,7 @@ a{
         height:58vw;
 
         min-height:270px;
+
         max-height:500px;
     }
 
@@ -1121,6 +1243,7 @@ a{
     .phone{
         font-size:clamp(30px,9vw,45px);
     }
+
 }
 
 /* =========================
@@ -1175,24 +1298,27 @@ a{
     *:before,
     *:after{
         scroll-behavior:auto !important;
+
         animation:none !important;
+
         transition:none !important;
     }
 
     .reveal{
         opacity:1;
+
         transform:none;
     }
+
 }
+
 </style>
 
 </head>
 
 <body>
 
-<!-- =========================
-     BACKGROUND VIDEO
-========================= -->
+<!-- BACKGROUND VIDEO -->
 
 <video
  class="site-video"
@@ -1204,24 +1330,26 @@ a{
  poster="./img/sergey.jpg">
 
 ```
-<source src="./img/video.mp4" type="video/mp4">
+<source
+    src="./img/video.mp4"
+    type="video/mp4">
 ```
 
 </video>
 
 <div class="video-overlay"></div>
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header class="site-header">
 
 ```
 <a class="logo" href="#home">
+
     <img
         src="./img/logo.jpg"
         alt="PROZASHITA">
+
 </a>
 
 <nav class="desktop-nav">
@@ -1270,9 +1398,7 @@ a{
 
 </header>
 
-<!-- =========================
-     MOBILE MENU
-========================= -->
+<!-- MOBILE MENU -->
 
 <nav
     class="mobile-menu"
@@ -1302,15 +1428,11 @@ a{
 
 </nav>
 
-<!-- =========================
-     CONTENT
-========================= -->
+<!-- CONTENT -->
 
 <main>
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <section
     id="home"
@@ -1341,7 +1463,6 @@ a{
 
     </div>
 
-
     <div class="hero-text reveal">
 
         <div class="eyebrow">
@@ -1351,7 +1472,7 @@ a{
         <h1>
             Огнезащитная<br>
             обработка
-            <span style="color:#ff9a36;">
+            <span style="color:#fff;">
                 металла
             </span>
         </h1>
@@ -1397,9 +1518,7 @@ a{
 
 </section>
 
-<!-- =========================
-     PROCESSING
-========================= -->
+<!-- PROCESSING -->
 
 <section id="processing">
 
@@ -1414,9 +1533,11 @@ a{
 
         <h2>
             Защита конструкций,<br>
-            <span style="color:#ff9a36;">
+
+            <span style="color:#fff;">
                 на которых всё держится
             </span>
+
         </h2>
 
         <p>
@@ -1428,7 +1549,6 @@ a{
         </p>
 
     </div>
-
 
     <div class="cards">
 
@@ -1450,7 +1570,6 @@ a{
 
         </div>
 
-
         <div class="card glass reveal">
 
             <div class="icon">
@@ -1468,7 +1587,6 @@ a{
             </p>
 
         </div>
-
 
         <div class="card glass reveal">
 
@@ -1490,7 +1608,6 @@ a{
 
     </div>
 
-
     <div class="stats reveal">
 
         <div class="stat glass">
@@ -1503,7 +1620,6 @@ a{
 
         </div>
 
-
         <div class="stat glass">
 
             <b>100+</b>
@@ -1513,7 +1629,6 @@ a{
             </span>
 
         </div>
-
 
         <div class="stat glass">
 
@@ -1533,9 +1648,7 @@ a{
 
 </section>
 
-<!-- =========================
-     BUILDINGS
-========================= -->
+<!-- BUILDINGS -->
 
 <section id="buildings">
 
@@ -1554,7 +1667,6 @@ a{
 
     </div>
 
-
     <div
         class="gallery glass reveal"
         id="gallery">
@@ -1562,7 +1674,6 @@ a{
         <div
             class="gallery-window"
             id="galleryWindow">
-
 
             <div class="gallery-slide active">
 
@@ -1573,7 +1684,6 @@ a{
 
             </div>
 
-
             <div class="gallery-slide">
 
                 <img
@@ -1582,7 +1692,6 @@ a{
                     draggable="false">
 
             </div>
-
 
             <div class="gallery-slide">
 
@@ -1593,7 +1702,6 @@ a{
 
             </div>
 
-
             <div class="gallery-slide">
 
                 <img
@@ -1602,7 +1710,6 @@ a{
                     draggable="false">
 
             </div>
-
 
             <div class="gallery-slide">
 
@@ -1613,7 +1720,6 @@ a{
 
             </div>
 
-
             <div class="gallery-slide">
 
                 <img
@@ -1623,7 +1729,6 @@ a{
 
             </div>
 
-
             <div class="gallery-slide">
 
                 <img
@@ -1632,7 +1737,6 @@ a{
                     draggable="false">
 
             </div>
-
 
             <button
                 class="gallery-arrow prev"
@@ -1644,7 +1748,6 @@ a{
 
             </button>
 
-
             <button
                 class="gallery-arrow next"
                 id="nextBtn"
@@ -1654,7 +1757,6 @@ a{
                 ›
 
             </button>
-
 
             <div class="counter">
 
@@ -1668,7 +1770,6 @@ a{
 
         </div>
 
-
         <div
             class="dots"
             id="dots">
@@ -1681,9 +1782,7 @@ a{
 
 </section>
 
-<!-- =========================
-     COMPANIES
-========================= -->
+<!-- COMPANIES -->
 
 <section id="companies">
 
@@ -1710,54 +1809,43 @@ a{
 
     </div>
 
-
     <div class="trust-grid">
-
 
         <div class="trust-item glass reveal">
             DOGMA
         </div>
 
-
         <div class="trust-item glass reveal">
             ГК «Точно»
         </div>
-
 
         <div class="trust-item glass reveal">
             ГК Юртэк
         </div>
 
-
         <div class="trust-item glass reveal">
             Юг-Энерго
         </div>
-
 
         <div class="trust-item glass reveal">
             УК «СитиМолл»
         </div>
 
-
         <div class="trust-item glass reveal">
             ОИКОН
         </div>
-
 
         <div class="trust-item glass reveal">
             ВКБ-Новостройки
         </div>
 
-
         <div class="trust-item glass reveal">
             Неометрия
         </div>
 
-
         <div class="trust-item glass reveal">
             Liquid Group
         </div>
-
 
     </div>
 
@@ -1766,9 +1854,7 @@ a{
 
 </section>
 
-<!-- =========================
-     CONTACTS
-========================= -->
+<!-- CONTACTS -->
 
 <section
     id="contacts"
@@ -1793,7 +1879,6 @@ a{
             обсудим задачу и подберём решение.
         </p>
 
-
         <a
             class="phone"
             href="tel:+79182944223">
@@ -1801,7 +1886,6 @@ a{
             8 918 292-44-23
 
         </a>
-
 
         <div class="contact-actions">
 
@@ -1815,7 +1899,6 @@ a{
 
             </a>
 
-
             <a
                 class="btn secondary"
                 href="tel:+79182944223">
@@ -1825,7 +1908,6 @@ a{
             </a>
 
         </div>
-
 
         <div class="footer-note">
 
@@ -1844,9 +1926,7 @@ a{
 
 </main>
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- JAVASCRIPT -->
 
 <script>
 
@@ -1862,40 +1942,47 @@ document.addEventListener("DOMContentLoaded", function(){
     var mobileMenu =
         document.getElementById("mobileMenu");
 
-
     if(menuButton && mobileMenu){
 
-        menuButton.addEventListener("click", function(){
+        menuButton.addEventListener(
+            "click",
+            function(){
 
-            var isOpen =
-                mobileMenu.classList.toggle("open");
+                var isOpen =
+                    mobileMenu.classList.toggle("open");
 
-            menuButton.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    isOpen ? "true" : "false"
+                );
 
-        });
-
+            }
+        );
 
         var mobileLinks =
             mobileMenu.querySelectorAll("a");
 
+        mobileLinks.forEach(
+            function(link){
 
-        mobileLinks.forEach(function(link){
+                link.addEventListener(
+                    "click",
+                    function(){
 
-            link.addEventListener("click", function(){
+                        mobileMenu.classList.remove(
+                            "open"
+                        );
 
-                mobileMenu.classList.remove("open");
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
 
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
+                    }
                 );
 
-            });
-
-        });
+            }
+        );
 
     }
 
@@ -1906,7 +1993,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     var slides =
         Array.from(
-            document.querySelectorAll(".gallery-slide")
+            document.querySelectorAll(
+                ".gallery-slide"
+            )
         );
 
     var dots =
@@ -1922,10 +2011,12 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("prevBtn");
 
     var galleryWindow =
-        document.getElementById("galleryWindow");
-
+        document.getElementById(
+            "galleryWindow"
+        );
 
     var index = 0;
+
     var startX = 0;
 
 
@@ -1940,27 +2031,31 @@ document.addEventListener("DOMContentLoaded", function(){
             % slides.length;
 
 
-        slides.forEach(function(slide, i){
+        slides.forEach(
+            function(slide, i){
 
-            slide.classList.toggle(
-                "active",
-                i === index
-            );
+                slide.classList.toggle(
+                    "active",
+                    i === index
+                );
 
-        });
+            }
+        );
 
 
         if(dots){
 
             Array.from(dots.children)
-                .forEach(function(dot, i){
+                .forEach(
+                    function(dot, i){
 
-                    dot.classList.toggle(
-                        "active",
-                        i === index
-                    );
+                        dot.classList.toggle(
+                            "active",
+                            i === index
+                        );
 
-                });
+                    }
+                );
 
         }
 
@@ -1968,7 +2063,8 @@ document.addEventListener("DOMContentLoaded", function(){
         if(current){
 
             current.textContent =
-                String(index + 1).padStart(2,"0");
+                String(index + 1)
+                .padStart(2,"0");
 
         }
 
@@ -1979,31 +2075,43 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if(dots && slides.length){
 
-        slides.forEach(function(_, i){
+        slides.forEach(
+            function(_, i){
 
-            var dot =
-                document.createElement("button");
+                var dot =
+                    document.createElement(
+                        "button"
+                    );
 
-            dot.type = "button";
+                dot.type = "button";
 
-            dot.className =
-                "dot" + (i === 0 ? " active" : "");
+                dot.className =
+                    "dot" +
+                    (
+                        i === 0
+                        ? " active"
+                        : ""
+                    );
 
-            dot.setAttribute(
-                "aria-label",
-                "Открыть фотографию " + (i + 1)
-            );
+                dot.setAttribute(
+                    "aria-label",
+                    "Открыть фотографию " +
+                    (i + 1)
+                );
 
-            dot.addEventListener(
-                "click",
-                function(){
-                    showSlide(i);
-                }
-            );
+                dot.addEventListener(
+                    "click",
+                    function(){
 
-            dots.appendChild(dot);
+                        showSlide(i);
 
-        });
+                    }
+                );
+
+                dots.appendChild(dot);
+
+            }
+        );
 
     }
 
@@ -2015,7 +2123,9 @@ document.addEventListener("DOMContentLoaded", function(){
         nextBtn.addEventListener(
             "click",
             function(){
+
                 showSlide(index + 1);
+
             }
         );
 
@@ -2027,7 +2137,9 @@ document.addEventListener("DOMContentLoaded", function(){
         prevBtn.addEventListener(
             "click",
             function(){
+
                 showSlide(index - 1);
+
             }
         );
 
@@ -2069,7 +2181,6 @@ document.addEventListener("DOMContentLoaded", function(){
                     return;
 
                 }
-
 
                 var endX =
                     event.changedTouches[0].clientX;
@@ -2126,7 +2237,9 @@ document.addEventListener("DOMContentLoaded", function(){
     ========================= */
 
     var revealElements =
-        document.querySelectorAll(".reveal");
+        document.querySelectorAll(
+            ".reveal"
+        );
 
 
     if("IntersectionObserver" in window){
@@ -2138,7 +2251,9 @@ document.addEventListener("DOMContentLoaded", function(){
                     entries.forEach(
                         function(entry){
 
-                            if(entry.isIntersecting){
+                            if(
+                                entry.isIntersecting
+                            ){
 
                                 entry.target.classList.add(
                                     "show"
@@ -2159,7 +2274,9 @@ document.addEventListener("DOMContentLoaded", function(){
         revealElements.forEach(
             function(element){
 
-                revealObserver.observe(element);
+                revealObserver.observe(
+                    element
+                );
 
             }
         );
@@ -2169,7 +2286,9 @@ document.addEventListener("DOMContentLoaded", function(){
         revealElements.forEach(
             function(element){
 
-                element.classList.add("show");
+                element.classList.add(
+                    "show"
+                );
 
             }
         );
@@ -2243,7 +2362,9 @@ document.addEventListener("DOMContentLoaded", function(){
         sections.forEach(
             function(section){
 
-                navObserver.observe(section);
+                navObserver.observe(
+                    section
+                );
 
             }
         );
